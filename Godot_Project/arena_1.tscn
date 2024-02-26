@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch4mamn12r4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehbbs"]
+size = Vector2(56.5596, 10)
+
+[node name="Arena_1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(79.7, 21.8)
+scale = Vector2(4.36, 4.36)
+shape = SubResource("RectangleShape2D_ehbbs")
+debug_color = Color(0, 0.611765, 0.627451, 0.419608)
