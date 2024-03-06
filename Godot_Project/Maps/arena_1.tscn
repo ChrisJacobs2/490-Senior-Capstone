@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch4mamn12r4h"]
+[gd_scene load_steps=7 format=3 uid="uid://ch4mamn12r4h"]
 
 [ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test_character.tscn" id="1_8ics0"]
 [ext_resource type="PackedScene" uid="uid://cycyihwt4au1e" path="res://Prefabs/prefab-floor-400px.tscn" id="2_q7u48"]
 [ext_resource type="PackedScene" uid="uid://d2tkamtnx415m" path="res://Prefabs/prefab-wall-100px.tscn" id="3_vmhsk"]
 [ext_resource type="PackedScene" uid="uid://c7l4etmffqxvn" path="res://Prefabs/prefab-platform-150px.tscn" id="4_vw07g"]
 [ext_resource type="PackedScene" uid="uid://wodthxhh245l" path="res://Prefabs/prefab-floor-200px.tscn" id="5_hgo0j"]
+[ext_resource type="PackedScene" uid="uid://crfxsgq6k55xr" path="res://Prefabs/prefab-wall-300px.tscn" id="6_livom"]
 
 [node name="Arena_1" type="Node2D"]
 
@@ -12,9 +13,6 @@
 position = Vector2(-1, -61)
 
 [node name="Map Elements" type="Node2D" parent="."]
-
-[node name="barrier 100px 1" parent="Map Elements" instance=ExtResource("3_vmhsk")]
-position = Vector2(0, 210)
 
 [node name="platforms" type="Node" parent="Map Elements"]
 
@@ -45,6 +43,18 @@ position = Vector2(-275, 120)
 [node name="platform 150px 7" parent="Map Elements/platforms" instance=ExtResource("4_vw07g")]
 position = Vector2(-275, 240)
 
+[node name="platform 150px 10" parent="Map Elements/platforms" instance=ExtResource("4_vw07g")]
+position = Vector2(183, 360)
+
+[node name="platform 150px 11" parent="Map Elements/platforms" instance=ExtResource("4_vw07g")]
+position = Vector2(-507, 360)
+
+[node name="platform 150px 12" parent="Map Elements/platforms" instance=ExtResource("4_vw07g")]
+position = Vector2(-867, 120)
+
+[node name="platform 150px 13" parent="Map Elements/platforms" instance=ExtResource("4_vw07g")]
+position = Vector2(-792, 120)
+
 [node name="floors" type="Node" parent="Map Elements"]
 
 [node name="floor 400px 1" parent="Map Elements/floors" instance=ExtResource("2_q7u48")]
@@ -53,13 +63,28 @@ position = Vector2(-275, 240)
 position = Vector2(0, -220)
 
 [node name="floor 400px 3" parent="Map Elements/floors" instance=ExtResource("2_q7u48")]
-position = Vector2(0, 240)
+position = Vector2(0, 120)
+
+[node name="floor 400px 4" parent="Map Elements/floors" instance=ExtResource("2_q7u48")]
+position = Vector2(-92, 360)
+
+[node name="floor 400px 5" parent="Map Elements/floors" instance=ExtResource("2_q7u48")]
+position = Vector2(0, 480)
+
+[node name="floor 400px 6" parent="Map Elements/floors" instance=ExtResource("2_q7u48")]
+position = Vector2(-782, 360)
 
 [node name="floor 200px 1" parent="Map Elements/floors" instance=ExtResource("5_hgo0j")]
 position = Vector2(-450, -120)
 
 [node name="floor 200px 2" parent="Map Elements/floors" instance=ExtResource("5_hgo0j")]
 position = Vector2(450, -120)
+
+[node name="floor 200px 3" parent="Map Elements/floors" instance=ExtResource("5_hgo0j")]
+position = Vector2(-332, 360)
+
+[node name="floor 200px 4" parent="Map Elements/floors" instance=ExtResource("5_hgo0j")]
+position = Vector2(300, 360)
 
 [node name="walls" type="Node" parent="Map Elements"]
 
@@ -68,3 +93,23 @@ position = Vector2(-180, -150)
 
 [node name="wall 100px 2" parent="Map Elements/walls" instance=ExtResource("3_vmhsk")]
 position = Vector2(180, -150)
+
+[node name="wall 100px 3" parent="Map Elements/walls" instance=ExtResource("3_vmhsk")]
+z_index = -1
+position = Vector2(370, 310)
+
+[node name="wall 100px 4" parent="Map Elements/walls" instance=ExtResource("3_vmhsk")]
+z_index = -1
+position = Vector2(-370, 310)
+
+[node name="wall 100px 5" parent="Map Elements/walls" instance=ExtResource("3_vmhsk")]
+z_index = -1
+position = Vector2(-962, 150)
+
+[node name="wall 300px 1" parent="Map Elements/walls" instance=ExtResource("6_livom")]
+z_index = -1
+position = Vector2(0, 230)
+
+[node name="wall 100px 6" parent="Map Elements/walls" instance=ExtResource("3_vmhsk")]
+z_index = -1
+position = Vector2(-697, 150)
