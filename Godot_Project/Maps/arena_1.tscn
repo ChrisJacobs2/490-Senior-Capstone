@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch4mamn12r4h"]
+
+[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test_character.tscn" id="1_8ics0"]
+[ext_resource type="PackedScene" uid="uid://cycyihwt4au1e" path="res://Prefabs/prefab-floor-400px.tscn" id="2_q7u48"]
+[ext_resource type="PackedScene" uid="uid://d2tkamtnx415m" path="res://Prefabs/prefab-wall-100px.tscn" id="3_vmhsk"]
+[ext_resource type="PackedScene" uid="uid://c7l4etmffqxvn" path="res://Prefabs/prefab-platform-150px.tscn" id="4_vw07g"]
+
+[node name="Arena_1" type="Node2D"]
+
+[node name="Test_Character" parent="." instance=ExtResource("1_8ics0")]
+position = Vector2(-1, -61)
+
+[node name="Map Elements" type="Node2D" parent="."]
+
+[node name="floor 400px 1" parent="Map Elements" instance=ExtResource("2_q7u48")]
+
+[node name="floor 400px 2" parent="Map Elements" instance=ExtResource("2_q7u48")]
+position = Vector2(0, -220)
+
+[node name="wall 100px 1" parent="Map Elements" instance=ExtResource("3_vmhsk")]
+position = Vector2(-180, -150)
+
+[node name="wall 100px 2" parent="Map Elements" instance=ExtResource("3_vmhsk")]
+position = Vector2(180, -150)
+
+[node name="platform 150px 1" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(-275, 0)
+
+[node name="platform 150px 9" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(275, 240)
+
+[node name="platform 150px 8" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(275, 120)
+
+[node name="platform 150px 2" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(275, 0)
+
+[node name="platform 150px 3" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(-275, -120)
+
+[node name="platform 150px 4" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(275, -120)
+
+[node name="platform 150px 5" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(-275, 0)
+
+[node name="platform 150px 6" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(-275, 120)
+
+[node name="platform 150px 7" parent="Map Elements" instance=ExtResource("4_vw07g")]
+position = Vector2(-275, 240)
+
+[node name="Node2D" parent="Map Elements" instance=ExtResource("3_vmhsk")]
+position = Vector2(0, 210)
+
+[node name="floor 400px 1" parent="." instance=ExtResource("2_q7u48")]
+position = Vector2(0, 240)

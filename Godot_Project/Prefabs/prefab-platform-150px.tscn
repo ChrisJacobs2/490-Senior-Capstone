@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7l4etmffqxvn"]
+
+[ext_resource type="Texture2D" uid="uid://jb00f4qrn4vk" path="res://map-textures/150px-placeholder-platform.png" id="1_tvxao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfbru"]
+size = Vector2(150, 40)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lfbru")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+texture = ExtResource("1_tvxao")
