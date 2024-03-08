@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdo14r5d24lm6"]
+
+[ext_resource type="Texture2D" uid="uid://bt6dpddr0pkm" path="res://assets/bluegreen.png" id="1_ms4ri"]
+[ext_resource type="Script" path="res://credits_menu.gd" id="1_t1mbi"]
+[ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_wcglg"]
+[ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_offpc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b4uy"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb7c0"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.784314)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y48rv"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_fohtl"]
+Button/styles/hover = SubResource("StyleBoxFlat_1b4uy")
+Button/styles/normal = SubResource("StyleBoxFlat_mb7c0")
+Button/styles/pressed = SubResource("StyleBoxFlat_y48rv")
+
+[node name="credits_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1mbi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ms4ri")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 14.0
+offset_right = -11.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme = SubResource("Theme_fohtl")
+theme_override_fonts/font = ExtResource("2_wcglg")
+theme_override_font_sizes/font_size = 50
+text = " Back "
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -57.0
+offset_right = 550.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_wcglg")
+theme_override_font_sizes/font_size = 45
+text = "We hope you've enjoyed your time here. This game is brought to you by Christopher Jacobs, Cynthia Espinoza, Dat Phan, and Christian Leonard."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_offpc")
+volume_db = -12.543
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

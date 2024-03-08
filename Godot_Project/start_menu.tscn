@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch0xdtwhc4je0"]
+
+[ext_resource type="Script" path="res://start_menu.gd" id="1_mdbpa"]
+[ext_resource type="Texture2D" uid="uid://ci33o86lslh3l" path="res://assets/cityblue.png" id="2_hxxtw"]
+[ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="3_calmr"]
+[ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_u62b3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4sgs"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="Theme_muorw"]
+Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pla45"]
+
+[sub_resource type="Theme" id="Theme_ks0wn"]
+Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+
+[sub_resource type="Theme" id="Theme_e16bm"]
+Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+
+[sub_resource type="Theme" id="Theme_yra8h"]
+Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdbpa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hxxtw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -226.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+theme = SubResource("Theme_muorw")
+theme_override_colors/font_pressed_color = Color(1, 0.27451, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_fonts/font = ExtResource("3_calmr")
+theme_override_font_sizes/font_size = 40
+text = "START"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ks0wn")
+theme_override_colors/font_pressed_color = Color(1, 0.27451, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_fonts/font = ExtResource("3_calmr")
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS"
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_e16bm")
+theme_override_colors/font_pressed_color = Color(1, 0.27451, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_fonts/font = ExtResource("3_calmr")
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pla45")
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme = SubResource("Theme_yra8h")
+theme_override_colors/font_pressed_color = Color(1, 0.27451, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.454902, 0.368627, 1)
+theme_override_fonts/font = ExtResource("3_calmr")
+theme_override_font_sizes/font_size = 40
+text = "CREDITS
+"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -47.5
+offset_right = 225.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_calmr")
+theme_override_font_sizes/font_size = 140
+text = "GAME TITLE"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u62b3")
+volume_db = -12.543
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

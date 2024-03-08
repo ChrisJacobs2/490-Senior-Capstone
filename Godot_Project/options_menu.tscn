@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqswds5wj0l26"]
+
+[ext_resource type="Texture2D" uid="uid://5krsttaqeh1b" path="res://assets/yellowblue.png" id="1_3ov2x"]
+[ext_resource type="Script" path="res://options_menu.gd" id="1_7kuam"]
+[ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_hakw4"]
+[ext_resource type="PackedScene" uid="uid://bsvyjnlv2mq2w" path="res://settings_tab_container.tscn" id="4_vvyn1"]
+[ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="5_476v5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ocnd"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yeen"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.784314)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbbt2"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_snbvl"]
+Button/styles/hover = SubResource("StyleBoxFlat_8ocnd")
+Button/styles/normal = SubResource("StyleBoxFlat_1yeen")
+Button/styles/pressed = SubResource("StyleBoxFlat_cbbt2")
+
+[node name="options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7kuam")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3ov2x")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 15.0
+offset_right = -11.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme = SubResource("Theme_snbvl")
+theme_override_fonts/font = ExtResource("2_hakw4")
+theme_override_font_sizes/font_size = 50
+text = " Back "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 74.0
+offset_right = 1073.0
+offset_bottom = 646.0
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_hakw4")
+theme_override_font_sizes/font_size = 60
+text = " Options "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="settings_tab_container" parent="VBoxContainer" instance=ExtResource("4_vvyn1")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_476v5")
+volume_db = -12.543
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
