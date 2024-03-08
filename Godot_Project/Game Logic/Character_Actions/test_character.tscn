@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d07gvrwd6au4d"]
 
-[ext_resource type="Script" path="res://test_char_script.gd" id="1_k3x11"]
-[ext_resource type="Texture2D" uid="uid://dwtxxtu73pf6w" path="res://character sprites/boy_copy.png" id="2_fyo71"]
+[ext_resource type="Script" path="res://Game Logic/Character_Actions/test_char_script.gd" id="1_k3x11"]
+[ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="2_c27yk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcntc"]
 size = Vector2(119, 268)
@@ -18,5 +18,5 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_fyo71")
+texture = ExtResource("2_c27yk")
 offset = Vector2(50, 0)
