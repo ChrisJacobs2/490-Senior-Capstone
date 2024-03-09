@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bd0qsna4wbiq"]
+
+[node name="Inventory" type="Node2D"]
+
+[node name="Slot 1" type="Node2D" parent="."]
+
+[node name="Slot 2" type="Node2D" parent="."]
