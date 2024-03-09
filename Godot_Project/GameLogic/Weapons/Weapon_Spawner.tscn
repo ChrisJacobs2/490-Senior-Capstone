@@ -24,3 +24,4 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_8v0gp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_spawner_area_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_spawner_area_exited"]
