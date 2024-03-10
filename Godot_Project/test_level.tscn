@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://GameLogic/Character_Actions/test_character.tscn" id="1_yj2y3"]
 [ext_resource type="Texture2D" uid="uid://dx8d83m6ebuby" path="res://Tiles/floor-200.png" id="2_5cb4w"]
-[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapons/Weapon_Spawner.tscn" id="4_8svke"]
+[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawner.tscn" id="4_8svke"]
 [ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/SpawnerLogic.tscn" id="4_lvqqi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1vqgj"]
