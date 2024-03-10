@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://GameLogic/Character_Actions/test_char_script.gd" id="1_k3x11"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="2_c27yk"]
-[ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Weapons/inventory.tscn" id="3_m3uxa"]
-[ext_resource type="Script" path="res://GameLogic/Weapons/inventory.gd" id="4_h2aed"]
+[ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Character_Actions/inventory.tscn" id="3_m3uxa"]
+[ext_resource type="Script" path="res://GameLogic/Character_Actions/inventory.gd" id="4_h2aed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcntc"]
 size = Vector2(119, 268)

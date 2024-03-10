@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq8m4v8l44x0"]
+
+[ext_resource type="PackedScene" uid="uid://dwhu7vx768rhb" path="res://GameLogic/Weapons/BaseWeapon.tscn" id="1_sj3ie"]
+[ext_resource type="Texture2D" uid="uid://dvpc085xtdkpi" path="res://assets/weapons/lazar_gun.png" id="2_d8jn5"]
+
+[node name="Base Weapon" instance=ExtResource("1_sj3ie")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_d8jn5")
+
+[node name="BarrelTip" parent="." index="1"]
+position = Vector2(-63, -8)
+
+[node name="Grip" parent="." index="2"]
+position = Vector2(28, 29)

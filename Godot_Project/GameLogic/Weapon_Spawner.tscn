@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://816o5cjbv2lg"]
 
-[ext_resource type="Script" path="res://GameLogic/Weapons/Weapon_Spawner.gd" id="1_va1dw"]
+[ext_resource type="Script" path="res://GameLogic/Weapon_Spawner.gd" id="1_va1dw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v0gp"]
 size = Vector2(118, 114)
