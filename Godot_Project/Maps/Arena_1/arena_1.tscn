@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ch4mamn12r4h"]
 
-[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://GameLogic/Character_Actions/test_character.tscn" id="1_ck3xw"]
+[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test assets/test_character.tscn" id="1_ck3xw"]
 [ext_resource type="Texture2D" uid="uid://dx8d83m6ebuby" path="res://Tiles/floor-200.png" id="2_dgv51"]
 [ext_resource type="Texture2D" uid="uid://4tgfb88ksrya" path="res://Tiles/wall-200.png" id="3_xdhln"]
 [ext_resource type="Texture2D" uid="uid://c37wmesrbvnsy" path="res://Tiles/platform-200.png" id="4_at2ex"]

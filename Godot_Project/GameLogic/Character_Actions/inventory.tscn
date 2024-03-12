@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bd0qsna4wbiq"]
+[gd_scene load_steps=2 format=3 uid="uid://bd0qsna4wbiq"]
+
+[ext_resource type="Script" path="res://GameLogic/Character_Actions/inventory.gd" id="1_5jmdr"]
 
 [node name="Inventory" type="Node2D"]
+script = ExtResource("1_5jmdr")
 
 [node name="Slot 1" type="Node2D" parent="."]
 

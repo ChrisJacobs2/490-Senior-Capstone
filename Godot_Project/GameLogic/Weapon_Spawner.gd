@@ -52,10 +52,13 @@ func _process(_delta):
 # Called whenever a "body" including the player enters the collision box of the
 # spawner.
 func _on_spawner_area_entered(body):
-	# We keep track of this incase a player stays inside of a spawner
-	num_players_inside += 1
 	print("Spawner Area Entered")
 	print(body)
+	
+	# We keep track of this incase a player waits inside of a spawner
+	if body.is_in_group("player"):
+		num_players_inside += 1
+	
 	
 	# makes sure that the spawner only activates every cooldown_timer seconds
 	if cooldown == false:
@@ -63,5 +66,6 @@ func _on_spawner_area_entered(body):
 		collect()	
 
 
-func _on_spawner_area_exited(_body):
-	num_players_inside -= 1
+func _on_spawner_area_exited(body):
+	if body.is_in_group("player"):
+		num_players_inside += 1
