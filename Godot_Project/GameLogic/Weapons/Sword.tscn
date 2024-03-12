@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bubchwrjdxymo" path="res://assets/weapons/sword.png" id="2_rxl2x"]
 
 [node name="Base Weapon" instance=ExtResource("1_e0t8a")]
+metadata/Name = "Sword"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_rxl2x")

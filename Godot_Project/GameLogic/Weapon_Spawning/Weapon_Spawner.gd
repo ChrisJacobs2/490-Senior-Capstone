@@ -9,29 +9,32 @@ var num_players_inside = 0
 # 5 second cooldown
 var cooldown_timer = 5.0
 
+# script name
+var script_name = "Weapon_Spawner.gd: "
+
 
 
 var chosen_gun = preload("res://GameLogic/Weapons/PenguinGun.tscn").instantiate()
+var gun_name = chosen_gun.get_meta("Name")
 
 func spawn():
-	print("weapon spawned")
+	# print(script_name, "weapon spawned")
 	# Add an instance of the PenguinGun.tscn
 	#as a child of the node called Weapon
 	# This can be randomized later
 	$Weapon.add_child(chosen_gun)
 
 
-func collect(_player):
+func collect(player):
 	# Stats
-	# print($Weapon.get_child_count())
+	# print(script_name, $Weapon.get_child_count())
+
 	# Remove the gun from the spawner, and emit a signal (to SpawnerLogic.gd)
 	if $Weapon.get_child_count() > 0:
-		# get the name of the node chosen_gun
-		name = chosen_gun.get_name()
-		print(name)
+		SpawnerSignalManager.give_player_wep.emit(player, gun_name)
 		$Weapon.remove_child(chosen_gun)
 	else:
-		print("No children to remove")
+		print(script_name, "No children to remove")
 		
 
 	# wait cooldown_timer seconds
@@ -49,7 +52,6 @@ func collect(_player):
 func _ready():
 	# Hide the ColorRect
 	$ColorRect.hide()
-	SpawnerSignalManager.test.emit()
 
 
 
@@ -60,8 +62,8 @@ func _process(_delta):
 # Called whenever a "body" including the player enters the collision box of the
 # spawner.
 func _on_spawner_area_entered(body):
-	print("Spawner Area Entered")
-	print(body)
+	# print(script_name, "Spawner Area Entered")
+	# print(script_name, body)
 	
 	# We keep track of this incase a player waits inside of a spawner
 	if body.is_in_group("player"):

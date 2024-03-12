@@ -7,6 +7,7 @@
 metadata/Damage = 3
 metadata/Fire_Rate = 60
 metadata/Shots_Count = 3
+metadata/Name = "LaserGun"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_d8jn5")

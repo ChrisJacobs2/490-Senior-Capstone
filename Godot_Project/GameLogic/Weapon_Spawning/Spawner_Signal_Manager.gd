@@ -1,4 +1,3 @@
 extends Node
 
-signal test
-
+signal give_player_wep(player, weapon)

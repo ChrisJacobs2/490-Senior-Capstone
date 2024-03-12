@@ -193,7 +193,7 @@ sources/1 = SubResource("TileSetAtlasSource_1vqgj")
 [node name="Arena_1" type="Node2D"]
 
 [node name="Test_Character" parent="." groups=["Player"] instance=ExtResource("1_2lir6")]
-position = Vector2(299, -159)
+position = Vector2(65, -413)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_q2ynv")
@@ -209,4 +209,4 @@ offset_right = 58.0
 offset_bottom = 56.0
 
 [node name="WeaponSpawner" parent="." instance=ExtResource("3_w1stn")]
-position = Vector2(-628, -196)
+position = Vector2(606, -214)

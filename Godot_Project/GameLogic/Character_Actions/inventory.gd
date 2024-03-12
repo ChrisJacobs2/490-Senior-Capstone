@@ -15,6 +15,12 @@
 #				that you move the inventory scene marker to where the character's
 #				hand is. This is where the weapons will be placed when they are
 #				"active".
+# Other Notes: 
+# Although it's generally considered better practice to have the Inventory scene
+# be separate from the player, it's not really a big deal considering the genre
+# and likely popularity of the game, as well as that the game will have private
+# matchmaking, and friends aren't likely to cheat. I might change this later but
+# most likely it will stay this way.
 
 
 extends Node2D
@@ -28,6 +34,9 @@ var weapon2
 # This is a reference to the inventory node
 var inventory
 
+# This is a reference to the dictionary that will be used to translate weapon names
+var dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,12 +44,12 @@ func _ready():
 
 	# test code
 		# This line of code attempts to set the variable to Inventory's child node, named Lasergun.
-	var laser_gun = $LaserGun
-	var penguin_gun = $PenguinGun
-	var success_l = pickup_weapon(laser_gun)
-	print("Laser: ", success_l)
-	var success_p = pickup_weapon(penguin_gun)
-	print("Penguin: ", success_p)
+	# var laser_gun = $LaserGun
+	# var penguin_gun = $PenguinGun
+	# var success_l = pickup_weapon(laser_gun)
+	# print("Inventory.gd: Laser: ", success_l)
+	# var success_p = pickup_weapon(penguin_gun)
+	# print("Inventory.gd: Penguin: ", success_p)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,6 +84,9 @@ func initialize():
 		# self is the node the script is attached to
 	inventory = self
 
+	# this function iterates over the child nodes, gets their name metadata, and creates a dictionary
+	build_dictionary()
+
 	# Iterate over the children of the inventory node and hide them, plus clears the "active" flag.
 	for weapon in inventory.get_children():
 		deactivate(weapon)
@@ -85,14 +97,14 @@ func activate(weapon):
 		weapon.show()
 		weapon.set_meta("Active", true)
 	else :
-		print("Tried to activate a null weapon")
+		print("Inventory.gd: Tried to activate a null weapon")
 
 func deactivate(weapon):
 	if weapon != null:
 		weapon.hide()
 		weapon.set_meta("Active", false)
 	else:
-		print("Tried to deactivate a null weapon")
+		print("Inventory.gd: Tried to deactivate a null weapon")
 
 # Changes the active slot to the one specified. 
 func change_slot(swap_to_slot):
@@ -109,10 +121,10 @@ func change_slot(swap_to_slot):
 func swap_slots():
 	if active_slot == 1:
 		change_slot(2)
-		print("Swapped to slot 2")
+		print("Inventory.gd: Swapped to slot 2")
 	else:
 		change_slot(1)
-		print("Swapped to slot 1")
+		print("Inventory.gd: Swapped to slot 1")
 
 # This function is called by pickup_weapon. It will attempt to add the weapon to the active slot.
 # If both slots are somehow full when this function is called, the inactive slot will be overwritten.
@@ -146,4 +158,22 @@ func pickup_helper(weapon):
 
 
 func update_the_hud():
+	pass
+
+# This function iterates over the child nodes, gets their name metadata, and
+# creates a dictionary. 
+func build_dictionary():
+	for weapon in inventory.get_children():
+		var weapon_name = weapon.get_meta("Name")
+		dictionary[weapon_name] = weapon
+		print("Inventory.gd: Added ", weapon_name, " to the dictionary")
+	pass
+
+# This function is called by SpawnerLogic.gd when a player walks into a spawner.
+func translate_instructions(weapon_name):
+	# Use the dictionary to translate the weapon name into a reference to the weapon node
+	var weap = dictionary[weapon_name]
+
+	# Then, call pickup_weapon() with the weapon reference as an argument
+	pickup_weapon(weap)
 	pass
