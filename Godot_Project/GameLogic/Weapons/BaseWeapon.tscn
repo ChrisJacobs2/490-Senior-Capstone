@@ -4,7 +4,7 @@
 metadata/Damage = 1
 metadata/Fire_Rate = 30
 metadata/Shots_Count = -1
-metadata/Enabled = true
+metadata/Active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7.62939e-06, -3.8147e-06)
