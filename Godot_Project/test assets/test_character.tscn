@@ -23,6 +23,4 @@ texture = ExtResource("2_c27yk")
 offset = Vector2(50, 0)
 
 [node name="Inventory" parent="." instance=ExtResource("3_m3uxa")]
-
-[node name="WeaponMount" type="Node2D" parent="."]
-position = Vector2(14, 64)
+position = Vector2(24, 29)

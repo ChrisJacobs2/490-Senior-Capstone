@@ -7,13 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bb5uyhfk5pqfx" path="res://GameLogic/Weapons/Sword.tscn" id="5_osn6f"]
 
 [node name="Inventory" type="Node2D"]
+editor_description = "Make sure that the names of the weapons in Inventory are the same as the .tscn files. Otherwise players will not be able to pick up guns from spawners. This is important if we want to add new weapons."
 script = ExtResource("1_5jmdr")
 
-[node name="Lasergun" parent="." instance=ExtResource("2_ev4ph")]
+[node name="LaserGun" parent="." instance=ExtResource("2_ev4ph")]
+visible = false
 position = Vector2(28, -27)
 scale = Vector2(-1, 1)
 
-[node name="Pengun" parent="." instance=ExtResource("3_06s2d")]
+[node name="PenguinGun" parent="." instance=ExtResource("3_06s2d")]
 visible = false
 position = Vector2(40, -38)
 scale = Vector2(-1, 1)
@@ -22,6 +24,6 @@ scale = Vector2(-1, 1)
 visible = false
 position = Vector2(11, -11)
 
-[node name="Katana" parent="." instance=ExtResource("5_osn6f")]
+[node name="Sword" parent="." instance=ExtResource("5_osn6f")]
 visible = false
 position = Vector2(44, -34)

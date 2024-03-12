@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://tyyfb2hu8kyi" path="res://Tiles/ramp2a.png" id="5_o6hhg"]
 [ext_resource type="PackedScene" uid="uid://dyh46bxw4wg5u" path="res://Maps/Arena_1/vaults.tscn" id="6_iuemt"]
 [ext_resource type="PackedScene" uid="uid://ckhs4mooqrj17" path="res://Maps/Arena_1/initial_spawn.tscn" id="7_dj36i"]
-[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawner.tscn" id="8_0gn1f"]
-[ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/SpawnerLogic.tscn" id="9_o3ty8"]
+[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="8_0gn1f"]
+[ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/Weapon_Spawning/SpawnerLogic.tscn" id="9_o3ty8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hk7i"]
 texture = ExtResource("2_dgv51")

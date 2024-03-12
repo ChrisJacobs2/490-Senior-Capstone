@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://uybvks6oxkm8"]
+
+[ext_resource type="Script" path="res://GameLogic/Weapon_Spawning/SpawnerLogic.gd" id="1_i7bes"]
+
+[node name="SpawnerLogic" type="Node" groups=["spawner_signal"]]
+script = ExtResource("1_i7bes")

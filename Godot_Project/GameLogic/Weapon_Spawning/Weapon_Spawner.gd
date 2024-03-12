@@ -9,24 +9,30 @@ var num_players_inside = 0
 # 5 second cooldown
 var cooldown_timer = 5.0
 
+
+
 var chosen_gun = preload("res://GameLogic/Weapons/PenguinGun.tscn").instantiate()
 
 func spawn():
 	print("weapon spawned")
-	# Add an instance of the PenguinGun.tscn (located in res://GameLogic/Weapons/PenguinGun.tscn)
+	# Add an instance of the PenguinGun.tscn
 	#as a child of the node called Weapon
 	# This can be randomized later
 	$Weapon.add_child(chosen_gun)
 
 
-func collect():
+func collect(_player):
 	# Stats
-	print($Weapon.get_child_count())
-	# Remove the gun from the spawner
+	# print($Weapon.get_child_count())
+	# Remove the gun from the spawner, and emit a signal (to SpawnerLogic.gd)
 	if $Weapon.get_child_count() > 0:
+		# get the name of the node chosen_gun
+		name = chosen_gun.get_name()
+		print(name)
 		$Weapon.remove_child(chosen_gun)
 	else:
 		print("No children to remove")
+		
 
 	# wait cooldown_timer seconds
 	await get_tree().create_timer(cooldown_timer).timeout
@@ -43,6 +49,8 @@ func collect():
 func _ready():
 	# Hide the ColorRect
 	$ColorRect.hide()
+	SpawnerSignalManager.test.emit()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,12 +66,14 @@ func _on_spawner_area_entered(body):
 	# We keep track of this incase a player waits inside of a spawner
 	if body.is_in_group("player"):
 		num_players_inside += 1
+
+		# have the player "collect" the weapon
+			# makes sure that the spawner only activates every cooldown_timer seconds
+		if cooldown == false:
+			cooldown = true
+			collect(body)
 	
 	
-	# makes sure that the spawner only activates every cooldown_timer seconds
-	if cooldown == false:
-		cooldown = true
-		collect()	
 
 
 func _on_spawner_area_exited(body):
