@@ -4,12 +4,26 @@
 
 extends Node2D
 
-var weaponDataArray: Array = []	# Should only have two slots, but I'll leave it as an array incase we want to increase the capacity later.
+var active_slot: int = 0
+var weapon_slots: Array = []
+var weapon1
+var weapon2
+
+
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+func _ready():	
+	weapon_slots.resize(2)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	pass
+
+
+# This function will add a weapon node onto the character's WeaponMount node
+func mount_weapon(_weapon):
+	pass
+
+# This function will toggle hide on one of the weapons, as well as its 'active' property.
+func swap_weapon():
 	pass

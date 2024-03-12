@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd0qsna4wbiq"]
+[gd_scene load_steps=6 format=3 uid="uid://bd0qsna4wbiq"]
 
 [ext_resource type="Script" path="res://GameLogic/Character_Actions/inventory.gd" id="1_5jmdr"]
+[ext_resource type="PackedScene" uid="uid://dq8m4v8l44x0" path="res://GameLogic/Weapons/LaserGun.tscn" id="2_ev4ph"]
+[ext_resource type="PackedScene" uid="uid://bwug6341qoqju" path="res://GameLogic/Weapons/PenguinGun.tscn" id="3_06s2d"]
+[ext_resource type="PackedScene" uid="uid://ci55rwtoepgk7" path="res://GameLogic/Weapons/Stopwatch.tscn" id="4_nb161"]
+[ext_resource type="PackedScene" uid="uid://bb5uyhfk5pqfx" path="res://GameLogic/Weapons/Sword.tscn" id="5_osn6f"]
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource("1_5jmdr")
 
-[node name="Slot 1" type="Node2D" parent="."]
+[node name="Lasergun" parent="." instance=ExtResource("2_ev4ph")]
 
-[node name="Slot 2" type="Node2D" parent="."]
+[node name="Pengun" parent="." instance=ExtResource("3_06s2d")]
+position = Vector2(0, 100)
+
+[node name="Stopwatch" parent="." instance=ExtResource("4_nb161")]
+position = Vector2(100, 100)
+
+[node name="Katana" parent="." instance=ExtResource("5_osn6f")]
+position = Vector2(100, 0)
