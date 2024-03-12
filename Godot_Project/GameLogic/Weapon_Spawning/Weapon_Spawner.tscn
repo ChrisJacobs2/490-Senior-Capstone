@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://816o5cjbv2lg"]
+
+[ext_resource type="Script" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.gd" id="1_va1dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8v0gp"]
+size = Vector2(118, 114)
+
+[node name="WeaponSpawner" type="Node2D" groups=["random_spawner", "spawner", "spawner_signal"]]
+script = ExtResource("1_va1dw")
+
+[node name="Weapon" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -59.0
+offset_top = -56.0
+offset_right = 58.0
+offset_bottom = 57.0
+color = Color(1, 0, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8v0gp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_spawner_area_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_spawner_area_exited"]

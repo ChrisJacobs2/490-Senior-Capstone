@@ -27,11 +27,17 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	# Add the quit game functionality
-	if Input.is_key_pressed(KEY_Q):
+	if Input.is_action_pressed("DEVELOPER_QUIT"):
 		get_tree().quit()
 
 	# Drop down functonality
 	if Input.is_action_pressed("ui_down") and is_on_floor():
 		position.y += 1
+
+	# swap weapon button
+	if Input.is_action_just_pressed("change_weapon"):
+		# call the "swap_slots" function in the Inventory child node.
+		$Inventory.swap_slots()
+		pass
 
 	move_and_slide()

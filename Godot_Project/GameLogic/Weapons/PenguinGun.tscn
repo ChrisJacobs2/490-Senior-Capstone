@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwug6341qoqju"]
+
+[ext_resource type="PackedScene" uid="uid://dwhu7vx768rhb" path="res://GameLogic/Weapons/BaseWeapon.tscn" id="1_rtvar"]
+[ext_resource type="Texture2D" uid="uid://ct67aymgqt1fa" path="res://assets/weapons/penguin_gun.png" id="2_4g164"]
+
+[node name="Base Weapon" instance=ExtResource("1_rtvar")]
+metadata/Name = "PenguinGun"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_4g164")

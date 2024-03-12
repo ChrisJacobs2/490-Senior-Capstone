@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci55rwtoepgk7"]
+
+[ext_resource type="PackedScene" uid="uid://dwhu7vx768rhb" path="res://GameLogic/Weapons/BaseWeapon.tscn" id="1_2anqo"]
+[ext_resource type="Texture2D" uid="uid://d3rmxjvixmcff" path="res://assets/weapons/stopwatch.png" id="2_svy32"]
+
+[node name="Base Weapon" instance=ExtResource("1_2anqo")]
+metadata/Name = "Stopwatch"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_svy32")
+
+[node name="Grip" parent="." index="2"]
+position = Vector2(9, 2)
