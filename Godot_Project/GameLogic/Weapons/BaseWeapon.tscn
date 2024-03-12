@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dwhu7vx768rhb"]
 
 [node name="Base Weapon" type="Node2D"]
+metadata/Damage = 1
+metadata/Fire_Rate = 30
+metadata/Shots_Count = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7.62939e-06, -3.8147e-06)
