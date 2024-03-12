@@ -269,6 +269,7 @@ sources/8 = SubResource("TileSetAtlasSource_s4wom")
 [node name="Arena_1" type="Node2D"]
 
 [node name="Test_Character" parent="." instance=ExtResource("1_ck3xw")]
+
 position = Vector2(-1110, 1834)
 
 [node name="Tilemap" type="TileMap" parent="."]
