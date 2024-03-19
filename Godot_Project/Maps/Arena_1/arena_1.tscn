@@ -269,7 +269,6 @@ sources/8 = SubResource("TileSetAtlasSource_s4wom")
 [node name="Arena_1" type="Node2D"]
 
 [node name="Test_Character" parent="." instance=ExtResource("1_ck3xw")]
-
 position = Vector2(-1110, 1834)
 
 [node name="Tilemap" type="TileMap" parent="."]
@@ -312,7 +311,7 @@ position = Vector2(-2297, 684)
 [node name="Initial Spawn4" parent="Initial Spawn Points" instance=ExtResource("7_dj36i")]
 position = Vector2(2239, 727)
 
-[node name="WeaponSpawner" parent="." groups=["spawner"] instance=ExtResource("8_0gn1f")]
+[node name="WeaponSpawner" parent="." instance=ExtResource("8_0gn1f")]
 position = Vector2(-819, 1933)
 
 [node name="SpawnerLogic" parent="." instance=ExtResource("9_o3ty8")]
