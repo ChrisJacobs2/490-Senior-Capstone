@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch4mamn12r4h"]
+[gd_scene load_steps=16 format=3 uid="uid://ch4mamn12r4h"]
 
 [ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test assets/test_character.tscn" id="1_ck3xw"]
 [ext_resource type="Texture2D" uid="uid://dx8d83m6ebuby" path="res://Tiles/floor-200.png" id="2_dgv51"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckhs4mooqrj17" path="res://Maps/Arena_1/initial_spawn.tscn" id="7_dj36i"]
 [ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="8_0gn1f"]
 [ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/Weapon_Spawning/SpawnerLogic.tscn" id="9_o3ty8"]
+[ext_resource type="PackedScene" uid="uid://c3a4fmfc3v66k" path="res://GameLogic/scoring/score_manager.tscn" id="10_086db"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hk7i"]
 texture = ExtResource("2_dgv51")
@@ -268,9 +269,6 @@ sources/8 = SubResource("TileSetAtlasSource_s4wom")
 
 [node name="Arena_1" type="Node2D"]
 
-[node name="Test_Character" parent="." instance=ExtResource("1_ck3xw")]
-position = Vector2(-1110, 1834)
-
 [node name="Tilemap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ea6rl")
 format = 2
@@ -315,3 +313,10 @@ position = Vector2(2239, 727)
 position = Vector2(-819, 1933)
 
 [node name="SpawnerLogic" parent="." instance=ExtResource("9_o3ty8")]
+
+[node name="ScoreManager" parent="." instance=ExtResource("10_086db")]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Test_Character" parent="Players" instance=ExtResource("1_ck3xw")]
+position = Vector2(-1110, 1834)
