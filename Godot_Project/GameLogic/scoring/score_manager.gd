@@ -6,6 +6,8 @@ var players = []
 
 var num_players = 0
 
+var player_id_dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,8 +30,20 @@ func initialize_scores():
 		# Increment the number of players by 1
 		num_players += 1
 
+# Creats a dictionary where the key is the player's multiplayer ID and the
+# value is the index of the player in the players array
+func construct_dictionary():
+	# Index that is incremented each time a player is added to the dictionary
+	var player_index = 0
+	for player in players:
+		# Get the multiplayer ID for the player
+		var player_id = player.get_multiplayer().get_network_unique_id()
+		# Add the player ID to the dictionary with the index
+		player_id_dictionary[player_id] = player_index
+		# Increment the player index
+		player_index += 1
+		
 
-	# For every player in the players array, add a score (0) to the player_scores array
 	pass
 
 func update_score(player_index, score):
