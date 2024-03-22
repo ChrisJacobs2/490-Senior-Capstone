@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@onready var cam = $Camera2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -1000.0
 
@@ -8,16 +8,30 @@ const JUMP_VELOCITY = -1000.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-func _physics_process(delta):
+func _ready():
+	cam.enabled = is_multiplayer_authority()
 	
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+
+func _physics_process(delta):
+	if not is_multiplayer_authority():
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta * 1.5
+	
+	handle_control()
+	
 
+	move_and_slide()
+
+func handle_control():
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_select") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -39,5 +53,4 @@ func _physics_process(delta):
 		# call the "swap_slots" function in the Inventory child node.
 		$Inventory.swap_slots()
 		pass
-
-	move_and_slide()
+	
