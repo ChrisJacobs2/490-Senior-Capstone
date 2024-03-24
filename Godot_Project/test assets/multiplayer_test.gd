@@ -22,7 +22,7 @@ func _add_player(id = 1):
 
 
 func _on_join_pressed():
-	peer.create_client("localhost", 135)
+	peer.create_client("192.168.1.113", 135)
 	multiplayer.multiplayer_peer = peer
 	# Remove the button that this function is connected to
 	$Host.queue_free()
