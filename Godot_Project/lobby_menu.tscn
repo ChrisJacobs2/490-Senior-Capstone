@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmjsuqwv2asve"]
+[gd_scene load_steps=19 format=3 uid="uid://cmjsuqwv2asve"]
 
 [ext_resource type="Script" path="res://lobby_menu.gd" id="1_nhhgv"]
 [ext_resource type="Texture2D" uid="uid://o46pxmjqiegb" path="res://assets/lobbyblue.png" id="2_elki4"]
@@ -95,45 +95,6 @@ Button/styles/pressed = SubResource("StyleBoxFlat_3io3c")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y00q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwjvt"]
-bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.784314)
-border_width_bottom = 8
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvdsw"]
-bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
-border_width_bottom = 8
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4y4rm"]
-bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
-border_width_bottom = 8
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="Theme" id="Theme_i8nkm"]
-Button/styles/focus = SubResource("StyleBoxFlat_qwjvt")
-Button/styles/hover = SubResource("StyleBoxFlat_xvdsw")
-Button/styles/normal = SubResource("StyleBoxFlat_sbufc")
-Button/styles/pressed = SubResource("StyleBoxFlat_4y4rm")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v50tv"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.784314)
 border_width_bottom = 8
@@ -207,6 +168,7 @@ theme_override_font_sizes/font_size = 50
 text = " Back "
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -227,18 +189,19 @@ Choose your game mode"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -527.0
-offset_top = -208.0
-offset_right = 527.0
-offset_bottom = -147.0
+anchor_bottom = 0.5
+offset_left = -317.5
+offset_top = 134.01
+offset_right = 317.5
+offset_bottom = 195.01
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="PublicButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -246,20 +209,10 @@ focus_neighbor_left = NodePath("../CreateButton")
 theme = SubResource("Theme_bbjyj")
 theme_override_fonts/font = ExtResource("3_4m1du")
 theme_override_font_sizes/font_size = 65
-text = " PUBLIC MATCH "
+text = " JOIN MATCH "
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_0y00q")
-
-[node name="PrivateButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_i8nkm")
-theme_override_fonts/font = ExtResource("3_4m1du")
-theme_override_font_sizes/font_size = 65
-text = " PRIVATE MATCH "
-
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0y00q")
 
@@ -277,7 +230,41 @@ volume_db = -12.543
 autoplay = true
 bus = &"Music"
 
+[node name="lobby" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="lobby"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerList" type="ItemList" parent="lobby/VBoxContainer"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+item_count = 3
+item_0/text = "player1"
+item_0/selectable = false
+item_1/text = "player2"
+item_2/text = "player3"
+
+[node name="StartGame" type="Button" parent="lobby/VBoxContainer"]
+custom_minimum_size = Vector2(200, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[node name="Label" type="Label" parent="lobby"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Game will start automatically when there are 4 players in the lobby. Otherwise, click 'Start' to play with less people."
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PublicButton" to="." method="_on_public_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PrivateButton" to="." method="_on_private_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]
