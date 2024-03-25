@@ -54,9 +54,7 @@ func hide_menu():
 
 func _on_back_button_pressed():
 	if menus_are_up:
-		multiplayer.multiplayer_peer = null
-		peer = null
-		initialize_menu()
+		leave_game()
 	else:
 		get_tree().change_scene_to_file("res://start_menu.tscn")
 
@@ -83,6 +81,9 @@ func _on_player_connected(id):
 # This gets called on the server and clients when someone disconnects
 func _on_player_disconnected(id):
 	print("Player disconnected: ", id)
+	# remove the player from the list
+	players.erase(id)
+	update_player_list()
 	pass
 # This is called on the client when it connects to the server
 func _on_connected_ok():
@@ -165,3 +166,13 @@ func add_player(their_name):
 	players[their_id] = their_name
 	update_player_list()
 	pass
+
+
+func _on_start_game_pressed():
+	pass # Replace with function body.
+
+func leave_game():
+	players.erase(peer.get_unique_id())
+	multiplayer.multiplayer_peer = null
+	peer = null
+	initialize_menu()
