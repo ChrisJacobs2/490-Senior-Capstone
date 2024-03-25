@@ -201,9 +201,9 @@ offset_bottom = 195.01
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PublicButton" type="Button" parent="HBoxContainer"]
+[node name="JoinButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../CreateButton")
+focus_neighbor_left = NodePath("../HostButton")
 theme = SubResource("Theme_bbjyj")
 theme_override_fonts/font = ExtResource("3_4m1du")
 theme_override_font_sizes/font_size = 65
@@ -214,13 +214,13 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0y00q")
 
-[node name="CreateButton" type="Button" parent="HBoxContainer"]
+[node name="HostButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-focus_neighbor_right = NodePath("../PublicButton")
+focus_neighbor_right = NodePath("../JoinButton")
 theme = SubResource("Theme_1y401")
 theme_override_fonts/font = ExtResource("3_4m1du")
 theme_override_font_sizes/font_size = 65
-text = " CREATE MATCH "
+text = " HOST MATCH "
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_7fhld")
@@ -265,28 +265,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Game will start automatically when there are 4 players in the lobby. Otherwise, click 'Start' to play with less people."
 
-[node name="Enter name" type="MarginContainer" parent="."]
+[node name="Join Match" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 81.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -73.0
+offset_right = 140.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Enter name"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Join Match"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="Enter name/VBoxContainer"]
+[node name="Label" type="Label" parent="Join Match/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Enter a nickname"
+text = " Join Match "
 
-[node name="LineEdit" type="LineEdit" parent="Enter name/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Join Match/VBoxContainer"]
 custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -294,34 +299,7 @@ size_flags_vertical = 8
 placeholder_text = "Enter name here"
 max_length = 20
 
-[node name="Submit" type="Button" parent="Enter name/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Submit"
-
-[node name="Enter IP Address" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 81.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Enter IP Address"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="Enter IP Address/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = " Join Match "
-
-[node name="LineEdit" type="LineEdit" parent="Enter IP Address/VBoxContainer"]
+[node name="LineEdit2" type="LineEdit" parent="Join Match/VBoxContainer"]
 custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -329,12 +307,54 @@ size_flags_vertical = 8
 placeholder_text = "Enter ip address here"
 max_length = 20
 
-[node name="Submit" type="Button" parent="Enter IP Address/VBoxContainer"]
+[node name="Submit" type="Button" parent="Join Match/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Submit"
+
+[node name="Host Match" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -73.0
+offset_right = 140.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host Match"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Host Match/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = " Host Match "
+
+[node name="LineEdit" type="LineEdit" parent="Host Match/VBoxContainer"]
+custom_minimum_size = Vector2(280, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+placeholder_text = "Enter name here"
+max_length = 20
+
+[node name="Submit" type="Button" parent="Host Match/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Submit"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PublicButton" to="." method="_on_public_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button"]
+[connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button"]
+[connection signal="pressed" from="Join Match/VBoxContainer/Submit" to="." method="_on_join_submit"]
+[connection signal="pressed" from="Host Match/VBoxContainer/Submit" to="." method="on_host_submit"]
