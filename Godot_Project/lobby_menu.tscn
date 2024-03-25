@@ -295,7 +295,7 @@ size_flags_vertical = 8
 placeholder_text = "Enter name here"
 max_length = 20
 
-[node name="LineEdit2" type="LineEdit" parent="Join Match/VBoxContainer"]
+[node name="ipaddress" type="LineEdit" parent="Join Match/VBoxContainer"]
 custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4

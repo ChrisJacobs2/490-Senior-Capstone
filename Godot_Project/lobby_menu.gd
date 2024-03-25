@@ -1,6 +1,6 @@
 extends Control
 
-@export var Address = "192.168.1.46"
+@export var Address = "localhost"
 @export var port = 4000
 var max_players = 4
 var players_loaded = 0
@@ -10,6 +10,7 @@ var menus_are_up = false
 var lobby_player_list
 var join_name_box
 var host_name_box
+var join_ip_box
 
 
 
@@ -28,6 +29,7 @@ func _ready():
 	$HBoxContainer/JoinButton.grab_focus()
 	lobby_player_list = $lobby/VBoxContainer/PlayerList		# This is an ItemList
 	join_name_box = $"Join Match/VBoxContainer/nickname"
+	join_ip_box = $"Join Match/VBoxContainer/ipaddress"
 	host_name_box = $"Host Match/VBoxContainer/nickname"
 	initialize_menu()
 	
@@ -104,6 +106,9 @@ func _on_server_disconnected():
 func _on_join_submit():
 	# Set the player's name
 	player_name = join_name_box.text
+	# Set the IP address if not null
+	if join_ip_box.text != "":
+		Address = join_ip_box.text
 	join_game()
 
 func on_host_submit():
@@ -173,7 +178,7 @@ func _on_start_game_pressed():
 	pass # Replace with function body.
 
 func leave_game():
-	players.erase(peer.get_unique_id())
+	players = {}
 	multiplayer.multiplayer_peer = null
 	peer = null
 	initialize_menu()
