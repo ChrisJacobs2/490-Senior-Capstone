@@ -77,7 +77,7 @@ func _on_join_button():
 func _on_player_connected(id):
 	print("Player connected: ", id)
 	say_hi.rpc_id(id, "hi")
-
+	add_player.rpc_id(id, player_name)
 	pass
 
 
@@ -151,4 +151,16 @@ func update_player_list():
 @rpc("any_peer", "call_local", "reliable")
 func say_hi(message):
 	print("Received message: ", message, " from ", multiplayer.get_remote_sender_id())
+	pass
+
+
+# This function gets called remotely by every player who joins, on every player who is already in the game (including the server).
+# Because Godot devs are soooooo cool and smart, this function also gets called on the player who just joined, by every other player (including server).
+# So it's convenient for synching the player list.
+@rpc("any_peer", "call_local", "reliable")
+func add_player(their_name):
+	var their_id = multiplayer.get_remote_sender_id()
+	# Add the player to the list for EVERYONE, as well as the server
+	players[their_id] = their_name
+	update_player_list()
 	pass
