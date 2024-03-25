@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cmjsuqwv2asve"]
 
-[ext_resource type="Script" path="res://lobby_menu.gd" id="1_nhhgv"]
+[ext_resource type="Script" path="res://menus/lobby_menu.gd" id="1_nhhgv"]
 [ext_resource type="Texture2D" uid="uid://o46pxmjqiegb" path="res://assets/lobbyblue.png" id="2_elki4"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="3_4m1du"]
 [ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_7fhld"]

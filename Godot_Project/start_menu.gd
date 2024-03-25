@@ -7,7 +7,7 @@ func _ready():
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://lobby_menu.tscn")
+	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
 
 
 func _on_options_button_pressed():
@@ -19,4 +19,4 @@ func _on_quit_button_pressed():
 
 
 func _on_credits_button_pressed():
-	get_tree().change_scene_to_file("res://credits_menu.tscn")
+	get_tree().change_scene_to_file("res://menus/credits_menu.tscn")
