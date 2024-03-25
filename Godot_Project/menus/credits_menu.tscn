@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdo14r5d24lm6"]
 
 [ext_resource type="Texture2D" uid="uid://bt6dpddr0pkm" path="res://assets/bluegreen.png" id="1_ms4ri"]
-[ext_resource type="Script" path="res://credits_menu.gd" id="1_t1mbi"]
+[ext_resource type="Script" path="res://menus/credits_menu.gd" id="1_t1mbi"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_wcglg"]
 [ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_offpc"]
 
@@ -90,9 +90,9 @@ offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_wcglg")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 60
 text = "We hope you've enjoyed your time here. This game is brought to you by Christopher Jacobs, Cynthia Espinoza, Dat Phan, and Christian Leonard."
 horizontal_alignment = 1
 autowrap_mode = 2

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var current_selected_character_name
 var penguin_king_label
@@ -16,7 +16,7 @@ func _ready():
 
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://lobby_menu.tscn")
+	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
 
 
 func _on_penguin_king_button_pressed():
@@ -43,4 +43,4 @@ func _on_start_button_pressed():
 	#if Global.character == null:
 		#pass
 	#else:
-	get_tree().change_scene_to_file("res://instructions_loading.tscn")
+	get_tree().change_scene_to_file("res://levels_intros/instruct_loading.tscn")
