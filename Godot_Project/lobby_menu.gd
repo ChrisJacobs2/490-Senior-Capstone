@@ -100,7 +100,7 @@ func _on_server_disconnected():
 func _on_join_submit():
 	# Set the player's name
 	player_name = join_name_box.text
-	join_game(Address)
+	join_game()
 
 func on_host_submit():
 	# Set the player's name
@@ -108,12 +108,10 @@ func on_host_submit():
 	host_game()
 
 
-func join_game(ip = ""):
+func join_game():
 	# Default to localhost if no IP is provided
-	if ip.is_empty():
-		ip = Address
 	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(ip, port)
+	var error = peer.create_client(Address, port)
 	if error != OK:
 		print("Error creating client", error)
 		return error
