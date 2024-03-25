@@ -168,6 +168,7 @@ theme_override_font_sizes/font_size = 50
 text = " Back "
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -188,6 +189,7 @@ Choose your game mode"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -229,7 +231,6 @@ autoplay = true
 bus = &"Music"
 
 [node name="lobby" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,11 +248,6 @@ custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
-item_count = 3
-item_0/text = "player1"
-item_0/selectable = false
-item_1/text = "player2"
-item_2/text = "player3"
 
 [node name="StartGame" type="Button" parent="lobby/VBoxContainer"]
 custom_minimum_size = Vector2(200, 1)
@@ -291,7 +287,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = " Join Match "
 
-[node name="LineEdit" type="LineEdit" parent="Join Match/VBoxContainer"]
+[node name="nickname" type="LineEdit" parent="Join Match/VBoxContainer"]
 custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -339,7 +335,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = " Host Match "
 
-[node name="LineEdit" type="LineEdit" parent="Host Match/VBoxContainer"]
+[node name="nickname" type="LineEdit" parent="Host Match/VBoxContainer"]
 custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
