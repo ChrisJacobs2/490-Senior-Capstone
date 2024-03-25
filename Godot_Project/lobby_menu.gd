@@ -76,6 +76,7 @@ func _on_join_button():
 # This gets called on the server and clients when someone connects
 func _on_player_connected(id):
 	print("Player connected: ", id)
+	say_hi.rpc_id(id, "hi")
 
 	pass
 
@@ -147,3 +148,7 @@ func update_player_list():
 		lobby_player_list.add_item(players[player])
 	pass
 
+@rpc("any_peer", "call_local", "reliable")
+func say_hi(message):
+	print("Received message: ", message)
+	pass
