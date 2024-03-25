@@ -71,6 +71,7 @@ func _on_join_button():
 	menus_are_up = true
 	$"Join Match".show()
 	pass # Replace with function body.
+	
 
 
 # This gets called on the server and clients when someone connects
@@ -116,6 +117,10 @@ func on_host_submit():
 	player_name = host_name_box.text
 	host_game()
 
+func _on_start_game_pressed():
+	load_game()
+	pass # Replace with function body.
+
 
 func join_game():
 	# Default to localhost if no IP is provided
@@ -150,6 +155,12 @@ func host_game():
 	$lobby.show()
 	update_player_list()
 
+func leave_game():
+	players = {}
+	multiplayer.multiplayer_peer = null
+	peer = null
+	initialize_menu()
+
 func update_player_list():
 	lobby_player_list.clear()
 	for player in players:
@@ -174,11 +185,7 @@ func add_player(their_name):
 	pass
 
 
-func _on_start_game_pressed():
-	pass # Replace with function body.
 
-func leave_game():
-	players = {}
-	multiplayer.multiplayer_peer = null
-	peer = null
-	initialize_menu()
+@rpc("any_peer", "call_local", "reliable")
+func load_game(game_scene_path):
+	get_tree().change_scene_to_file(game_scene_path)
