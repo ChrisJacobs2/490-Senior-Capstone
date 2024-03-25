@@ -118,7 +118,7 @@ func on_host_submit():
 	host_game()
 
 func _on_start_game_pressed():
-	load_game()
+	load_game.rpc("res://character_selection.tscn")
 	pass # Replace with function body.
 
 
