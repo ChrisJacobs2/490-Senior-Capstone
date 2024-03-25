@@ -76,7 +76,7 @@ func _on_join_button():
 # This gets called on the server and clients when someone connects
 func _on_player_connected(id):
 	print("Player connected: ", id)
-	say_hi.rpc_id(id, "hi", id)
+	say_hi.rpc_id(id, "hi")
 
 	pass
 
@@ -149,6 +149,6 @@ func update_player_list():
 	pass
 
 @rpc("any_peer", "call_local", "reliable")
-func say_hi(message, x):
-	print("Received message: ", message, x)
+func say_hi(message):
+	print("Received message: ", message, " from ", multiplayer.get_remote_sender_id())
 	pass
