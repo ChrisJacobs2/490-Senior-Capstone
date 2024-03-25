@@ -10,7 +10,7 @@ var menus_are_up = false
 var lobby_player_list
 var join_name_box
 var host_name_box
-signal player_connected(peer_id, player_name)
+
 
 
 # This will contain player info for every player,
@@ -76,10 +76,10 @@ func _on_join_button():
 # This gets called on the server and clients when someone connects
 func _on_player_connected(id):
 	print("Player connected: ", id)
-	# If we're the client, we need to send our name to the server
 
-	# If we're the server, we need to add the player to our list of players
 	pass
+
+
 # This gets called on the server and clients when someone disconnects
 func _on_player_disconnected(id):
 	print("Player disconnected: ", id)
@@ -136,7 +136,6 @@ func host_game():
 	print("Host's Name: ", player_name)
 	# Add the player_name to players
 	players[peer.get_unique_id()] = player_name
-	print(players)
 
 	$"Host Match".hide()
 	$lobby.show()
@@ -147,3 +146,4 @@ func update_player_list():
 	for player in players:
 		lobby_player_list.add_item(players[player])
 	pass
+
