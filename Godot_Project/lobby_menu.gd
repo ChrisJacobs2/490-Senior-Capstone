@@ -78,7 +78,6 @@ func _on_player_connected(id):
 	print("Player connected: ", id)
 	say_hi.rpc_id(id, "hi")
 	add_player.rpc_id(id, player_name)
-	pass
 
 
 # This gets called on the server and clients when someone disconnects
@@ -88,6 +87,8 @@ func _on_player_disconnected(id):
 # This is called on the client when it connects to the server
 func _on_connected_ok():
 	print("Connected to server")
+	players[multiplayer.get_unique_id()] = player_name
+	update_player_list()
 	pass
 # This is called on the client when it fails to connect to the server
 func _on_connected_fail():
