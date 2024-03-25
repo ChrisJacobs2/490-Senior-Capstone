@@ -13,6 +13,9 @@ func _ready():
 	clown_face_label = $ClownFace/ClownFaceLabel
 	skater_boy_label = $SkaterBoy/SkaterBoyLabel
 	warrior_girl_label = $WarriorGirl/WarriorGirlLabel
+	
+	# connect a signal to the _on_player_disconnected function
+	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 
 
 func _on_back_button_pressed():
@@ -44,3 +47,9 @@ func _on_start_button_pressed():
 		#pass
 	#else:
 	get_tree().change_scene_to_file("res://instructions_loading.tscn")
+
+# This gets called on the server and clients when someone disconnects
+func _on_player_disconnected(id):
+	print("Player disconnected: ", id)
+	pass
+	
