@@ -88,6 +88,7 @@ func _on_player_disconnected(id):
 # This is called on the client when it connects to the server
 func _on_connected_ok():
 	print("Connected to server")
+	await get_tree().create_timer(0.05).timeout
 	players[multiplayer.get_unique_id()] = player_name
 	update_player_list()
 	pass
