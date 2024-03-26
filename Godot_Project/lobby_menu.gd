@@ -1,28 +1,20 @@
 extends Control
 
-@export var Address = "localhost"
-@export var port = 4000
-var max_players = 4
-var players_loaded = 0
-var peer
-var compression_type = ENetConnection.COMPRESS_RANGE_CODER	# check docs for other options
+# USES THE MS.gd AUTOLOAD SCRIPT GLOBALLY
+# FOR EXAMPLE: MS.function(args)
+#			   var varialbe = MS.variable
+
+
 var menus_are_up = false
 var lobby_player_list
 var join_name_box
 var host_name_box
 var join_ip_box
+var join_match_label
+var start_game_button
 
 
 
-# This will contain player info for every player,
-# with the keys being each player's unique IDs.
-var players = {}
-
-# This is the local player name. This should be modified locally
-# before the connection is made. It will be passed to every other peer.
-# For example, the value of "name" can be set to something the player
-# entered in a UI scene.
-var player_name = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,14 +23,22 @@ func _ready():
 	join_name_box = $"Join Match/VBoxContainer/nickname"
 	join_ip_box = $"Join Match/VBoxContainer/ipaddress"
 	host_name_box = $"Host Match/VBoxContainer/nickname"
-	initialize_menu()
+	join_match_label = $"Join Match/VBoxContainer/Label"
+
+	# we may want to hide this for non host players
+	start_game_button = $lobby/VBoxContainer/StartGame	
 	
 	# multiplayer signals
-	multiplayer.peer_connected.connect(_on_player_connected)
-	multiplayer.peer_disconnected.connect(_on_player_disconnected)
-	multiplayer.connected_to_server.connect(_on_connected_ok)
-	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
+	MS.connect("update_player_list", _on_player_update)
+	
+
+	initialize_menu()
+
+
+func _on_player_update():
+	update_player_list()
+
 	
 func initialize_menu():
 	$lobby.hide()
@@ -56,8 +56,11 @@ func hide_menu():
 
 func _on_back_button_pressed():
 	if menus_are_up:
-		leave_game()
+		MS.leave_game()
+		initialize_menu()
+		pass
 	else:
+		# There shouldn't be a game to leave.
 		get_tree().change_scene_to_file("res://start_menu.tscn")
 
 func _on_host_button():
@@ -71,118 +74,77 @@ func _on_join_button():
 	menus_are_up = true
 	$"Join Match".show()
 	pass # Replace with function body.
-	
 
 
-# This gets called on the server and clients when someone connects
-func _on_player_connected(id):
-	print("Player connected: ", id)
-	say_hi.rpc_id(id, "hi")
-	add_player.rpc_id(id, player_name)
-
-
-# This gets called on the server and clients when someone disconnects
-func _on_player_disconnected(id):
-	print("Player disconnected: ", id)
-	# remove the player from the list
-	players.erase(id)
-	update_player_list()
-	pass
-# This is called on the client when it connects to the server
-func _on_connected_ok():
-	print("Connected to server")
-	await get_tree().create_timer(0.05).timeout
-	players[multiplayer.get_unique_id()] = player_name
-	update_player_list()
-	pass
-# This is called on the client when it fails to connect to the server
-func _on_connected_fail():
-	print("Connection failed")
-	pass
+# This is called on the client when the server disconnects
 func _on_server_disconnected():
 	print("Server disconnected")
 	_on_back_button_pressed()
 
-
+# The submit button in the 'join' menu
 func _on_join_submit():
 	# Set the player's name
-	player_name = join_name_box.text
+	MS.player_name = join_name_box.text
 	# Set the IP address if not null
 	if join_ip_box.text != "":
-		Address = join_ip_box.text
-	join_game()
+		MS.Address = join_ip_box.text
+	var error = MS.join_game()
+	if error != OK:
+		print("Error joining game: ", error)
 
+	else:	# No immediate connection errors
+		var peer = MS.peer
+		$"Join Match".hide()
+		$lobby.show()
+		# Wait for a while to see if the connection is established
+		await get_tree().create_timer(5.0).timeout
+		# If it is established, do nothing. Otherwise, kick the player back to the join menu.
+		if peer.get_connection_status() == 1:
+			print("Error: Could not connect to server")
+			$"Join Match".show()
+			$lobby.hide()
+			MS.leave_game()
+			join_match_label.text = "Could not connect to server. :("
+
+		
+# The submit button in the 'host' menu
 func on_host_submit():
 	# Set the player's name
-	player_name = host_name_box.text
-	host_game()
-
-func _on_start_game_pressed():
-	load_game.rpc("res://character_selection.tscn")
-	pass # Replace with function body.
-
-
-func join_game():
-	# Default to localhost if no IP is provided
-	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(Address, port)
-	if error != OK:
-		print("Error creating client", error)
-		return error
-	# As below, optional. Must have same compression for host and client. 
-	peer.get_host().compress(compression_type)
-	multiplayer.set_multiplayer_peer(peer)	# set yourself as the multiplayer peer
-
-	$"Join Match".hide()
-	$lobby.show()
-
-func host_game():
-	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(port, max_players)
-	if error != OK:
-		print("Error creating server", error)
-		return
-	# Optional, saves bandwidth at the expense of the CPU. 
-	peer.get_host().compress(compression_type)
-
-	multiplayer.set_multiplayer_peer(peer)	# set yourself as the multiplayer peer
-	print("waiting for players")
-	print("Host's Name: ", player_name)
-	# Add the player_name to players
-	players[peer.get_unique_id()] = player_name
-
+	MS.player_name = host_name_box.text
+	MS.host_game()
+	print("hosting")
 	$"Host Match".hide()
 	$lobby.show()
 	update_player_list()
 
+func _on_start_game_pressed():
+	MS.start_game()
+	pass # Replace with function body.
+
+
 func leave_game():
-	players = {}
-	multiplayer.multiplayer_peer = null
-	peer = null
+	MS.leave_game()
 	initialize_menu()
 
 func update_player_list():
 	lobby_player_list.clear()
+	var players = MS.players
 	for player in players:
 		lobby_player_list.add_item(players[player])
 	pass
 
-@rpc("any_peer", "call_local", "reliable")
-func say_hi(message):
-	print("Received message: ", message, " from ", multiplayer.get_remote_sender_id())
-	pass
 
 
-# This function gets called remotely by every player who joins, on every player who is already in the game (including the server).
-# Because Godot devs are soooooo cool and smart, this function also gets called on the player who just joined, by every other player (including server).
-# So it's convenient for synching the player list.
-@rpc("any_peer", "call_local", "reliable")
-func add_player(their_name):
-	var their_id = multiplayer.get_remote_sender_id()
-	# Add the player to the list for EVERYONE, as well as the server
-	players[their_id] = their_name
-	update_player_list()
-	pass
+# # This function gets called remotely by every player who joins, on every player who is already in the game (including the server).
+# # Because Godot devs are soooooo cool and smart, this function also gets called on the player who just joined, by every other player (including server).
+# # So it's convenient for synching the player list.
+# @rpc("any_peer", "call_local", "reliable")
+# func add_player(their_name):
+# 	var their_id = multiplayer.get_remote_sender_id()
+# 	# Add the player to the list for EVERYONE, as well as the server
+# 	players[their_id] = their_name
+# 	update_player_list()
+# 	pass
 
 
 

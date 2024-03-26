@@ -1710,6 +1710,5 @@ bus = &"Music"
 [connection signal="pressed" from="ClownFace/ClownFaceButton" to="." method="_on_clown_face_button_pressed"]
 [connection signal="pressed" from="SkaterBoy/SkaterBoyButton" to="." method="_on_skater_boy_button_pressed"]
 [connection signal="pressed" from="WarriorGirl/WarriorGirlButton" to="." method="_on_warrior_girl_button_pressed"]
-[connection signal="input_event" from="PenguinKing" to="." method="_on_penguin_king_input_event"]
 [connection signal="pressed" from="PenguinKing/PenguinKingButton" to="." method="_on_penguin_king_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

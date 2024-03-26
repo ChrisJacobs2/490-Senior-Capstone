@@ -10,4 +10,5 @@ func _ready():
 	#fade out time
 	await get_tree().create_timer(3).timeout
 	#change this to first level filepath
-	get_tree().change_scene_to_file("res://start_menu.tscn")
+	#get_tree().change_scene_to_file("res://start_menu.tscn")
+	get_tree().change_scene_to_file("res://Maps/Arena_1/arena_1.tscn")
