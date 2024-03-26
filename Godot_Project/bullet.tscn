@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5n4p8l3esgew"]
+
+[ext_resource type="Script" path="res://Fire Bullets/scripts/Bullet.gd" id="1_2owoa"]
+[ext_resource type="Texture2D" uid="uid://clixi8sw7q2bw" path="res://Fire Bullets/assets/bullet.png" id="2_tmq2v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xp20w"]
+radius = 9.0
+height = 18.0
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_2owoa")
+delete_after = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tmq2v")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CapsuleShape2D_xp20w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
