@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch0xdtwhc4je0"]
+[gd_scene load_steps=13 format=3 uid="uid://ch0xdtwhc4je0"]
 
 [ext_resource type="Script" path="res://start_menu.gd" id="1_mdbpa"]
-[ext_resource type="Texture2D" uid="uid://ci33o86lslh3l" path="res://assets/cityblue.png" id="2_hxxtw"]
+[ext_resource type="Texture2D" uid="uid://bm25d78i8mcxw" path="res://assets/lilac.png" id="2_8xcmn"]
+[ext_resource type="Texture2D" uid="uid://28baq4reyujs" path="res://assets/purpleclouds.png" id="3_0et3t"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="3_calmr"]
+[ext_resource type="Texture2D" uid="uid://kpvtvc5dv2jv" path="res://assets/purpleclouds2.png" id="4_nb2pi"]
 [ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_u62b3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2mev"]
@@ -58,7 +60,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_hxxtw")
+texture = ExtResource("2_8xcmn")
+
+[node name="TextureRectB" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0et3t")
+
+[node name="TextureRectC" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0564236
+anchor_top = 0.00462963
+anchor_right = 0.924479
+anchor_bottom = 1.00309
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_nb2pi")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -67,9 +90,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -226.0
-offset_right = 170.0
+offset_left = -174.0
+offset_top = -234.0
+offset_right = 175.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -153,16 +176,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -47.5
-offset_right = 225.0
-offset_bottom = 47.5
+offset_left = -265.0
+offset_top = -56.0
+offset_right = 265.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/font = ExtResource("3_calmr")
 theme_override_font_sizes/font_size = 140
-text = "GAME TITLE"
+text = "THE HEIST"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_u62b3")
