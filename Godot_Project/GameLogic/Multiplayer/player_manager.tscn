@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct52nt5nf7k10"]
+
+[ext_resource type="Script" path="res://GameLogic/Multiplayer/Player Manager.gd" id="1_pni1h"]
+[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test assets/test_character.tscn" id="2_3gunu"]
+
+[node name="Player Manager" type="Node"]
+script = ExtResource("1_pni1h")
+player_scene = ExtResource("2_3gunu")

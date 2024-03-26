@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://nqxotx7amcfx"]
+
+[ext_resource type="Script" path="res://test assets/multiplayer_test.gd" id="1_ijmga"]
+[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test assets/test_character.tscn" id="2_2cp62"]
+[ext_resource type="TileSet" uid="uid://bqtp0fskblga3" path="res://Tiles/arena_1.tres" id="3_uvinh"]
+[ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/Weapon_Spawning/SpawnerLogic.tscn" id="4_lso6d"]
+[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="5_fov0u"]
+
+[node name="multiplayer_test" type="Node2D"]
+script = ExtResource("1_ijmga")
+player_scene = ExtResource("2_2cp62")
+
+[node name="Host" type="Button" parent="."]
+offset_left = 526.0
+offset_top = 203.0
+offset_right = 570.0
+offset_bottom = 234.0
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 530.0
+offset_top = 296.0
+offset_right = 568.0
+offset_bottom = 327.0
+text = "Join
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://test assets/test_character.tscn")
+spawn_path = NodePath("..")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_uvinh")
+format = 2
+layer_0/tile_data = PackedInt32Array(1572881, 1, 0, 1572890, 1, 0, 1572899, 1, 0, 1572908, 1, 0, 1572917, 1, 0, 1572872, 1, 0, 1638399, 1, 0, 1638390, 1, 0, 1966060, 1, 0, 2359267, 1, 0, 2359266, 1, 0, 2752473, 1, 0, 1179710, 1, 0, 524358, 1, 0, 79, 1, 0, -655404, 1, 0, 524255, 1, 0)
+
+[node name="SpawnerLogic" parent="." instance=ExtResource("4_lso6d")]
+
+[node name="WeaponSpawner" parent="." instance=ExtResource("5_fov0u")]
+position = Vector2(804, 346)
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

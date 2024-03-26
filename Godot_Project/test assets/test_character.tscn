@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d07gvrwd6au4d"]
+[gd_scene load_steps=6 format=3 uid="uid://d07gvrwd6au4d"]
 
 [ext_resource type="Script" path="res://test assets/test_char_script.gd" id="1_k3x11"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="2_c27yk"]
@@ -6,6 +6,23 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcntc"]
 size = Vector2(119, 268)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tay48"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Inventory/LaserGun:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Inventory/PenguinGun:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Inventory/Stopwatch:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("Inventory/Sword:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_k3x11")
@@ -24,3 +41,8 @@ offset = Vector2(50, 0)
 
 [node name="Inventory" parent="." instance=ExtResource("3_m3uxa")]
 position = Vector2(24, 29)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_tay48")
+
+[editable path="Inventory"]
