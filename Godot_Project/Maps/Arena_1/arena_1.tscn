@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://ch4mamn12r4h"]
 
-[ext_resource type="PackedScene" uid="uid://d07gvrwd6au4d" path="res://test assets/test_character.tscn" id="1_ck3xw"]
 [ext_resource type="Texture2D" uid="uid://dx8d83m6ebuby" path="res://Tiles/floor-200.png" id="2_dgv51"]
 [ext_resource type="Texture2D" uid="uid://4tgfb88ksrya" path="res://Tiles/wall-200.png" id="3_xdhln"]
 [ext_resource type="Texture2D" uid="uid://c37wmesrbvnsy" path="res://Tiles/platform-200.png" id="4_at2ex"]
 [ext_resource type="Texture2D" uid="uid://tyyfb2hu8kyi" path="res://Tiles/ramp2a.png" id="5_o6hhg"]
 [ext_resource type="PackedScene" uid="uid://dyh46bxw4wg5u" path="res://Maps/Arena_1/vaults.tscn" id="6_iuemt"]
 [ext_resource type="PackedScene" uid="uid://ckhs4mooqrj17" path="res://Maps/Arena_1/initial_spawn.tscn" id="7_dj36i"]
-[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="8_0gn1f"]
+[ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="8_8nrt3"]
 [ext_resource type="PackedScene" uid="uid://uybvks6oxkm8" path="res://GameLogic/Weapon_Spawning/SpawnerLogic.tscn" id="9_o3ty8"]
+[ext_resource type="PackedScene" uid="uid://ct52nt5nf7k10" path="res://GameLogic/Multiplayer/player_manager.tscn" id="9_qe5xe"]
 [ext_resource type="PackedScene" uid="uid://c3a4fmfc3v66k" path="res://GameLogic/scoring/score_manager.tscn" id="10_086db"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hk7i"]
@@ -297,26 +297,32 @@ position = Vector2(3, -3126)
 
 [node name="Initial Spawn Points" type="Node" parent="."]
 
-[node name="Initial Spawn" parent="Initial Spawn Points" instance=ExtResource("7_dj36i")]
+[node name="Initial Spawn" parent="Initial Spawn Points" groups=["initial_player_spawn", "player_spawn"] instance=ExtResource("7_dj36i")]
 position = Vector2(-2347, -2312)
 
-[node name="Initial Spawn2" parent="Initial Spawn Points" instance=ExtResource("7_dj36i")]
+[node name="Initial Spawn2" parent="Initial Spawn Points" groups=["initial_player_spawn", "player_spawn"] instance=ExtResource("7_dj36i")]
 position = Vector2(2192, -2342)
 
-[node name="Initial Spawn3" parent="Initial Spawn Points" instance=ExtResource("7_dj36i")]
+[node name="Initial Spawn3" parent="Initial Spawn Points" groups=["initial_player_spawn", "player_spawn"] instance=ExtResource("7_dj36i")]
 position = Vector2(-2297, 684)
 
-[node name="Initial Spawn4" parent="Initial Spawn Points" instance=ExtResource("7_dj36i")]
+[node name="Initial Spawn4" parent="Initial Spawn Points" groups=["initial_player_spawn", "player_spawn"] instance=ExtResource("7_dj36i")]
 position = Vector2(2239, 727)
-
-[node name="WeaponSpawner" parent="." instance=ExtResource("8_0gn1f")]
-position = Vector2(-819, 1933)
 
 [node name="SpawnerLogic" parent="." instance=ExtResource("9_o3ty8")]
 
+[node name="WeaponSpawner" parent="SpawnerLogic" instance=ExtResource("8_8nrt3")]
+position = Vector2(-1707, -2305)
+
+[node name="WeaponSpawner2" parent="SpawnerLogic" instance=ExtResource("8_8nrt3")]
+position = Vector2(1596, -2154)
+
+[node name="WeaponSpawner3" parent="SpawnerLogic" instance=ExtResource("8_8nrt3")]
+position = Vector2(-1755, 768)
+
+[node name="WeaponSpawner4" parent="SpawnerLogic" instance=ExtResource("8_8nrt3")]
+position = Vector2(1903, 763)
+
 [node name="ScoreManager" parent="." instance=ExtResource("10_086db")]
 
-[node name="Players" type="Node" parent="."]
-
-[node name="Test_Character" parent="Players" instance=ExtResource("1_ck3xw")]
-position = Vector2(-1110, 1834)
+[node name="Player Manager" parent="." instance=ExtResource("9_qe5xe")]

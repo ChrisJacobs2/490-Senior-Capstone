@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kpvtvc5dv2jv" path="res://assets/purpleclouds2.png" id="4_nb2pi"]
 [ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="4_u62b3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4sgs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2mev"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
 border_width_bottom = 8
 border_color = Color(0, 0, 0, 1)
@@ -19,30 +19,30 @@ expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="Theme" id="Theme_muorw"]
-Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/focus = SubResource("StyleBoxFlat_q2mev")
+Button/styles/hover = SubResource("StyleBoxFlat_q2mev")
+Button/styles/normal = SubResource("StyleBoxFlat_q2mev")
+Button/styles/pressed = SubResource("StyleBoxFlat_q2mev")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pla45"]
 
 [sub_resource type="Theme" id="Theme_ks0wn"]
-Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/focus = SubResource("StyleBoxFlat_q2mev")
+Button/styles/hover = SubResource("StyleBoxFlat_q2mev")
+Button/styles/normal = SubResource("StyleBoxFlat_q2mev")
+Button/styles/pressed = SubResource("StyleBoxFlat_q2mev")
 
 [sub_resource type="Theme" id="Theme_e16bm"]
-Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/focus = SubResource("StyleBoxFlat_q2mev")
+Button/styles/hover = SubResource("StyleBoxFlat_q2mev")
+Button/styles/normal = SubResource("StyleBoxFlat_q2mev")
+Button/styles/pressed = SubResource("StyleBoxFlat_q2mev")
 
 [sub_resource type="Theme" id="Theme_yra8h"]
-Button/styles/focus = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/hover = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/normal = SubResource("StyleBoxFlat_v4sgs")
-Button/styles/pressed = SubResource("StyleBoxFlat_v4sgs")
+Button/styles/focus = SubResource("StyleBoxFlat_q2mev")
+Button/styles/hover = SubResource("StyleBoxFlat_q2mev")
+Button/styles/normal = SubResource("StyleBoxFlat_q2mev")
+Button/styles/pressed = SubResource("StyleBoxFlat_q2mev")
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
