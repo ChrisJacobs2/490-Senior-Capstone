@@ -128,7 +128,8 @@ func leave_game():
 
 func host_game():
 	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(port, max_players)
+	# The host is not counted in te max_clients argument, so we decrease it by 1
+	var error = peer.create_server(port, max_players - 1)
 	if error != OK:
 		print("Error creating server", error)
 		return
