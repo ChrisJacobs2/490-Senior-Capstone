@@ -13,6 +13,7 @@ var max_players = 4
 var num_players = 0
 var players_loaded = 0
 var peer
+var in_lobby
 
 
 # This is the compression type used for the connection.
@@ -87,6 +88,8 @@ func _on_connected_fail():
 	print("Connection failed")
 # This is called on the client when the server disconnects
 func _on_server_disconnected():
+	if in_lobby == false:
+		get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
 	print("Server disconnected")
 
 
@@ -107,11 +110,12 @@ func add_player(our_name):
 
 @rpc("any_peer", "call_local", "reliable")
 func load_game(game_scene_path):
+	in_lobby = false
 	get_tree().change_scene_to_file(game_scene_path)
 
 @rpc("any_peer", "call_local", "reliable")
 func handle_map_change():
-	# tell everyone to load arena_1
+	# tell everyone (server included) to load arena_1
 	load_game.rpc("res://Maps/Arena_1/arena_1.tscn")
 
 	pass
