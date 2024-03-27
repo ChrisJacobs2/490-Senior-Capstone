@@ -29,6 +29,11 @@ var players = {}
 # entered in a UI scene.
 var player_name = ""
 
+# Enum class for character selection purposes
+enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
+# This is the local character. Should be modified locally before loading a map
+var clientside_character
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# networking signals
@@ -108,17 +113,11 @@ func add_player(our_name):
 	emit_signal("update_player_list")
 
 
-@rpc("any_peer", "call_local", "reliable")
+@rpc("authority", "call_local", "reliable")
 func load_game(game_scene_path):
 	in_lobby = false
 	get_tree().change_scene_to_file(game_scene_path)
 
-@rpc("any_peer", "call_local", "reliable")
-func handle_map_change(scene_path):
-	# tell everyone (server included) to load arena_1
-	load_game.rpc(scene_path)
-
-	pass
 
 
 func is_server():
@@ -161,8 +160,8 @@ func join_game():
 func test():
 	print("Test")
 
-# Can be called by clients. Tells the server to tell everyone to change the scene.
+# Can be called by anyone, but the load_game() rpc call requires you to be the server.
+# Tells everyone to change the scene.
 func change_scene(scene_path):
-	# tell the server to handle the map changing
-	handle_map_change.rpc_id(1, scene_path)
+	load_game.rpc(scene_path)
 	pass
