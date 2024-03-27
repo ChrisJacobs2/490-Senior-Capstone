@@ -31,7 +31,8 @@ var player_name = ""
 
 # Enum class for character selection purposes
 enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
-# This is the local character. Should be modified locally before loading a map
+# This is the local character. Should be modified locally before loading a map.
+# It should be an enum value from the Character class.
 var clientside_character
 
 # Called when the node enters the scene tree for the first time.
@@ -163,5 +164,6 @@ func test():
 # Can be called by anyone, but the load_game() rpc call requires you to be the server.
 # Tells everyone to change the scene.
 func change_scene(scene_path):
-	load_game.rpc(scene_path)
-	pass
+	if is_server():
+		load_game.rpc(scene_path)
+
