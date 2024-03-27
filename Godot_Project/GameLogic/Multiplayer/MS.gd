@@ -114,9 +114,9 @@ func load_game(game_scene_path):
 	get_tree().change_scene_to_file(game_scene_path)
 
 @rpc("any_peer", "call_local", "reliable")
-func handle_map_change():
+func handle_map_change(scene_path):
 	# tell everyone (server included) to load arena_1
-	load_game.rpc("res://Maps/Arena_1/arena_1.tscn")
+	load_game.rpc(scene_path)
 
 	pass
 
@@ -161,7 +161,8 @@ func join_game():
 func test():
 	print("Test")
 
-func start_game():
+# Can be called by clients. Tells the server to tell everyone to change the scene.
+func change_scene(scene_path):
 	# tell the server to handle the map changing
-	handle_map_change.rpc_id(1)
+	handle_map_change.rpc_id(1, scene_path)
 	pass
