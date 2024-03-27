@@ -1,0 +1,421 @@
+[gd_scene load_steps=33 format=3 uid="uid://f5bi8bq74ov4"]
+
+[ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_3jt8p"]
+[ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_qa3au"]
+[ext_resource type="Texture2D" uid="uid://bxl7u535ho65v" path="res://assets/characters/peng run/peng run animation.png" id="3_3dfcy"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_7tg4x"]
+[ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="4_ciu8j"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_6n6sy"]
+[ext_resource type="Texture2D" uid="uid://dw5qxx0ex3vk0" path="res://assets/characters/peng jump/peng jump animation.png" id="5_nd3kk"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_sdm43"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_ryksp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfel2"]
+atlas = ExtResource("2_qa3au")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ewy"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84aj6"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(1920, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mafue"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(3840, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khe3b"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(5760, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyvrt"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(7680, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im0cv"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(9600, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmldg"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(11520, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aajk"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(13440, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgkqj"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(15360, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4a46"]
+atlas = ExtResource("3_3dfcy")
+region = Rect2(17280, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rplcv"]
+atlas = ExtResource("4_ciu8j")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eopks"]
+atlas = ExtResource("5_nd3kk")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7sp3"]
+atlas = ExtResource("5_nd3kk")
+region = Rect2(1920, 0, 1920, 1920)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcgrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfel2")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38ewy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84aj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mafue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khe3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyvrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im0cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmldg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aajk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgkqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4a46")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rplcv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eopks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7sp3")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_temde"]
+resource_name = "Crouch"
+length = 0.200002
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_dwhqf"]
+resource_name = "Dash"
+length = 0.66667
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Dash"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2, 0.266667, 0.333334, 0.400001, 0.466667, 0.533334, 0.600001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_tcskj"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.15, 0.266667, 0.4, 0.466667, 0.533333, 0.666667, 0.766667, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_xg14a"]
+resource_name = "Jump"
+length = 0.166669
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_8yje1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1n0"]
+_data = {
+"Crouch": SubResource("Animation_temde"),
+"Dash": SubResource("Animation_dwhqf"),
+"Idle": SubResource("Animation_tcskj"),
+"Jump": SubResource("Animation_xg14a"),
+"RESET": SubResource("Animation_8yje1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
+size = Vector2(58, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
+
+[node name="TestChar" type="CharacterBody2D"]
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967046
+script = ExtResource("1_3jt8p")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xcgrd")
+animation = &"Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+libraries = {
+"": SubResource("AnimationLibrary_nc1n0")
+}
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_7vtxx")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="GroundL" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(50, 0)
+hit_from_inside = true
+
+[node name="GroundR" type="RayCast2D" parent="Raycasts"]
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("4_7tg4x")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("5_6n6sy")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_sdm43")
+
+[node name="Move" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Dash")
+event = &"move_left_right"
+
+[node name="Jump" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Jumping")
+event = &"jumping"
+
+[node name="Crouched" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Crouch")
+event = &"crouched"
+
+[node name="WalkOff" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Air")
+event = &"in_air"
+
+[node name="Dash" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_sdm43")
+
+[node name="Stop" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Idle")
+event = &"release_left_right"
+
+[node name="Jump" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Jumping")
+event = &"jumping"
+
+[node name="Crouched" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Crouch")
+event = &"crouched"
+
+[node name="WalkOff" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Air")
+event = &"in_air"
+
+[node name="Jumping" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_sdm43")
+
+[node name="InAir" type="Node" parent="StateChart/Root/Jumping"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Air")
+event = &"jumped"
+
+[node name="Air" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_sdm43")
+
+[node name="Landed" type="Node" parent="StateChart/Root/Air"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Idle")
+event = &"landing"
+
+[node name="Crouch" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_sdm43")
+
+[node name="StandUp" type="Node" parent="StateChart/Root/Crouch"]
+script = ExtResource("7_ryksp")
+to = NodePath("../../Idle")
+event = &"stood_up"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -2.0
+offset_top = -64.0
+offset_right = 2.0
+offset_bottom = -37.0
+max_value = 4.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -56.0
+offset_right = 20.0
+offset_bottom = -33.0
+label_settings = SubResource("LabelSettings_tujgy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
+[connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Jumping" to="." method="_on_jumping_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Air" to="." method="_on_air_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_exited"]

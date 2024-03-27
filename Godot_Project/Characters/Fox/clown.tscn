@@ -1,0 +1,579 @@
+[gd_scene load_steps=29 format=3 uid="uid://bt33euwys4tvc"]
+
+[ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_pfjyr"]
+[ext_resource type="Texture2D" uid="uid://co7j4mvfuob5u" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
+[ext_resource type="Texture2D" uid="uid://b64ms22f4bcrw" path="res://assets/characters/clown run/clown run animation.png" id="3_j4m01"]
+[ext_resource type="Texture2D" uid="uid://umdqlc3xk1t2" path="res://assets/characters/ClownFaceIdle.png" id="4_svp3j"]
+[ext_resource type="Texture2D" uid="uid://datgqcff21ort" path="res://assets/characters/clown jump/clown jump animation.png" id="5_wnq5q"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_bputc"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_k2fi0"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_18qpx"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_2rv6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xth2f"]
+atlas = ExtResource("2_8xde3")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4vly"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p666o"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(1920, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0px"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(3840, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yog3g"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(5760, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxryf"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(7680, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hadrv"]
+atlas = ExtResource("3_j4m01")
+region = Rect2(9600, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bylc0"]
+atlas = ExtResource("4_svp3j")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5y5m"]
+atlas = ExtResource("5_wnq5q")
+region = Rect2(0, 0, 1920, 1920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjehr"]
+atlas = ExtResource("5_wnq5q")
+region = Rect2(1920, 0, 1920, 1920)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcgrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xth2f")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4vly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p666o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq0px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yog3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxryf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hadrv")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bylc0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5y5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjehr")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
+resource_local_to_scene = true
+size = Vector2(65, 80)
+
+[sub_resource type="Animation" id="Animation_temde"]
+resource_name = "Crouch"
+length = 0.0500018
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionBox:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 33), Vector2(65, 33)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CollisionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0500001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_dwhqf"]
+resource_name = "Dash"
+length = 0.600003
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Dash"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400001, 0.500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionBox:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(57, 65), Vector2(70, 65), Vector2(68.7, 65), Vector2(59, 65), Vector2(65, 65), Vector2(65, 65)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CollisionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_tcskj"]
+resource_name = "Idle"
+length = 0.0500018
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.15, 0.266667, 0.4, 0.466667, 0.533333, 0.666667, 0.766667, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_7vtxx")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionBox:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33, 80)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CollisionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6.5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_xg14a"]
+resource_name = "Jump"
+length = 0.333336
+loop_mode = 2
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionBox:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(45, 67), Vector2(45, 67)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CollisionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.5, 3.5), Vector2(-2.5, 3.5)]
+}
+
+[sub_resource type="Animation" id="Animation_8yje1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_7vtxx")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionBox:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(65, 80)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CollisionBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 26)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1n0"]
+_data = {
+"Crouch": SubResource("Animation_temde"),
+"Dash": SubResource("Animation_dwhqf"),
+"Idle": SubResource("Animation_tcskj"),
+"Jump": SubResource("Animation_xg14a"),
+"RESET": SubResource("Animation_8yje1")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
+
+[node name="clown" type="CharacterBody2D"]
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967046
+script = ExtResource("1_pfjyr")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(0.05, 0.0505208)
+sprite_frames = SubResource("SpriteFrames_xcgrd")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+libraries = {
+"": SubResource("AnimationLibrary_nc1n0")
+}
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 26)
+shape = SubResource("RectangleShape2D_7vtxx")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="GroundL" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(50, 0)
+hit_from_inside = true
+
+[node name="GroundR" type="RayCast2D" parent="Raycasts"]
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("6_bputc")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("7_k2fi0")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("8_18qpx")
+
+[node name="Move" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Dash")
+event = &"move_left_right"
+
+[node name="Jump" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Jumping")
+event = &"jumping"
+
+[node name="Crouched" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Crouch")
+event = &"crouched"
+
+[node name="WalkOff" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Air")
+event = &"in_air"
+
+[node name="Dash" type="Node" parent="StateChart/Root"]
+script = ExtResource("8_18qpx")
+
+[node name="Stop" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Idle")
+event = &"release_left_right"
+
+[node name="Jump" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Jumping")
+event = &"jumping"
+
+[node name="Crouched" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Crouch")
+event = &"crouched"
+
+[node name="WalkOff" type="Node" parent="StateChart/Root/Dash"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Air")
+event = &"in_air"
+
+[node name="Jumping" type="Node" parent="StateChart/Root"]
+script = ExtResource("8_18qpx")
+
+[node name="InAir" type="Node" parent="StateChart/Root/Jumping"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Air")
+event = &"jumped"
+
+[node name="Air" type="Node" parent="StateChart/Root"]
+script = ExtResource("8_18qpx")
+
+[node name="Landed" type="Node" parent="StateChart/Root/Air"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Idle")
+event = &"landing"
+
+[node name="Crouch" type="Node" parent="StateChart/Root"]
+script = ExtResource("8_18qpx")
+
+[node name="StandUp" type="Node" parent="StateChart/Root/Crouch"]
+script = ExtResource("9_2rv6x")
+to = NodePath("../../Idle")
+event = &"stood_up"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -2.0
+offset_top = -64.0
+offset_right = 2.0
+offset_bottom = -37.0
+max_value = 4.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -56.0
+offset_right = 20.0
+offset_bottom = -33.0
+label_settings = SubResource("LabelSettings_tujgy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
+[connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Jumping" to="." method="_on_jumping_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Air" to="." method="_on_air_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_exited"]
