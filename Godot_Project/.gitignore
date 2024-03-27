@@ -3,3 +3,5 @@
 .vscode/
 *.import
 *.tmp
+addons/
+godot_state_charts_examples/
