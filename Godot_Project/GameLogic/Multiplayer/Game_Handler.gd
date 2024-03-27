@@ -2,8 +2,10 @@ extends Node
 
 
 # Client side variable to store an int representing how many coins the player has.
-# This will be eventually sent to the srever, who will determine the victor.
+# This will be eventually sent to the server, who will determine the victor.
 var client_coins = 0
+
+var client_kills = 0
 
 # The next two variables should only get changed on the server side.
 # id : coins dictionary. 
@@ -12,13 +14,7 @@ var player_coins = {}
 var playerWins = {}
 
 
-func _on_player_disconnected(id):
-	# Remove the player from playerWins and player_coins
-	playerWins.erase(id)
-	player_coins.erase(id)
-	pass
-
-# Only called once per game.
+# Only called once per game. Called when the host starts the game.
 func initialize():
 	if MS.is_server():
 		# Iterate over MS.players to initialize playerWins and player_coins.
@@ -28,15 +24,43 @@ func initialize():
 		# Make sure to remove players who leave the game from playerWins and player_coins,
 		# using the player disconnetced signal.
 		multiplayer.peer_disconnected.connect(_on_player_disconnected)
-		
+
+# This is most likely going to be called when the host finishes loading an arena map.
+func run_match():
+	# 10 second countdown, starting when host loads in. Synced to the clients.
+
+	# Start the timer in the current scene.
+
+	# When the timer reaches 0, call decide_match_victor().
+	pass		
 
 # Should only be called by the server. 
 # This function essentially tells all clients to send 
 # their coins value to the server.
-func decideVictor():
+func decide_match_victor():
 	# Iterate over player_coins and call query_coins on each id,
 	# while storing the id of the player with the most coins.
 
+	# update playerWins
+
+	# Check if we should call winner() or change map.
+	# if nobody has won yet,
+		# set everyone's client_coins to 0.
+		# set all values in player_coins to 0.
+		# Change map
+	# else if someone has won,
+		# call winner()
+	pass
+
+func winner():
+	# Change everyone to the winner/gameover screen.
+	# Disconnect them.
+	pass
+
+func _on_player_disconnected(id):
+	# Remove the player from playerWins and player_coins
+	playerWins.erase(id)
+	player_coins.erase(id)
 	pass
 
 # Only the server gets to call this. Causes someone to call
@@ -56,12 +80,7 @@ func update_coins(coins):
 	player_coins[id] = coins
 	pass
 
-func run_game():
-	# Call run_round until there's a player with two wins, or the only player left is the host.
-	pass
 
-func run_round():
-	pass
 
 
 
