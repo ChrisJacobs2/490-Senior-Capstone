@@ -50,7 +50,8 @@ func _on_start_button_pressed():
 	#if Global.character == null:
 		#pass
 	#else:
-	get_tree().change_scene_to_file("res://levels_intros/instruct_loading.tscn")
+	MS.change_scene("res://levels_intros/instruct_loading.tscn")
+	# get_tree().change_scene_to_file("res://levels_intros/instruct_loading.tscn")
 	
 func resetLabel():
 	penguin_king_label.hide()
