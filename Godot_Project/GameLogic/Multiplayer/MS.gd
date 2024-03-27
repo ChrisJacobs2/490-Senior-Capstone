@@ -89,6 +89,7 @@ func _on_connected_fail():
 func _on_server_disconnected():
 	if in_lobby == false:
 		get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
+	leave_game()
 	print("Server disconnected")
 
 
