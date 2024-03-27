@@ -63,6 +63,10 @@ func _on_player_disconnected(id):
 	player_coins.erase(id)
 	pass
 
+func update_client_coins(coins):
+	client_coins = coins
+	pass
+
 # Only the server gets to call this. Causes someone to call
 # the update_coins RPC function.
 @rpc("authority", "call_remote", "reliable")
