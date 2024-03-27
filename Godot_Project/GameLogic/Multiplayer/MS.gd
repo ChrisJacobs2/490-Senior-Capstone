@@ -1,7 +1,6 @@
 extends Node
 
 signal update_player_list()
-signal change_level(scene_path)	# not currently used but may be useful
 
 
 
@@ -29,6 +28,12 @@ var players = {}
 # For example, the value of "name" can be set to something the player
 # entered in a UI scene.
 var player_name = ""
+
+# Enum class for character selection purposes
+enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
+# This is the local character. Should be modified locally before loading a map.
+# It should be an enum value from the Character class.
+var clientside_character
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,6 +95,7 @@ func _on_connected_fail():
 func _on_server_disconnected():
 	if in_lobby == false:
 		get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
+	leave_game()
 	print("Server disconnected")
 
 
@@ -108,17 +114,11 @@ func add_player(our_name):
 	emit_signal("update_player_list")
 
 
-@rpc("any_peer", "call_local", "reliable")
+@rpc("authority", "call_local", "reliable")
 func load_game(game_scene_path):
 	in_lobby = false
 	get_tree().change_scene_to_file(game_scene_path)
 
-@rpc("any_peer", "call_local", "reliable")
-func handle_map_change():
-	# tell everyone (server included) to load arena_1
-	load_game.rpc("res://Maps/Arena_1/arena_1.tscn")
-
-	pass
 
 
 func is_server():
@@ -161,7 +161,9 @@ func join_game():
 func test():
 	print("Test")
 
-func start_game():
-	# tell the server to handle the map changing
-	handle_map_change.rpc_id(1)
-	pass
+# Can be called by anyone, but the load_game() rpc call requires you to be the server.
+# Tells everyone to change the scene.
+func change_scene(scene_path):
+	if is_server():
+		load_game.rpc(scene_path)
+

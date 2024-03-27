@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SpawnerSignalManager="*res://GameLogic/Weapon_Spawning/Spawner_Signal_Manager.gd"
 MS="*res://GameLogic/Multiplayer/MS.gd"
+GameHandler="*res://GameLogic/Multiplayer/Game_Handler.gd"
 
 [input]
 

@@ -9,5 +9,6 @@ func _ready():
 	$AnimationPlayer.play("fade_out")
 	#fade out time
 	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://levels_intros/start_level.tscn")
+	# get_tree().change_scene_to_file("res://levels_intros/start_level.tscn")
+	MS.change_scene("res://levels_intros/start_level.tscn")
 

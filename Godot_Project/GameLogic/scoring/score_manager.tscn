@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3a4fmfc3v66k"]
-
-[ext_resource type="Script" path="res://GameLogic/scoring/score_manager.gd" id="1_khtu3"]
-
-[node name="ScoreManager" type="Node"]
-script = ExtResource("1_khtu3")
