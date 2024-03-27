@@ -1,7 +1,6 @@
 extends Node
 
 signal update_player_list()
-signal change_level(scene_path)	# not currently used but may be useful
 
 
 
