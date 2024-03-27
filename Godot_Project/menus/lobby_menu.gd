@@ -106,7 +106,6 @@ func _on_join_submit():
 			MS.leave_game()
 			join_match_label.text = "Could not connect to server. :("
 
-		
 # The submit button in the 'host' menu
 func on_host_submit():
 	# Set the player's name
