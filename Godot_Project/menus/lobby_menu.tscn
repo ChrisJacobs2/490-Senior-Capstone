@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmjsuqwv2asve"]
+[gd_scene load_steps=22 format=3 uid="uid://cmjsuqwv2asve"]
 
 [ext_resource type="Script" path="res://menus/lobby_menu.gd" id="1_nhhgv"]
 [ext_resource type="Texture2D" uid="uid://o46pxmjqiegb" path="res://assets/lobbyblue.png" id="2_elki4"]
@@ -134,6 +134,21 @@ Button/styles/hover = SubResource("StyleBoxFlat_5n1if")
 Button/styles/normal = SubResource("StyleBoxFlat_sbufc")
 Button/styles/pressed = SubResource("StyleBoxFlat_6l4fe")
 
+[sub_resource type="Theme" id="Theme_h1251"]
+Button/styles/hover = SubResource("StyleBoxFlat_dy55e")
+Button/styles/normal = SubResource("StyleBoxFlat_clgml")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2c3b")
+
+[sub_resource type="Theme" id="Theme_sdovn"]
+Button/styles/hover = SubResource("StyleBoxFlat_dy55e")
+Button/styles/normal = SubResource("StyleBoxFlat_clgml")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2c3b")
+
+[sub_resource type="Theme" id="Theme_8nmxt"]
+Button/styles/hover = SubResource("StyleBoxFlat_dy55e")
+Button/styles/normal = SubResource("StyleBoxFlat_clgml")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2c3b")
+
 [node name="lobby_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -182,6 +197,7 @@ offset_bottom = 42.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/font = ExtResource("3_4m1du")
 theme_override_font_sizes/font_size = 100
 text = "Welcome!
@@ -241,24 +257,33 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="lobby"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="PlayerList" type="ItemList" parent="lobby/VBoxContainer"]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 35
 
 [node name="StartGame" type="Button" parent="lobby/VBoxContainer"]
 custom_minimum_size = Vector2(200, 1)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_h1251")
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 35
 text = "Start"
 
 [node name="Label" type="Label" parent="lobby"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 25
 text = "Game will start automatically when there are 4 players in the lobby. Otherwise, click 'Start' to play with less people."
 
 [node name="Join Match" type="MarginContainer" parent="."]
@@ -269,10 +294,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -73.0
+offset_left = -144.0
+offset_top = -91.0
 offset_right = 140.0
-offset_bottom = 73.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -280,11 +305,16 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Join Match/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 40
 text = " Join Match "
 
 [node name="nickname" type="LineEdit" parent="Join Match/VBoxContainer"]
@@ -292,6 +322,8 @@ custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 25
 placeholder_text = "Enter name here"
 max_length = 20
 
@@ -300,6 +332,8 @@ custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 25
 placeholder_text = "Enter ip address here"
 max_length = 20
 
@@ -307,7 +341,10 @@ max_length = 20
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Submit"
+theme = SubResource("Theme_sdovn")
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 30
+text = " Submit "
 
 [node name="Host Match" type="MarginContainer" parent="."]
 visible = false
@@ -328,11 +365,16 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Host Match/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 40
 text = " Host Match "
 
 [node name="nickname" type="LineEdit" parent="Host Match/VBoxContainer"]
@@ -340,6 +382,8 @@ custom_minimum_size = Vector2(280, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 25
 placeholder_text = "Enter name here"
 max_length = 20
 
@@ -347,7 +391,10 @@ max_length = 20
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Submit"
+theme = SubResource("Theme_8nmxt")
+theme_override_fonts/font = ExtResource("3_4m1du")
+theme_override_font_sizes/font_size = 30
+text = " Submit "
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button"]
