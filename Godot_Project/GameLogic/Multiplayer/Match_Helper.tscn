@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://d0lwk8pd1sek"]
 
-[ext_resource type="Script" path="res://GameLogic/Multiplayer/Match_Timer.gd" id="1_674eb"]
+[ext_resource type="Script" path="res://GameLogic/Multiplayer/Match_Helper.gd" id="1_674eb"]
 
 [node name="MatchTimer" type="Timer"]
+wait_time = 30.0
+one_shot = true
 script = ExtResource("1_674eb")

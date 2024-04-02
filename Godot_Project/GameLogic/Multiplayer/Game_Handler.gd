@@ -14,7 +14,8 @@ var player_coins = {}
 var playerWins = {}
 
 
-# Only called once per game. Called when the host starts the game.
+# Only called once per game. Called when the host starts the game from the character
+# selection menu.
 func initialize():
 	if MS.is_server():
 		# Iterate over MS.players to initialize playerWins and player_coins.

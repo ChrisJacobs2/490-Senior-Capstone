@@ -16,7 +16,9 @@ func _ready():
 	var players = MS.players
 	for player in players:
 		_add_player(player)
+		
 	# If there are no players, make a peer with id 1, and add it to the scene
+	# This is for dev purposes
 	if len(players) == 0:
 		_add_player(1)
 
