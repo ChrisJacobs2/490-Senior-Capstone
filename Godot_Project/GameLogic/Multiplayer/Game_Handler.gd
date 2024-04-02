@@ -35,6 +35,7 @@ func initialize():
 func run_match():
 	# 3 second countdown, starting when all players are ready. Synced to the clients.
 
+
 	# Start the timer in the current scene. Reminder to sync the timer to the clients
 	emit_signal("start_the_timer")
 
