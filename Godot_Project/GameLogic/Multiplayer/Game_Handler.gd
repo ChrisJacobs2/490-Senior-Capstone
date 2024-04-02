@@ -2,6 +2,8 @@ extends Node
 
 signal start_the_timer()
 
+signal timer_is_done()
+
 
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
@@ -16,6 +18,7 @@ var player_coins = {}
 var playerWins = {}
 
 
+
 # Only called once per game. Called when the host starts the game from the character
 # selection menu.
 func initialize():
@@ -28,14 +31,20 @@ func initialize():
 		# using the player disconnetced signal.
 		multiplayer.peer_disconnected.connect(_on_player_disconnected)
 
-# Called by the host when they finish loading the map
+# Called by the server when they finish loading the map
 func run_match():
 	# 3 second countdown, starting when all players are ready. Synced to the clients.
 
 	# Start the timer in the current scene. Reminder to sync the timer to the clients
 	emit_signal("start_the_timer")
 
-	# When the timer reaches 0, call decide_match_victor().
+	# Await the timer_finished signal emitted by the Match_Helper timer scene
+	await timer_is_done
+
+    # Now the timer has finished, call decide_match_victor()
+	decide_match_victor()
+
+
 	pass		
 
 # Should only be called by the server. 
@@ -87,8 +96,5 @@ func update_coins(coins):
 	# Update the value of player_coins with key id
 	player_coins[id] = coins
 	pass
-
-
-
 
 

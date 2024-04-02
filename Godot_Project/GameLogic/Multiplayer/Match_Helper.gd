@@ -7,13 +7,17 @@ func _ready():
 	# If we are the host
 	if MS.is_server():
 		# Connect to the start_the_timer signal
-		GameHandler.connect("start_the_timer", _on_start_timer)
-
-		
+		GameHandler.connect("start_the_timer", _on_start_timer)		
 	else:
 		# Make an RPC call to the host to let them know we are ready
+		player_is_ready.rpc_id(1)
 		pass
-		
+
+
+
+func _on_timeout():
+	GameHandler.emit_signal("timer_is_done")
+
 
 
 # Start the timer using its defined wait time in the scene menu
@@ -26,9 +30,11 @@ func _on_start_timer():
 	start_timer()
 
 # This gets RPC'd by a player when they are loaded into the map.
+@rpc("any_peer", "call_remote", "reliable")
 func player_is_ready():
 	players_ready += 1
-	if players_ready == MS.num_players:
+	if players_ready >= MS.num_players:
 		# Run the match
 		GameHandler.run_match()
 	pass
+

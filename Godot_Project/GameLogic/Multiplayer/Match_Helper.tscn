@@ -6,3 +6,5 @@
 wait_time = 30.0
 one_shot = true
 script = ExtResource("1_674eb")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]
