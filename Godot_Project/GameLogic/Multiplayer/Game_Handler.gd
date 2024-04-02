@@ -1,5 +1,7 @@
 extends Node
 
+signal start_the_timer()
+
 
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
@@ -26,11 +28,12 @@ func initialize():
 		# using the player disconnetced signal.
 		multiplayer.peer_disconnected.connect(_on_player_disconnected)
 
-# This is most likely going to be called when the host finishes loading an arena map.
+# Called by the host when they finish loading the map
 func run_match():
-	# 10 second countdown, starting when host loads in. Synced to the clients.
+	# 3 second countdown, starting when all players are ready. Synced to the clients.
 
-	# Start the timer in the current scene.
+	# Start the timer in the current scene. Reminder to sync the timer to the clients
+	emit_signal("start_the_timer")
 
 	# When the timer reaches 0, call decide_match_victor().
 	pass		

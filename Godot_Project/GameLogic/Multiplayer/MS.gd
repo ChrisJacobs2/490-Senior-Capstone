@@ -11,7 +11,7 @@ signal update_player_list()
 
 var max_players = 4
 var num_players = 0
-var players_loaded = 0
+var players_loaded = 0	# TODO: Get rid of this
 var peer
 var in_lobby
 
