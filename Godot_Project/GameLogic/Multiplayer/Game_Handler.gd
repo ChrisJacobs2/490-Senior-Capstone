@@ -54,17 +54,26 @@ func run_match():
 # their coins value to the server.
 func decide_match_victor():
 	# Find out who has the most coins
-	# 2 ways to do this:
-		# We can call an RPC function that is inside of everyone's character script.
-		# The function will call an RPC function that is defined here, and will update the value of player_coins
-
-		# Iterate over every player that is currently loaded, and get their network id plus coin count.
+		# First, get a list of every node in group 'player' and call it players
+	var players = get_tree().get_nodes_in_group("player")
+		# Then, iterate over the player list, saving the player with the most coins
+	var max_coins = 0
+	var max_id = null
+	for player in players:
+		if player.coins > max_coins:
+			max_coins = player.coins
+			max_id = player.name
+		pass
 
 	# update playerWins accordingly
+	playerWins[max_id] += 1
+
 	# For the demo, we just set the host to win
-	print("host wins")
-	var id = multiplayer.get_unique_id()
-	playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
+	# print("host wins")
+	# var id = multiplayer.get_unique_id()	# the host id
+	# playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
+
+
 	# Check if we should call winner() or change map.
 	# Iterate over playerWins to see if someone has won.
 	for player in playerWins:
@@ -80,8 +89,11 @@ func decide_match_victor():
 
 func winner():
 	print("Someone Won!!!")
+	MS.game_over = true
 	# Change everyone to the winner/gameover screen.
-	# Disconnect them.
+	MS.change_scene("res://menus/game_over_menu.tscn")
+	# Stop hosting. This should disconnect everyone.
+	MS.leave_game()
 	pass
 
 func _on_player_disconnected(id):
