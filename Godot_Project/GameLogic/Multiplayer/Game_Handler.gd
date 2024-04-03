@@ -33,16 +33,17 @@ func initialize():
 
 # Called by the server when they finish loading the map
 func run_match():
-	# 3 second countdown, starting when all players are ready. Synced to the clients.
+	# TODO:  3 second countdown, starting when all players are ready. Synced to the clients.
 
 
 	# Start the timer in the current scene. Reminder to sync the timer to the clients
-	emit_signal("start_the_timer")
+	GameHandler.emit_signal("start_the_timer")
 
 	# Await the timer_finished signal emitted by the Match_Helper timer scene
 	await timer_is_done
+	print("Time is up. Round over.")
 
-    # Now the timer has finished, call decide_match_victor()
+	# Now the timer has finished, call decide_match_victor()
 	decide_match_victor()
 
 

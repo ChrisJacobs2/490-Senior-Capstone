@@ -4,14 +4,21 @@ var players_ready = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	# If we are the host
 	if MS.is_server():
 		# Connect to the start_the_timer signal
-		GameHandler.connect("start_the_timer", _on_start_timer)		
+		GameHandler.connect("start_the_timer", _on_start_timer)
+		players_ready += 1	# Because the host is a player
 	else:
 		# Make an RPC call to the host to let them know we are ready
 		player_is_ready.rpc_id(1)
 		pass
+	
+
+	# This is for develpoment purposes TODO: Delete this
+	print("Running Match")
+	GameHandler.run_match()
 
 
 
