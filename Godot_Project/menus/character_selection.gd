@@ -61,6 +61,7 @@ func _on_start_button_pressed():
 		#pass
 	#else:
 	if MS.is_server():
+		GameHandler.initialize()
 		startGame.rpc()
 	
 	
