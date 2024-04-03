@@ -1,6 +1,6 @@
 extends Timer
 
-var players_ready = 0
+var clients_ready = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,16 +9,12 @@ func _ready():
 	if MS.is_server():
 		# Connect to the start_the_timer signal
 		GameHandler.connect("start_the_timer", _on_start_timer)
-		players_ready += 1	# Because the host is a player
 	else:
 		# Make an RPC call to the host to let them know we are ready
 		player_is_ready.rpc_id(1)
 		pass
 	
 
-	# This is for develpoment purposes TODO: Delete this
-	print("Running Match")
-	GameHandler.run_match()
 
 
 
@@ -39,8 +35,9 @@ func _on_start_timer():
 # This gets RPC'd by a player when they are loaded into the map.
 @rpc("any_peer", "call_remote", "reliable")
 func player_is_ready():
-	players_ready += 1
-	if players_ready >= MS.num_players:
+	clients_ready += 1
+	# If the number of clients ready is equal to the number of connected players
+	if clients_ready == MS.num_players:
 		# Run the match
 		GameHandler.run_match()
 	pass

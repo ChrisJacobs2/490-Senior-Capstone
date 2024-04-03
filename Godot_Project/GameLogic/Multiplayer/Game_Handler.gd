@@ -53,21 +53,33 @@ func run_match():
 # This function essentially tells all clients to send 
 # their coins value to the server.
 func decide_match_victor():
-	# Iterate over player_coins and call query_coins on each id,
-	# while storing the id of the player with the most coins.
+	# Find out who has the most coins
+	# 2 ways to do this:
+		# We can call an RPC function that is inside of everyone's character script.
+		# The function will call an RPC function that is defined here, and will update the value of player_coins
 
-	# update playerWins
+		# Iterate over every player that is currently loaded, and get their network id plus coin count.
 
+	# update playerWins accordingly
+	# For the demo, we just set the host to win
+	print("host wins")
+	var id = multiplayer.get_unique_id()
+	playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
 	# Check if we should call winner() or change map.
+	# Iterate over playerWins to see if someone has won.
+	for player in playerWins:
+		if playerWins[player] == 2:
+			winner()
+			return
 	# if nobody has won yet,
-		# set everyone's client_coins to 0.
-		# set all values in player_coins to 0.
+		# set everyone's coins to 0.
 		# Change map
-	# else if someone has won,
-		# call winner()
+	MS.change_scene("res://Maps/Arena_1/arena_1.tscn")
+	
 	pass
 
 func winner():
+	print("Someone Won!!!")
 	# Change everyone to the winner/gameover screen.
 	# Disconnect them.
 	pass
@@ -82,6 +94,9 @@ func update_client_coins(coins):
 	client_coins = coins
 	pass
 
+
+# The RPC functions below are probably going to get deleted and replaced with other RPC functions.
+
 # Only the server gets to call this. Causes someone to call
 # the update_coins RPC function.
 @rpc("authority", "call_remote", "reliable")
@@ -92,6 +107,11 @@ func query_coins():
 # Called on the server side, by a client (or the server).
 # Updates the value of player_coins with key id for the client
 # that this function was called on.
+
+# This RPC function can be called by any peer. Whoever executes the function will
+# update their value of player_coins with the key being the id of the
+# RPC sender. Basically, a client "bobby" can RPC this function to everyone to
+# update their player_coins dictionary with "bobby"'s id as the key.
 @rpc("any_peer", "call_local" ,"reliable")
 func update_coins(coins):
 	var id = get_tree().get_rpc_sender_id()

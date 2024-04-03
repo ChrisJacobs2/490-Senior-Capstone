@@ -10,7 +10,7 @@ signal update_player_list()
 @export var port = 4000
 
 var max_players = 4
-var num_players = 0
+var num_players = 0	# Does not include the host
 var players_loaded = 0	# TODO: Get rid of this
 var peer
 var in_lobby
@@ -22,6 +22,8 @@ var compression_type = ENetConnection.COMPRESS_RANGE_CODER	# check docs for othe
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
+# Includes the host. Is only populated when the
+# Host creates the server.
 var players = {}
 
 # This is the local player name. This should be modified locally
