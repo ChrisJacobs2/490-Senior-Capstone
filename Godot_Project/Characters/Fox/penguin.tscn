@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dvv810lxsyeeq"]
+[gd_scene load_steps=35 format=3 uid="uid://dvv810lxsyeeq"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_y8qya"]
 [ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_u6wd0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7vaho"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_m11wh"]
+[ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Character_Actions/inventory.tscn" id="10_6xavr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f57ek"]
 atlas = ExtResource("2_d75qa")
@@ -471,7 +472,25 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_52q4x"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Inventory/LaserGun:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Inventory/PenguinGun:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Inventory/Stopwatch:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("Inventory/Sword:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+
 [node name="penguin" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967046
@@ -597,9 +616,20 @@ label_settings = SubResource("LabelSettings_tujgy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Inventory" parent="." instance=ExtResource("10_6xavr")]
+position = Vector2(24, 29)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_52q4x")
+
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Jumping" to="." method="_on_jumping_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Air" to="." method="_on_air_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_exited"]
+
+[editable path="Inventory"]

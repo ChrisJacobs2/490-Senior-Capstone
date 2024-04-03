@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwug6341qoqju"]
+[gd_scene load_steps=5 format=3 uid="uid://bwug6341qoqju"]
 
-[ext_resource type="PackedScene" uid="uid://dwhu7vx768rhb" path="res://GameLogic/Weapons/BaseWeapon.tscn" id="1_rtvar"]
+[ext_resource type="Script" path="res://Fire Bullets/scripts/Gun.gd" id="1_dn7pv"]
+[ext_resource type="PackedScene" uid="uid://b5n4p8l3esgew" path="res://bullet.tscn" id="2_0a1wk"]
 [ext_resource type="Texture2D" uid="uid://ct67aymgqt1fa" path="res://assets/weapons/penguin_gun.png" id="2_4g164"]
 
-[node name="Base Weapon" instance=ExtResource("1_rtvar")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lplk0"]
+size = Vector2(15, 21)
+
+[node name="Gun" type="Node2D"]
+position = Vector2(-25, -5.00006)
+rotation = -0.0523599
+scale = Vector2(4, 4)
+script = ExtResource("1_dn7pv")
+bullet = ExtResource("2_0a1wk")
+CoolDown = 1.0
+Spawn_Point = Vector2(-20, 0)
 metadata/Name = "PenguinGun"
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.04792, -3.96729)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_4g164")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="grip" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.5, 3.5)
+rotation = 0.0523599
+shape = SubResource("RectangleShape2D_lplk0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

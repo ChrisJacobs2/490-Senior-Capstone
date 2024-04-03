@@ -2,9 +2,10 @@ extends CharacterBody2D
 
 @onready var testChar = $Animations
 @onready var animations = $Animations/AnimationPlayer
-@export var speed = 700
+@onready var cam = $Camera2D
+@export var speed = 900
 @export var gravity = 30
-@export var jump_force = 1000
+@export var jump_force = 1300
 @export var landed = true
 @export var coins = 0
 
@@ -14,6 +15,10 @@ const FULL_HEALTH = 3
 func _ready():
 	update_health_ui()
 	$HealthBar.max_value = FULL_HEALTH
+	cam.enabled = is_multiplayer_authority()
+	
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
 	
 func update_health_ui():
 	set_health_label()
@@ -32,6 +37,9 @@ func damage():
 	update_health_ui()
 
 func _physics_process(_delta):
+	
+	if not is_multiplayer_authority():
+		return
 	
 	if Input.is_action_just_pressed("change_weapon"):
 		# call the "swap_slots" function in the Inventory child node.
@@ -85,6 +93,11 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_released("crouch") && is_on_floor():
 		$StateChart.send_event("stood_up")
+		
+	if Input.is_action_just_pressed("change_weapon"):
+		# call the "swap_slots" function in the Inventory child node.
+		$Inventory.swap_slots()
+		pass
 	
 func _on_idle_state_processing(_delta):
 	animations.play("Idle")
