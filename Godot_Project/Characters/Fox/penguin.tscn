@@ -1,10 +1,10 @@
 [gd_scene load_steps=35 format=3 uid="uid://dvv810lxsyeeq"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_y8qya"]
-[ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
-[ext_resource type="Texture2D" uid="uid://bxl7u535ho65v" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
+[ext_resource type="Texture2D" uid="uid://drmrx81vjkrej" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
+[ext_resource type="Texture2D" uid="uid://c2k21pd6vmi1g" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="4_ldytp"]
-[ext_resource type="Texture2D" uid="uid://dw5qxx0ex3vk0" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
+[ext_resource type="Texture2D" uid="uid://bod2ixejh8g51" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_8d6pw"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_u6wd0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7vaho"]
@@ -488,6 +488,9 @@ properties/3/replication_mode = 2
 properties/4/path = NodePath("Inventory/Sword:visible")
 properties/4/spawn = true
 properties/4/replication_mode = 2
+properties/5/path = NodePath(".:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 2
 
 [node name="penguin" type="CharacterBody2D"]
 scale = Vector2(3, 3)

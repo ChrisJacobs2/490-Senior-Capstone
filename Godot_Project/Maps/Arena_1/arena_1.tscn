@@ -1868,4 +1868,4 @@ position = Vector2(1903, 763)
 player_scene = ExtResource("10_bkks2")
 
 [node name="Match Helper" parent="." instance=ExtResource("10_2nyr0")]
-wait_time = 2.0
+wait_time = 303.0
