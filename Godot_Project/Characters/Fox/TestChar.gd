@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var jump_force = 1300
 @export var landed = true
 @export var coins = 0
+@export var direction = 1
 
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
@@ -69,11 +70,15 @@ func _physics_process(_delta):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
+		direction = -1
+		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
 		
 	if Input.is_action_pressed("move_right") && !Input.is_action_pressed("move_left") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
+		direction = 1
+		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
 	
 	if Input.is_action_pressed("move_left") && Input.is_action_pressed("move_right") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("release_left_right")
@@ -97,6 +102,13 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("change_weapon"):
 		# call the "swap_slots" function in the Inventory child node.
 		$Inventory.swap_slots()
+		pass
+		
+	if Input.is_action_just_pressed("shoot"):
+		if $Inventory/LaserGun.get_meta("Active") == true:
+			$Inventory/LaserGun.shoot(1000,180)
+		if $Inventory/PenguinGun.get_meta("Active") == true:
+			$Inventory/PenguinGun.shoot(1000,180)
 		pass
 	
 func _on_idle_state_processing(_delta):

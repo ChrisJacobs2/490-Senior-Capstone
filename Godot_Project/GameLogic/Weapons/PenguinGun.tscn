@@ -8,14 +8,13 @@
 size = Vector2(15, 21)
 
 [node name="Gun" type="Node2D"]
-position = Vector2(-25, -5.00006)
-rotation = -0.0523599
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 script = ExtResource("1_dn7pv")
 bullet = ExtResource("2_0a1wk")
 CoolDown = 1.0
 Spawn_Point = Vector2(-20, 0)
 metadata/Name = "PenguinGun"
+metadata/Active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.04792, -3.96729)

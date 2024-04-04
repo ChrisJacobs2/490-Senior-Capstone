@@ -8,12 +8,11 @@
 size = Vector2(15, 21)
 
 [node name="Gun" type="Node2D"]
-position = Vector2(846, 608)
+position = Vector2(1, -6.10352e-05)
 rotation = -0.0523599
 scale = Vector2(4, 4)
 script = ExtResource("1_s67f1")
 bullet = ExtResource("2_ur5e5")
-inHand = null
 CoolDown = 1.0
 Spawn_Point = Vector2(-20, 0)
 
