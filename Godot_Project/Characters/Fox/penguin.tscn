@@ -489,7 +489,7 @@ properties/4/path = NodePath("Inventory/Sword:visible")
 properties/4/spawn = true
 properties/4/replication_mode = 2
 
-[node name="penguin" type="CharacterBody2D"]
+[node name="penguin" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(3, 3)
 slide_on_ceiling = false
 platform_on_leave = 2
@@ -619,11 +619,11 @@ vertical_alignment = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Inventory" parent="." instance=ExtResource("10_6xavr")]
-position = Vector2(24, 29)
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_52q4x")
+
+[node name="Inventory" parent="." instance=ExtResource("10_6xavr")]
+position = Vector2(10, 10.3333)
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]
@@ -631,5 +631,3 @@ replication_config = SubResource("SceneReplicationConfig_52q4x")
 [connection signal="state_entered" from="StateChart/Root/Air" to="." method="_on_air_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_exited"]
-
-[editable path="Inventory"]

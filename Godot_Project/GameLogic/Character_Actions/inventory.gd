@@ -177,3 +177,6 @@ func translate_instructions(weapon_name):
 	# Then, call pickup_weapon() with the weapon reference as an argument
 	pickup_weapon(weap)
 	pass
+	
+func turnAround():
+	scale.x = scale.x * -1

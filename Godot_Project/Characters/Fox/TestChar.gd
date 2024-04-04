@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var jump_force = 1300
 @export var landed = true
 @export var coins = 0
-@export var direction = 1
+@export var direction = 2 #2 is right, 1 is left
+@export var directionChange = true
 
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
@@ -36,8 +37,9 @@ func damage():
 	if health == 0:
 		health = FULL_HEALTH
 	update_health_ui()
-
+	
 func _physics_process(_delta):
+	
 	
 	if not is_multiplayer_authority():
 		return
@@ -62,7 +64,6 @@ func _physics_process(_delta):
 			$StateChart.send_event("landing")
 			landed = true
 		velocity.y = 0
-		
 	
 	var x_direction = Input.get_axis("move_left", "move_right")
 	
@@ -70,15 +71,17 @@ func _physics_process(_delta):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
-		direction = -1
-		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
+		if direction != 1:
+			direction = 1
+			$Inventory.turnAround()
 		
 	if Input.is_action_pressed("move_right") && !Input.is_action_pressed("move_left") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
-		direction = 1
-		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
+		if direction != 2:
+			direction = 2
+			$Inventory.turnAround()
 	
 	if Input.is_action_pressed("move_left") && Input.is_action_pressed("move_right") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("release_left_right")
@@ -106,9 +109,9 @@ func _physics_process(_delta):
 		
 	if Input.is_action_just_pressed("shoot"):
 		if $Inventory/LaserGun.get_meta("Active") == true:
-			$Inventory/LaserGun.shoot(1000,180)
+			$Inventory/LaserGun.shoot(1000,180 * direction)
 		if $Inventory/PenguinGun.get_meta("Active") == true:
-			$Inventory/PenguinGun.shoot(1000,180)
+			$Inventory/PenguinGun.shoot(1000,180 * direction)
 		pass
 	
 func _on_idle_state_processing(_delta):
