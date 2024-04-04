@@ -1,16 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb5uyhfk5pqfx"]
+[gd_scene load_steps=5 format=3 uid="uid://bb5uyhfk5pqfx"]
 
-[ext_resource type="PackedScene" uid="uid://dwhu7vx768rhb" path="res://GameLogic/Weapons/BaseWeapon.tscn" id="1_e0t8a"]
+[ext_resource type="Script" path="res://sword.gd" id="1_6o53e"]
 [ext_resource type="Texture2D" uid="uid://bubchwrjdxymo" path="res://assets/weapons/sword.png" id="2_rxl2x"]
 
-[node name="Base Weapon" instance=ExtResource("1_e0t8a")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ppkg"]
+size = Vector2(449, 118.563)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xkt4"]
+radius = 80.7908
+height = 1098.04
+
+[node name="sword" type="Area2D"]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_6o53e")
 metadata/Name = "Sword"
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.05176e-05)
 texture = ExtResource("2_rxl2x")
 
-[node name="BarrelTip" parent="." index="1"]
-position = Vector2(57, -67)
+[node name="grip" type="CollisionShape2D" parent="."]
+position = Vector2(-418.019, 333.187)
+rotation = -0.837758
+shape = SubResource("RectangleShape2D_0ppkg")
 
-[node name="Grip" parent="." index="2"]
-position = Vector2(-42, 32)
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(306.667, -420)
+rotation = -0.0523599
+skew = 0.806342
+shape = SubResource("CapsuleShape2D_2xkt4")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
