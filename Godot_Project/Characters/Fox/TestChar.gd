@@ -12,13 +12,21 @@ extends CharacterBody2D
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
 
+
+func _enter_tree():
+	# This node is created with a name (the player's id) when it gets created.
+	# This line uses the name to set the character's multiplayer authority (who owns it)
+	set_multiplayer_authority(name.to_int())
+
+
 func _ready():
 	update_health_ui()
 	$HealthBar.max_value = FULL_HEALTH
+
+	# Only the player with authority over this node has the camera enabled.
+	# Everyone else gets it disabled.
 	cam.enabled = is_multiplayer_authority()
 	
-func _enter_tree():
-	set_multiplayer_authority(name.to_int())
 	
 func update_health_ui():
 	set_health_label()
