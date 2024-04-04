@@ -4,6 +4,9 @@ signal start_the_timer()
 
 signal timer_is_done()
 
+# Sent by character, received by Player Manager node (in arena).
+signal respawn_me()
+
 
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
@@ -57,7 +60,7 @@ func decide_match_victor():
 		# First, get a list of every node in group 'player' and call it players
 	var players = get_tree().get_nodes_in_group("player")
 		# Then, iterate over the player list, saving the player with the most coins
-	var max_coins = 0
+	var max_coins = -1
 	var max_id = null
 	for player in players:
 		if player.coins > max_coins:
