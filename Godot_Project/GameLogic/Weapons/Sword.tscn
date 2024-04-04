@@ -14,6 +14,7 @@ height = 1098.04
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_6o53e")
 metadata/Name = "Sword"
+metadata/Active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 3.05176e-05)

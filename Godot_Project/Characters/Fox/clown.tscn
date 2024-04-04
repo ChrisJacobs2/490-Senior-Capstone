@@ -597,6 +597,12 @@ zoom = Vector2(0.5, 0.5)
 [node name="Inventory" parent="." instance=ExtResource("10_o3dib")]
 position = Vector2(24, 29)
 
+[node name="LaserGun" parent="Inventory" index="0"]
+metadata/Active = false
+
+[node name="PenguinGun" parent="Inventory" index="1"]
+metadata/Active = false
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_axvwh")
 

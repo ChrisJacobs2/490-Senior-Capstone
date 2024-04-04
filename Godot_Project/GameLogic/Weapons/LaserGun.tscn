@@ -9,13 +9,13 @@ size = Vector2(15, 21)
 
 [node name="Gun" type="Node2D"]
 position = Vector2(2, -1)
-rotation = -0.0523599
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 script = ExtResource("1_exts5")
 bullet = ExtResource("2_pdka2")
 CoolDown = 1.0
 Spawn_Point = Vector2(-20, 0)
 metadata/Name = "LaserGun"
+metadata/Active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
