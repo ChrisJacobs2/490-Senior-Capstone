@@ -10,9 +10,6 @@ func _ready():
 	for spawner in spawners:
 		spawner.spawn()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 # This is called whenever a player walks into the Area2D box of a spawner.
 # player is the node reference of the player, weapon is the metadata name of the weapon.
