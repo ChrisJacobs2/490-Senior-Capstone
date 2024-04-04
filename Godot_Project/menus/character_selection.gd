@@ -8,7 +8,7 @@ var warrior_girl_label
 var start_button
 
 enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
-var current_character
+var current_character = Character.CLOWN
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +33,7 @@ func _on_penguin_king_button_pressed():
 	resetLabel()
 	current_character = Character.PENGUIN
 	penguin_king_label.visible = true
+	broadcast_character()
 
 
 func _on_clown_face_button_pressed():
@@ -40,6 +41,7 @@ func _on_clown_face_button_pressed():
 	resetLabel()
 	current_character = Character.CLOWN
 	clown_face_label.visible = true
+	broadcast_character()
 	
 	
 func _on_skater_boy_button_pressed():
@@ -47,12 +49,14 @@ func _on_skater_boy_button_pressed():
 	resetLabel()
 	current_character = Character.SKATER
 	skater_boy_label.visible = true
+	broadcast_character()
 	
 func _on_warrior_girl_button_pressed():
 	#Global.character = "WarriorGirl"
 	resetLabel()
 	current_character = Character.WARRIOR
 	warrior_girl_label.visible = true
+	broadcast_character()
 	
 	# This button is labled Force Start. Only the host should be able to push this.
 	# I plan on adding more ways for the game to start, such as 4 people being ready.
@@ -61,6 +65,7 @@ func _on_start_button_pressed():
 		#pass
 	#else:
 	if MS.is_server():
+		GameHandler.initialize()
 		startGame.rpc()
 	
 	
@@ -71,9 +76,23 @@ func resetLabel():
 	warrior_girl_label.hide()
 	pass
 
+func broadcast_character():
+	submit_character.rpc(current_character)
+
+# Called remotely by the server. Runs on everyone's machine.
 @rpc("authority", "call_local", "reliable")
 func startGame():
-	MS.clientside_character = current_character
-	print(MS.clientside_character)
+	# Give everyone the character that the client selected
+	# submit_character.rpc(current_character)
 	MS.change_scene("res://levels_intros/instruct_loading.tscn")
-	# get_tree().change_scene_to_file("res://levels_intros/instruct_loading.tscn")
+
+# Called remotely by clients and locally by server. Recipient is server.
+# Adds the character to the server's MS.serverside_characters dictionary, then starts the game.
+@rpc("any_peer", "call_local", "reliable")
+func submit_character(character):
+	# whoever sent the RPC call
+	var id = multiplayer.get_remote_sender_id()
+	# Adds an entry to the serverside dictionary with key (sender id) and
+	# value (character value passed through the RPC)
+	MS.serverside_characters[id] = character
+	pass

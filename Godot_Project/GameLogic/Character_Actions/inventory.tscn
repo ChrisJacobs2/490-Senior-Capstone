@@ -8,23 +8,17 @@
 
 [node name="Inventory" type="Node2D"]
 editor_description = "Make sure that the names of the weapons in Inventory are the same as the .tscn files. Otherwise players will not be able to pick up guns from spawners. This is important if we want to add new weapons."
-rotation = -0.0523599
-scale = Vector2(0.75, 0.75)
 script = ExtResource("1_5jmdr")
 
 [node name="LaserGun" parent="." instance=ExtResource("2_ev4ph")]
 visible = false
 position = Vector2(28, -27)
 scale = Vector2(-1, 1)
-inHand = null
-Spawn_Point = Vector2(-15, 2)
 
 [node name="PenguinGun" parent="." instance=ExtResource("3_06s2d")]
 visible = false
+position = Vector2(40, -38)
 scale = Vector2(-1, 1)
-inHand = null
-CoolDown = 2.0
-Spawn_Point = Vector2(-50, 2)
 
 [node name="Stopwatch" parent="." instance=ExtResource("4_nb161")]
 visible = false
