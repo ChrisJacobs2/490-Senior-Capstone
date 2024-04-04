@@ -35,9 +35,10 @@ var player_name = ""
 
 # Enum class for character selection purposes
 enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
-# This is the local character. Should be modified locally before loading a map.
-# It should be an enum value from the Character class.
-var clientside_character
+# This is a dictionary of everyone's characters.
+# Key is the player's unique ID, value is the character enum.
+var serverside_characters = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

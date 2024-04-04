@@ -8,7 +8,7 @@ var warrior_girl_label
 var start_button
 
 enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
-var current_character
+var current_character = Character.CLOWN
 
 
 # Called when the node enters the scene tree for the first time.
@@ -72,9 +72,19 @@ func resetLabel():
 	warrior_girl_label.hide()
 	pass
 
+# Called remotely by the server. Runs on everyone's machine.
 @rpc("authority", "call_local", "reliable")
 func startGame():
-	MS.clientside_character = current_character
-	print(MS.clientside_character)
+	submit_character.rpc_id(1, current_character)
 	MS.change_scene("res://levels_intros/instruct_loading.tscn")
-	# get_tree().change_scene_to_file("res://levels_intros/instruct_loading.tscn")
+
+# Called remotely by clients and locally by server. Recipient is server.
+# Adds the character to the server's MS.serverside_characters dictionary, then starts the game.
+@rpc("any_peer", "call_local", "reliable")
+func submit_character(character):
+	# whoever sent the RPC call
+	var id = multiplayer.get_remote_sender_id()
+	# Adds an entry to the serverside dictionary with key (sender id) and
+	# value (character value passed through the RPC)
+	MS.serverside_characters[id] = character
+	pass

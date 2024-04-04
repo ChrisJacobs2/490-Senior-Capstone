@@ -1,6 +1,14 @@
 extends Node
 
+# Deprecated. TODO: the plyer_scene var
 @export var player_scene: PackedScene
+
+@export var clown_scene: PackedScene
+@export var penguin_scene: PackedScene
+@export var skater_scene: PackedScene
+@export var warrior_scene: PackedScene
+
+enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
 
 var initial_spawners
 
@@ -40,6 +48,20 @@ func _respawn_player(player):
 
 
 func _add_player(id):
+	var char_name = MS.serverside_characters[id]
+	# This is like a switch statement
+	match char_name:
+		Character.PENGUIN:
+			player_scene = penguin_scene
+		Character.CLOWN:
+			player_scene = clown_scene
+		Character.SKATER:
+			player_scene = skater_scene
+		Character.WARRIOR:
+			player_scene = warrior_scene
+		_:
+			player_scene = clown_scene
+			
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
