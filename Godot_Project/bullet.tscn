@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://clixi8sw7q2bw" path="res://Fire Bullets/assets/bullet.png" id="2_tmq2v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xp20w"]
-radius = 9.0
-height = 18.0
+radius = 2.33333
+height = 8.0
 
 [node name="Bullet" type="Area2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_2owoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,6 +17,7 @@ texture = ExtResource("2_tmq2v")
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_xp20w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

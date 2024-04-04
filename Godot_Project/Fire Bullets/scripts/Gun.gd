@@ -10,6 +10,8 @@ class_name Gun
 ## the scene to spawn as a bullet, must be a bullet node ( see [Bullet])
 @export var bullet : PackedScene
 
+@export var inHand = false
+
 ## Number Of Bullets to spawn at once, setting the value greater than 1 will enable [member Firing_Arc]
 @export_range(1,999) var NBS : int = 1
 
@@ -84,8 +86,6 @@ func set_firing_arc(value : int):
 func get_firing_arc() -> int:
 	return Firing_Arc
 
-
-
 func can_shoot():
 	return timer.is_stopped()
 
@@ -140,6 +140,9 @@ func _process(_delta):
 	else:
 		pass
 	queue_redraw()
+	
+func _physics_process(_delta):
+	pass
 
 func _draw():
 	if Firing_Arc_Debug_Type == "None":
@@ -199,9 +202,8 @@ func _draw():
 #	if Shooting_Line_Debug == true and !Engine.is_editor_hint():
 #		draw_line(Spawn_Point,get_local_mouse_position(),shooting_line_color,shooting_line_width)
 
+func _on_area_2d_body_entered(body):
+	pass
 
-
-
-
-
-
+func _on_area_2d_body_exited(body):
+	pass

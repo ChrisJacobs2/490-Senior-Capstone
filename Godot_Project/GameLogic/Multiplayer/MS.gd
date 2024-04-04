@@ -4,17 +4,15 @@ signal update_player_list()
 
 
 
-
 # Default address and port
 @export var Address = "localhost"
 @export var port = 4000
 
 var max_players = 4
-var num_players = 0	# Does not include the host
-var players_loaded = 0	# TODO: Get rid of this
+var num_players = 0
+var players_loaded = 0
 var peer
-var in_lobby = false	# This is set to true when the lobby scene is loaded, and false when MS.change_scene is called
-var game_over = false	# Set to true when GameHandler.winner() is called
+var in_lobby
 
 
 # This is the compression type used for the connection.
@@ -23,8 +21,6 @@ var compression_type = ENetConnection.COMPRESS_RANGE_CODER	# check docs for othe
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
-# Includes the host. Is only populated when the
-# Host creates the server.
 var players = {}
 
 # This is the local player name. This should be modified locally
@@ -35,10 +31,9 @@ var player_name = ""
 
 # Enum class for character selection purposes
 enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
-# This is a dictionary of everyone's characters.
-# Key is the player's unique ID, value is the character enum.
-var serverside_characters = {}
-
+# This is the local character. Should be modified locally before loading a map.
+# It should be an enum value from the Character class.
+var clientside_character
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -98,10 +93,8 @@ func _on_connected_fail():
 	print("Connection failed")
 # This is called on the client when the server disconnects
 func _on_server_disconnected():
-	# If we are in the middle of a game, kick the player to the lobby
-	if in_lobby == false && game_over == false:
+	if in_lobby == false:
 		get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
-	
 	leave_game()
 	print("Server disconnected")
 

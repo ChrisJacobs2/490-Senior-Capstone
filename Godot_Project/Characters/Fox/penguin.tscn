@@ -1,10 +1,10 @@
 [gd_scene load_steps=35 format=3 uid="uid://dvv810lxsyeeq"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_y8qya"]
-[ext_resource type="Texture2D" uid="uid://drmrx81vjkrej" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
-[ext_resource type="Texture2D" uid="uid://c2k21pd6vmi1g" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
+[ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
+[ext_resource type="Texture2D" uid="uid://bxl7u535ho65v" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="4_ldytp"]
-[ext_resource type="Texture2D" uid="uid://bod2ixejh8g51" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
+[ext_resource type="Texture2D" uid="uid://dw5qxx0ex3vk0" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_8d6pw"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_u6wd0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7vaho"]
@@ -132,9 +132,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
-size = Vector2(42, 47)
-
 [sub_resource type="Animation" id="Animation_temde"]
 resource_name = "Crouch"
 length = 0.200002
@@ -163,42 +160,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CollisionBox:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CollisionBox:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(42, 47)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CollisionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 10.5)]
 }
 
 [sub_resource type="Animation" id="Animation_dwhqf"]
@@ -230,42 +191,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CollisionBox:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CollisionBox:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CollisionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5)]
-}
 
 [sub_resource type="Animation" id="Animation_tcskj"]
 resource_name = "Idle"
@@ -296,42 +221,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CollisionBox:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0500001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CollisionBox:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0500001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(39, 51), Vector2(39, 51)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CollisionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.0500001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-2.5, 8.5), Vector2(-2.5, 8.5)]
-}
 
 [sub_resource type="Animation" id="Animation_xg14a"]
 resource_name = "Jump"
@@ -361,42 +250,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CollisionBox:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CollisionBox:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(57, 51), Vector2(47, 51)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CollisionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.5, 8.5), Vector2(0.5, 8.5)]
-}
 
 [sub_resource type="Animation" id="Animation_8yje1"]
 length = 0.001
@@ -424,42 +277,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CollisionBox:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CollisionBox:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(42, 47)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CollisionBox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 10.5)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1n0"]
 _data = {
@@ -469,6 +286,9 @@ _data = {
 "Jump": SubResource("Animation_xg14a"),
 "RESET": SubResource("Animation_8yje1")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
+size = Vector2(30, 44)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
 
@@ -488,9 +308,6 @@ properties/3/replication_mode = 2
 properties/4/path = NodePath("Inventory/Sword:visible")
 properties/4/spawn = true
 properties/4/replication_mode = 2
-properties/5/path = NodePath(".:visible")
-properties/5/spawn = true
-properties/5/replication_mode = 2
 
 [node name="penguin" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(3, 3)
@@ -512,7 +329,7 @@ libraries = {
 }
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 10.5)
+position = Vector2(0.666667, 12)
 shape = SubResource("RectangleShape2D_7vtxx")
 
 [node name="Raycasts" type="Node2D" parent="."]
@@ -610,12 +427,6 @@ step = 1.0
 value = 3.0
 show_percentage = false
 
-[node name="CoinsLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -80.0
-offset_right = 20.0
-offset_bottom = -57.0
-
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
 offset_top = -56.0
@@ -628,11 +439,11 @@ vertical_alignment = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Inventory" parent="." instance=ExtResource("10_6xavr")]
-position = Vector2(24, 29)
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_52q4x")
+
+[node name="Inventory" parent="." instance=ExtResource("10_6xavr")]
+position = Vector2(10, 10.3333)
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]
@@ -640,5 +451,3 @@ replication_config = SubResource("SceneReplicationConfig_52q4x")
 [connection signal="state_entered" from="StateChart/Root/Air" to="." method="_on_air_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Crouch" to="." method="_on_crouch_state_exited"]
-
-[editable path="Inventory"]
