@@ -28,6 +28,8 @@ func _ready():
 	# If there are no players, make a peer with id 1, and add it to the scene
 	# This is for dev purposes
 	if len(players) == 0:
+		if not MS.serverside_characters.has(1):
+			MS.serverside_characters[1] = Character.CLOWN
 		_add_player(1)
 
 	# Listen to respawn_me signal

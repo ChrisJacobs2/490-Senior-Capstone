@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
+var is_alive = true
 
 
 func _enter_tree():
@@ -22,12 +23,15 @@ func _enter_tree():
 
 func _ready():
 	update_health_ui()
+	update_coins_ui()
 	$HealthBar.max_value = FULL_HEALTH
 
 	# Only the player with authority over this node has the camera enabled.
 	# Everyone else gets it disabled.
 	cam.enabled = is_multiplayer_authority()
 	
+func update_coins_ui():
+	$CoinsLabel.text = "Coins: %s" % coins
 	
 func update_health_ui():
 	set_health_label()
@@ -164,6 +168,7 @@ Call the respawn function
 '''
 func die():
 	print("Died!")
+	is_alive = false
 	# Disable the player's input
 	set_physics_process(false)	
 	# TODO: Disable player collision (Make sure this is synced in the multiplayer synchronizer node)
@@ -202,6 +207,7 @@ Enable physics process via set_process(true)
 
 func respawn():
 	print("Respawned!")
+	is_alive = true
 	# Emit the GameHandler's respawn signal
 	GameHandler.emit_signal("respawn_me", self)
 

@@ -33,6 +33,7 @@ func _on_penguin_king_button_pressed():
 	resetLabel()
 	current_character = Character.PENGUIN
 	penguin_king_label.visible = true
+	broadcast_character()
 
 
 func _on_clown_face_button_pressed():
@@ -40,6 +41,7 @@ func _on_clown_face_button_pressed():
 	resetLabel()
 	current_character = Character.CLOWN
 	clown_face_label.visible = true
+	broadcast_character()
 	
 	
 func _on_skater_boy_button_pressed():
@@ -47,12 +49,14 @@ func _on_skater_boy_button_pressed():
 	resetLabel()
 	current_character = Character.SKATER
 	skater_boy_label.visible = true
+	broadcast_character()
 	
 func _on_warrior_girl_button_pressed():
 	#Global.character = "WarriorGirl"
 	resetLabel()
 	current_character = Character.WARRIOR
 	warrior_girl_label.visible = true
+	broadcast_character()
 	
 	# This button is labled Force Start. Only the host should be able to push this.
 	# I plan on adding more ways for the game to start, such as 4 people being ready.
@@ -72,10 +76,14 @@ func resetLabel():
 	warrior_girl_label.hide()
 	pass
 
+func broadcast_character():
+	submit_character.rpc(current_character)
+
 # Called remotely by the server. Runs on everyone's machine.
 @rpc("authority", "call_local", "reliable")
 func startGame():
-	submit_character.rpc_id(1, current_character)
+	# Give everyone the character that the client selected
+	# submit_character.rpc(current_character)
 	MS.change_scene("res://levels_intros/instruct_loading.tscn")
 
 # Called remotely by clients and locally by server. Recipient is server.
