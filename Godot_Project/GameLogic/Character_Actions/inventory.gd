@@ -78,6 +78,14 @@ func drop_weapon():
 		weapon2 = null
 	update_the_hud()
 
+# Called by the player's die() function. Removes all weapons.
+func drop_all_weapons():
+	deactivate(weapon1)
+	deactivate(weapon2)
+	weapon1 = null
+	weapon2 = null
+	update_the_hud()
+
 
 func initialize():
 	# Set the variables
