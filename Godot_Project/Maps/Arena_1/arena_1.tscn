@@ -1836,7 +1836,7 @@ position = Vector2(-1, 1860)
 position = Vector2(4395, 541)
 
 [node name="Vault5" parent="Vaults" instance=ExtResource("6_iuemt")]
-position = Vector2(3, -3126)
+position = Vector2(7, -3079)
 
 [node name="Initial Spawn Points" type="Node" parent="."]
 
