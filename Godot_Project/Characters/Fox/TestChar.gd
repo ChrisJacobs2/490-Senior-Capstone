@@ -41,8 +41,8 @@ func set_health_bar():
 	
 func damage():
 	health -= 1
-	if health == 0:
-		health = FULL_HEALTH
+	if health <= 0:
+		die()
 	update_health_ui()
 
 func _physics_process(_delta):
@@ -206,7 +206,8 @@ func respawn():
 	GameHandler.emit_signal("respawn_me", self)
 
 	# Set player's health to max
-
+	health = FULL_HEALTH
+	update_health_ui()
 	# Enable visiblity
 	show()
 	# TODO: Enable player collision
