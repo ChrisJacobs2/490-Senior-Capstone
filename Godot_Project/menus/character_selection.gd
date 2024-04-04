@@ -75,6 +75,7 @@ func resetLabel():
 # Called remotely by the server. Runs on everyone's machine.
 @rpc("authority", "call_local", "reliable")
 func startGame():
+	# Give the server the character that the client selected
 	submit_character.rpc_id(1, current_character)
 	MS.change_scene("res://levels_intros/instruct_loading.tscn")
 
