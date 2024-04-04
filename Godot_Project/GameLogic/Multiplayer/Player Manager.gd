@@ -25,7 +25,10 @@ func _ready():
 	# Listen to respawn_me signal
 	GameHandler.respawn_me.connect(_respawn_player)
 
-	
+
+# Called from signal emitted by player. Reminder that respawning works client side.
+# Respawns the player at a random spawner
+# TODO: Add more spawners later, and sensible respawn locations.
 func _respawn_player(player):
 	# Get the number of spawners in initial_spawners
 	var spawner_count = len(initial_spawners)
