@@ -91,7 +91,6 @@ func can_shoot():
 
 ## Shoots the Bullet ( see [member Gun.Bullet] )[br]speed is the speed of the bullet in pixels per second[br]angle is the angle in which the bullet will be fired at, in degrees. [i/If set to -1, the guns rotations_degrees will be the bullets angle[/i]
 func shoot(speed:float=200,angle:float=0.0):
-	print("baller")
 	assert(bullet != null and bullet.get_class() != "Bullet", "Put a bullet scene first and it must be a BULLET Node")
 	if can_shoot():
 		if NBS == 1:
