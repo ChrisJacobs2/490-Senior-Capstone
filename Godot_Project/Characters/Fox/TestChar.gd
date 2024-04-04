@@ -22,12 +22,15 @@ func _enter_tree():
 
 func _ready():
 	update_health_ui()
+	update_coins_ui()
 	$HealthBar.max_value = FULL_HEALTH
 
 	# Only the player with authority over this node has the camera enabled.
 	# Everyone else gets it disabled.
 	cam.enabled = is_multiplayer_authority()
 	
+func update_coins_ui():
+	$CoinsLabel.text = "Coins: %s" % coins
 	
 func update_health_ui():
 	set_health_label()

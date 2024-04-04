@@ -8,6 +8,7 @@ signal timer_is_done()
 signal respawn_me()
 
 
+
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
 var client_coins = 0
