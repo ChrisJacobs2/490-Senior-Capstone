@@ -3,25 +3,18 @@ extends CharacterBody2D
 @onready var cam = $Camera2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -1000.0
-@export var coins : int
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-	
-func _enter_tree():
-	# This charcater is assigned a name (player id) when created. In this line,
-	# we are basically setting the ownership to the id that is the character's name.
-	set_multiplayer_authority(name.to_int())
-	# For example, character's name is 1 (host). We set the authority to 1.
-
 func _ready():
-	# Enables the camera on this character if we own it
 	cam.enabled = is_multiplayer_authority()
 	
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+
 func _physics_process(delta):
-	# We do not want other clients calculating physics for our character.
 	if not is_multiplayer_authority():
 		return
 

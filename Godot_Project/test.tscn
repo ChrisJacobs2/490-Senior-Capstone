@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqrchtyr658n5"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_jtf1a"]
+[ext_resource type="Texture2D" uid="uid://b4cx18ang1k7r" path="res://Stages/Test1/1.png" id="1_o3psc"]
+[ext_resource type="PackedScene" uid="uid://dcw5j8aiqsvwr" path="res://gun.tscn" id="7_x4785"]
+[ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="8_2orqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaoyb"]
+size = Vector2(481, 19)
+
+[node name="Node2D" type="Node2D" groups=["Player"]]
+script = ExtResource("1_jtf1a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(960, 655)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_iaoyb")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_o3psc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, -540)
+zoom = Vector2(1.777, 1.777)
+limit_left = -1140
+limit_top = 710
+limit_right = 1150
+limit_bottom = 550
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Gun" parent="." instance=ExtResource("7_x4785")]
+
+[node name="coin" parent="." instance=ExtResource("8_2orqs")]
+position = Vector2(905, 606)

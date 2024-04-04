@@ -28,7 +28,6 @@ func _ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 	MS.connect("update_player_list", _on_player_update)
 	
-	MS.in_lobby = true
 
 	initialize_menu()
 
