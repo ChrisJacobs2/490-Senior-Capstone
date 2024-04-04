@@ -27,7 +27,7 @@ func spawn():
 
 func collect(player):
 	# Stats
-	# print(script_name, $Weapon.get_child_count())
+	#print(script_name, $Weapon.get_child_count())
 
 	# Remove the gun from the spawner, and emit a signal (to SpawnerLogic.gd)
 	if $Weapon.get_child_count() > 0:
@@ -62,8 +62,8 @@ func _process(_delta):
 # Called whenever a "body" including the player enters the collision box of the
 # spawner.
 func _on_spawner_area_entered(body):
-	# print(script_name, "Spawner Area Entered")
-	# print(script_name, body)
+	#print(script_name, "Spawner Area Entered")
+	#print(script_name, body)
 	
 	# We keep track of this incase a player waits inside of a spawner
 	if body.is_in_group("player"):
