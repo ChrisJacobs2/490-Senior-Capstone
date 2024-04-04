@@ -1,0 +1,312 @@
+[gd_scene load_steps=14 format=3 uid="uid://d3lgm4y7dyhin"]
+
+[ext_resource type="Texture2D" uid="uid://cqbpxk8osaewp" path="res://assets/night.png" id="1_qnhsw"]
+[ext_resource type="Script" path="res://in_game_menus/scoreboard.gd" id="1_rnnhr"]
+[ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_3msma"]
+[ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="3_b2y01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ynsv"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8ieq"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.784314)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyvs3"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_6fjxl"]
+Button/styles/hover = SubResource("StyleBoxFlat_7ynsv")
+Button/styles/normal = SubResource("StyleBoxFlat_f8ieq")
+Button/styles/pressed = SubResource("StyleBoxFlat_nyvs3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1fw0"]
+bg_color = Color(1, 1, 1, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Animation" id="Animation_ajlgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yd4jn"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aj2yr"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ecyl"]
+_data = {
+"RESET": SubResource("Animation_ajlgc"),
+"fade_in": SubResource("Animation_yd4jn"),
+"fade_out": SubResource("Animation_aj2yr")
+}
+
+[node name="scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rnnhr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qnhsw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 70.0
+offset_right = 84.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 75
+text = "SCORES"
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_6fjxl")
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 45
+text = " RETURN TO LOBBY "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -112.0
+offset_right = 541.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1fw0")
+
+[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Coins:"
+
+[node name="KillsLabel" type="Label" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Kills:"
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/PanelContainer"]
+position = Vector2(132, 153)
+scale = Vector2(0.0848958, 0.0838541)
+texture = ExtResource("3_b2y01")
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1fw0")
+
+[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Coins:"
+
+[node name="KillsLabel" type="Label" parent="HBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Kills:"
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/PanelContainer2"]
+position = Vector2(136, 154)
+scale = Vector2(0.0848958, 0.0838541)
+texture = ExtResource("3_b2y01")
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1fw0")
+
+[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Coins:"
+
+[node name="KillsLabel" type="Label" parent="HBoxContainer/PanelContainer3"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Kills:"
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/PanelContainer3"]
+position = Vector2(134, 152)
+scale = Vector2(0.0848958, 0.0838541)
+texture = ExtResource("3_b2y01")
+
+[node name="PanelContainer4" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1fw0")
+
+[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Coins:"
+
+[node name="KillsLabel" type="Label" parent="HBoxContainer/PanelContainer4"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Kills:"
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/PanelContainer4"]
+position = Vector2(137, 155)
+scale = Vector2(0.0848958, 0.0838541)
+texture = ExtResource("3_b2y01")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ecyl")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -172.5
+offset_top = -45.0
+offset_right = 172.5
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3msma")
+theme_override_font_sizes/font_size = 40
+text = " Loading next round... "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
