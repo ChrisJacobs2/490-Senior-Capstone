@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
+var is_alive = true
 
 
 func _enter_tree():
@@ -167,6 +168,7 @@ Call the respawn function
 '''
 func die():
 	print("Died!")
+	is_alive = false
 	# Disable the player's input
 	set_physics_process(false)	
 	# TODO: Disable player collision (Make sure this is synced in the multiplayer synchronizer node)
@@ -205,6 +207,7 @@ Enable physics process via set_process(true)
 
 func respawn():
 	print("Respawned!")
+	is_alive = true
 	# Emit the GameHandler's respawn signal
 	GameHandler.emit_signal("respawn_me", self)
 

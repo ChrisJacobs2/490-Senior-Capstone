@@ -39,10 +39,14 @@ func _on_area_2d_body_exited(body):
 func _on_money_timer_timeout():
 	for player in players_inside:
 		# We assume player is a character node with TestChar.gd script attached.
-		player.coins += money_amount
-		# Since we already have a reference to the player's node, we can just call one of its functions.
-		print("vaults.gd: ", player.coins)
-		if player.has_method("update_coins_ui"):
-			player.update_coins_ui()
+		if player.is_alive:
+			player.coins += money_amount
+			# Since we already have a reference to the player's node, we can just call one of its functions.
+			print("vaults.gd: ", player.coins)
+			if player.has_method("update_coins_ui"):
+				player.update_coins_ui()
+			else:
+				print("Vaults.gd Error: Player does not have the method 'update_coins_ui'")
 		else:
-			print("Vaults.gd Error: Player does not have the method 'update_coins_ui'")
+			print("Player is dead. Cannot give money.")
+
