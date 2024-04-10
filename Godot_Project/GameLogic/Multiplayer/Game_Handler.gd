@@ -28,6 +28,8 @@ var playerWins = {}
 func initialize():
 	if MS.is_server():
 		# Iterate over MS.players to initialize playerWins and player_coins.
+		# We iterate over this dictionary in case some players haven't loaded the map yet.
+		# Since the player ids are intergers, beware of type mismatches.
 		for player in MS.players:
 			playerWins[player] = 0
 			player_coins[player] = 0
@@ -66,9 +68,11 @@ func decide_match_victor():
 	for player in players:
 		if player.coins > max_coins:
 			max_coins = player.coins
-			max_id = player.name
+			max_id = player.name		# This is a stringname, not an int. Therefore, it must be converted.
 		pass
-
+	max_id = int(str(max_id))
+	print("Host: The player wins dictionary: ", playerWins)
+	print("Host: The winning player id: ", max_id)
 	# update playerWins accordingly
 	playerWins[max_id] += 1
 
@@ -97,6 +101,7 @@ func winner():
 	# Change everyone to the winner/gameover screen.
 	MS.change_scene("res://menus/game_over_menu.tscn")
 	# Stop hosting. This should disconnect everyone.
+	await get_tree().create_timer(5).timeout
 	MS.leave_game()
 	pass
 
