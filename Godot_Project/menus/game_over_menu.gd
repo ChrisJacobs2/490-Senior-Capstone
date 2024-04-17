@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MS.game_over = true
 	pass # Replace with function body.
 
 
