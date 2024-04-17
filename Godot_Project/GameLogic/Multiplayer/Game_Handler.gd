@@ -48,11 +48,13 @@ func run_match():
 	# Await the timer_finished signal emitted by the Match_Helper timer scene
 	await timer_is_done
 	print("Time is up. Round over.")
+	
+	#MS.change_scene("res://in_game_menus/scoreboard.tscn")
 
 	# Now the timer has finished, call decide_match_victor()
 	decide_match_victor()
-
-
+	
+	
 	pass		
 
 # Should only be called by the server. 
@@ -91,7 +93,10 @@ func decide_match_victor():
 	# if nobody has won yet,
 		# set everyone's coins to 0.
 		# Change map
-	MS.change_scene("res://Maps/Arena_1/arena_1.tscn")
+		
+	
+	MS.change_scene("res://in_game_menus/scoreboard.tscn")
+	#MS.change_scene("res://Maps/Arena_1/arena_1.tscn")
 	
 	pass
 
