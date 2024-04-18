@@ -231,6 +231,7 @@ text = " WINNER "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2qbg5")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

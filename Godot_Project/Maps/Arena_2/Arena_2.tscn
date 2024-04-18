@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1rd6hykb6g" path="res://Characters/Fox/skater.tscn" id="7_vt527"]
 [ext_resource type="PackedScene" uid="uid://dyh46bxw4wg5u" path="res://Maps/Arena_1/vaults.tscn" id="10_8tpe2"]
 [ext_resource type="PackedScene" uid="uid://ds0cupsmoblhi" path="res://Maps/Arena_2/spring.tscn" id="12_xh0ce"]
-[ext_resource type="AudioStream" uid="uid://wckgl1l20loe" path="res://music/rock1.mp3" id="13_5v2ev"]
+[ext_resource type="AudioStream" uid="uid://b8li1ha8c75ip" path="res://music/trap4.mp3" id="13_hqbdt"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r11kh"]
 tile_data = PackedInt32Array(0, 458753, 5, 65536, 458753, 5, 131072, 458753, 5, 196608, 458752, 1, 262144, 458752, 1, 1, 458753, 5, 65537, 458753, 5, 131073, 458753, 5, 196609, 458752, 1, 262145, 458752, 1, 2, 458753, 5, 65538, 458753, 5, 131074, 458753, 5, 196610, 458752, 1, 262146, 458752, 1, 3, 458753, 5, 65539, 458753, 5, 131075, 458753, 5, 196611, 458752, 1, 262147, 458752, 1, 4, 458753, 5, 65540, 458753, 5, 131076, 458753, 5, 196612, 458752, 1, 262148, 458752, 1)
@@ -947,4 +947,5 @@ skater_scene = ExtResource("7_vt527")
 [node name="Match Helper" parent="." instance=ExtResource("3_bqx7d")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_5v2ev")
+stream = ExtResource("13_hqbdt")
+autoplay = true
