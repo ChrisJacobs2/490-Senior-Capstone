@@ -1,11 +1,47 @@
 extends Control
 
+@onready var sprite_panel = $HBoxContainer/PanelContainer/Sprite2D
+
+enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
+var current_character
+
+var clown = preload("res://assets/characters/ClownFaceIdle.png")
+var penguin = preload("res://assets/characters/PenguinIdle.png")
+var warrior = preload("res://assets/characters/WarriorGirlIdle.png")
+var skater = preload("res://assets/characters/SkaterIdle.png")
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MS.game_over = true
-	pass # Replace with function body.
+	is_winner()
+	pass 
 
+
+func is_winner():
+	#identify winning player
+	for player in GameHandler.playerWins:
+		if GameHandler.playerWins[player] == 2:
+			print(GameHandler.playerWins[player])
+			var winning_player = GameHandler.playerWins[player]
+			set_winner(winning_player)
+	pass
+
+
+func set_winner(winning_player):
+	#set sprite & other info for winning player
+	for i in winning_player:
+		if(MS.serverside_characters[i] == Character.CLOWN):
+			sprite_panel.texture = clown
+		if(MS.serverside_characters[i] == Character.SKATER):
+			sprite_panel.texture = skater
+		if(MS.serverside_characters[i] == Character.PENGUIN):
+			sprite_panel.texture = penguin
+		if(MS.serverside_characters[i] == Character.WARRIOR):
+			sprite_panel.texture = warrior
+			sprite_panel.scale *= 2
+	pass
 
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
