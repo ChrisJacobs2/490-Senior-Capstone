@@ -48,8 +48,7 @@ func run_match():
 	# Await the timer_finished signal emitted by the Match_Helper timer scene
 	await timer_is_done
 	print("Time is up. Round over.")
-	
-	#MS.change_scene("res://in_game_menus/scoreboard.tscn")
+
 
 	# Now the timer has finished, call decide_match_victor()
 	decide_match_victor()
@@ -64,13 +63,16 @@ func decide_match_victor():
 	# Find out who has the most coins
 		# First, get a list of every node in group 'player' and call it players
 	var players = get_tree().get_nodes_in_group("player")
+	
 		# Then, iterate over the player list, saving the player with the most coins
 	var max_coins = -1
 	var max_id = null
 	for player in players:
+		player_coins[player] = player.coins
 		if player.coins > max_coins:
 			max_coins = player.coins
 			max_id = player.name		# This is a stringname, not an int. Therefore, it must be converted.
+			
 		pass
 	max_id = int(str(max_id))
 	print("Host: The player wins dictionary: ", playerWins)
@@ -91,9 +93,9 @@ func decide_match_victor():
 			winner()
 			return
 	# if nobody has won yet,
-		# set everyone's coins to 0.
+		# set everyone's coins to 0
 		# Change map
-		
+	
 	
 	MS.change_scene("res://in_game_menus/scoreboard.tscn")
 	#MS.change_scene("res://Maps/Arena_1/arena_1.tscn")

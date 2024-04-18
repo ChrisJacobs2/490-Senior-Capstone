@@ -94,7 +94,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/font = ExtResource("3_c1d8o")
 theme_override_font_sizes/font_size = 150
-text = "Level 1"
+text = "Round 1"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

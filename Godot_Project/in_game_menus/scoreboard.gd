@@ -1,5 +1,6 @@
 extends Control
 
+
 #add winner label
 
 @onready var coin_labels = [$HBoxContainer/PanelContainer/CoinLabel, $HBoxContainer/PanelContainer2/CoinLabel,
@@ -12,9 +13,9 @@ extends Control
 						$HBoxContainer/PanelContainer3, $HBoxContainer/PanelContainer4]
 
 
+#@onready var test_char = $"res://Characters/Fox/TestChar.gd"
 #@onready var test_char = $"res://Characters/Fox/TestChar.tscn"
-@onready var char_coins = get_tree().get_nodes_in_group("player")
-
+#@onready var char_coins = get_tree().get_nodes_in_group("player")
 
 #begin testing purposes
 var player_coins
@@ -37,13 +38,13 @@ func _ready():
 	#test_data()
 	hide_panel_cards()
 	set_panel_cards()
-	set_coin_total()
+	#set_coin_total()
 	#set_kill_total()
 	set_character()
 	
 	$AnimationPlayer.play("fade_in")
 	#fade in time + time showing scene
-	await get_tree().create_timer(14).timeout
+	await get_tree().create_timer(8).timeout
 	$AnimationPlayer.play("fade_out")
 	#fade out time
 	await get_tree().create_timer(3).timeout
@@ -73,21 +74,22 @@ func set_panel_cards():
 	for i in MS.players:
 		panel_cards[panel_counter].show()
 		panel_counter+=1
+		
 
 
 #get total coins for each player
 func set_coin_total():
 	#loop thru each player to get their total coins for round
 	print("entered coin fn")
-	
-	#var char_coins = test_char.get_nodes_in_group("player")
-
-	print(char_coins)
 	var coin_panels = 0
-	for player in char_coins:
+	#var players = get_tree().get_nodes_in_group("player")
+	#print(players)
+	print(GameHandler.player_coins)
+	for player in MS.players.keys():
 		print("reached loop")
-		print(player.coins)
-		coin_labels[coin_panels].text = " Coins: " + str(player.coins)
+
+		#print(GameHandler.player_coins[player])
+		coin_labels[coin_panels].text = " Coins: " + str(GameHandler.player_coins[player])
 		coin_panels+=1
 	
 	#this is for testing purposes
