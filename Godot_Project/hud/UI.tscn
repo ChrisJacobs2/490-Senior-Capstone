@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0hlfp1kigj5f"]
+
+[ext_resource type="Texture2D" uid="uid://c784ip4j4qlbk" path="res://hud/items.png" id="1_crl8t"]
+[ext_resource type="Texture2D" uid="uid://b0pc7emxbppch" path="res://hud/select 1.png" id="2_pkesa"]
+[ext_resource type="Texture2D" uid="uid://dph67p6d3kpvc" path="res://hud/select 2.png" id="3_ayi55"]
+[ext_resource type="Texture2D" uid="uid://nfix41uwxdj" path="res://hud/players.png" id="4_ko6h5"]
+[ext_resource type="Script" path="res://hud/score1.gd" id="4_ud6o3"]
+
+[sub_resource type="GDScript" id="GDScript_llf1e"]
+
+[sub_resource type="FontVariation" id="FontVariation_sacjy"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_llf1e")
+
+[node name="Container" type="Container" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 35.0
+offset_right = 72.0
+offset_bottom = 75.0
+
+[node name="Items" type="Sprite2D" parent="CanvasLayer/Container"]
+position = Vector2(485, 261.75)
+scale = Vector2(0.5375, 0.5375)
+texture = ExtResource("1_crl8t")
+
+[node name="Select1" type="Sprite2D" parent="CanvasLayer/Container"]
+visible = false
+position = Vector2(490, 265)
+scale = Vector2(0.544444, 0.544444)
+texture = ExtResource("2_pkesa")
+
+[node name="Select2" type="Sprite2D" parent="CanvasLayer/Container"]
+visible = false
+position = Vector2(490, 263)
+scale = Vector2(0.540741, 0.540741)
+texture = ExtResource("3_ayi55")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 859.0
+offset_top = 27.0
+offset_right = 899.0
+offset_bottom = 67.0
+scale = Vector2(6.90961, 2.69024)
+
+[node name="scores panel" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 854.0
+offset_top = 16.0
+offset_right = 894.0
+offset_bottom = 56.0
+scale = Vector2(7.17141, 3.20864)
+
+[node name="Players" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(693.268, 287.155)
+scale = Vector2(0.464804, 0.499298)
+texture = ExtResource("4_ko6h5")
+
+[node name="score num" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 859.0
+offset_top = 57.0
+offset_right = 911.0
+offset_bottom = 80.0
+scale = Vector2(5.34104, 3.08423)
+size_flags_stretch_ratio = 1.08
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/score num"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_fonts/font = SubResource("FontVariation_sacjy")
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ud6o3")
+
+[node name="Label2" type="Label" parent="CanvasLayer/score num"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_fonts/font = SubResource("FontVariation_sacjy")
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ud6o3")
+
+[node name="Label3" type="Label" parent="CanvasLayer/score num"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_fonts/font = SubResource("FontVariation_sacjy")
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ud6o3")
+
+[node name="Label4" type="Label" parent="CanvasLayer/score num"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_fonts/font = SubResource("FontVariation_sacjy")
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ud6o3")
