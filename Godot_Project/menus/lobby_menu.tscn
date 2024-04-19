@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://menus/lobby_menu.gd" id="1_nhhgv"]
 [ext_resource type="Texture2D" uid="uid://o46pxmjqiegb" path="res://assets/lobbyblue.png" id="2_elki4"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="3_4m1du"]
-[ext_resource type="AudioStream" uid="uid://dv8187y5on1qt" path="res://music/space2.mp3" id="4_qs23o"]
+[ext_resource type="AudioStream" uid="uid://ur8d56r1thxn" path="res://music/space2.mp3" id="4_qs23o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy55e"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
