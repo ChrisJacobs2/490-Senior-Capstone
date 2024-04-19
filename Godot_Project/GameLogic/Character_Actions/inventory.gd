@@ -86,7 +86,6 @@ func drop_all_weapons():
 	weapon2 = null
 	update_the_hud()
 
-
 func initialize():
 	# Set the variables
 		# self is the node the script is attached to
@@ -185,3 +184,6 @@ func translate_instructions(weapon_name):
 	# Then, call pickup_weapon() with the weapon reference as an argument
 	pickup_weapon(weap)
 	pass
+	
+func turnAround():
+	scale.x = scale.x * -1

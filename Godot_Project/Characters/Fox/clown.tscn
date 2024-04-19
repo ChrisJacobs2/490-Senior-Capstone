@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://bt33euwys4tvc"]
+[gd_scene load_steps=32 format=3 uid="uid://bt33euwys4tvc"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_pfjyr"]
-[ext_resource type="Texture2D" uid="uid://bnkmw1cetrt4l" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
-[ext_resource type="Texture2D" uid="uid://dce7sqwq5dhh2" path="res://assets/characters/clown run/clown run animation.png" id="3_j4m01"]
+[ext_resource type="Texture2D" uid="uid://co7j4mvfuob5u" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
+[ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_w0uhe"]
+[ext_resource type="Texture2D" uid="uid://b64ms22f4bcrw" path="res://assets/characters/clown run/clown run animation.png" id="3_j4m01"]
 [ext_resource type="Texture2D" uid="uid://umdqlc3xk1t2" path="res://assets/characters/ClownFaceIdle.png" id="4_svp3j"]
-[ext_resource type="Texture2D" uid="uid://dtuu70wgmjl6m" path="res://assets/characters/clown jump/clown jump animation.png" id="5_wnq5q"]
+[ext_resource type="Texture2D" uid="uid://datgqcff21ort" path="res://assets/characters/clown jump/clown jump animation.png" id="5_wnq5q"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_bputc"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_k2fi0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_18qpx"]
@@ -106,7 +107,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
 resource_local_to_scene = true
-size = Vector2(65, 80)
+size = Vector2(26.3333, 79.3333)
 
 [sub_resource type="Animation" id="Animation_temde"]
 resource_name = "Crouch"
@@ -418,7 +419,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(65, 80)]
+"values": [Vector2(26.3333, 79.3333)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -430,7 +431,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3, 26)]
+"values": [Vector2(-5.83333, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1n0"]
@@ -470,6 +471,7 @@ slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_pfjyr")
+coin = ExtResource("2_w0uhe")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2.5)
@@ -484,7 +486,7 @@ libraries = {
 }
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 26)
+position = Vector2(-5.83333, 2)
 shape = SubResource("RectangleShape2D_7vtxx")
 
 [node name="Raycasts" type="Node2D" parent="."]
@@ -601,7 +603,7 @@ offset_bottom = -57.0
 zoom = Vector2(0.5, 0.5)
 
 [node name="Inventory" parent="." instance=ExtResource("10_o3dib")]
-position = Vector2(24, 29)
+position = Vector2(-3.66667, 31.3333)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_axvwh")

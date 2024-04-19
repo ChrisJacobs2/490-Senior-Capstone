@@ -25,5 +25,5 @@ visible = false
 position = Vector2(11, -11)
 
 [node name="Sword" parent="." instance=ExtResource("5_osn6f")]
-visible = false
-position = Vector2(44, -34)
+position = Vector2(51, -21)
+scale = Vector2(0.04, 0.04)

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var coin : PackedScene
+
 @onready var testChar = $Animations
 @onready var animations = $Animations/AnimationPlayer
 @onready var cam = $Camera2D
@@ -8,31 +10,31 @@ extends CharacterBody2D
 @export var jump_force = 1300
 @export var landed = true
 @export var coins = 0
-@export var direction = 1
+@export var direction = 2 #2 is right, 1 is left
+@export var directionChange = true
 
 const FULL_HEALTH = 3
 @export var health = FULL_HEALTH
 var is_alive = true
 
-
-func _enter_tree():
-	# This node is created with a name (the player's id) when it gets created.
-	# This line uses the name to set the character's multiplayer authority (who owns it)
-	set_multiplayer_authority(name.to_int())
-
-
 func _ready():
 	update_health_ui()
 	update_coins_ui()
 	$HealthBar.max_value = FULL_HEALTH
-
+	
 	# Only the player with authority over this node has the camera enabled.
 	# Everyone else gets it disabled.
 	cam.enabled = is_multiplayer_authority()
+	animations.play("Idle")
+	
+func _enter_tree():
+	# This node is created with a name (the player's id) when it gets created.
+	# This line uses the name to set the character's multiplayer authority (who owns it)
+	set_multiplayer_authority(name.to_int())
 	
 func update_coins_ui():
 	$CoinsLabel.text = "Coins: %s" % coins
-	
+
 func update_health_ui():
 	set_health_label()
 	set_health_bar()
@@ -48,18 +50,12 @@ func damage():
 	if health <= 0:
 		die()
 	update_health_ui()
-
+	
 func _physics_process(_delta):
+	
 	
 	if not is_multiplayer_authority():
 		return
-		
-	# Testing only. TODO: remove this
-	# Should be the P key
-	if Input.is_action_just_pressed("suicide"):
-		die()
-		pass
-
 	
 	if Input.is_action_just_pressed("change_weapon"):
 		# call the "swap_slots" function in the Inventory child node.
@@ -76,28 +72,31 @@ func _physics_process(_delta):
 			velocity.y = 1000
 	
 	if is_on_floor():
+		velocity.y = 0
 		if landed == false:
-			animations.stop()
 			$StateChart.send_event("landing")
 			landed = true
-		velocity.y = 0
-		
 	
 	var x_direction = Input.get_axis("move_left", "move_right")
+	
+	if Input.is_action_just_pressed("damage"):
+		damage()
 	
 	if Input.is_action_pressed("move_left") && !Input.is_action_pressed("move_right") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
-		direction = -1
-		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
+		if direction != 1:
+			direction = 1
+			$Inventory.turnAround()
 		
 	if Input.is_action_pressed("move_right") && !Input.is_action_pressed("move_left") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
 		testChar.flip_h = (x_direction == -1)
-		direction = 1
-		$Inventory/PenguinGun/Sprite2D.flip_h = (x_direction == -1)
+		if direction != 2:
+			direction = 2
+			$Inventory.turnAround()
 	
 	if Input.is_action_pressed("move_left") && Input.is_action_pressed("move_right") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("release_left_right")
@@ -125,9 +124,9 @@ func _physics_process(_delta):
 		
 	if Input.is_action_just_pressed("shoot"):
 		if $Inventory/LaserGun.get_meta("Active") == true:
-			$Inventory/LaserGun.shoot(1000,180)
+			$Inventory/LaserGun.shoot(2000,180 * direction)
 		if $Inventory/PenguinGun.get_meta("Active") == true:
-			$Inventory/PenguinGun.shoot(1000,180)
+			$Inventory/PenguinGun.shoot(2000,180 * direction)
 		pass
 	
 func _on_idle_state_processing(_delta):
@@ -145,9 +144,8 @@ func _on_air_state_entered():
 
 func _on_crouch_state_entered():
 	animations.play("Crouch")
-
-
-# This function should be called by the client when it dies, since health is calculated client side.
+	
+	# This function should be called by the client when it dies, since health is calculated client side.
 # Not the best practice.
 '''
 Procedure:
@@ -225,14 +223,11 @@ func respawn():
 	pass
 
 func drop_coins():
-	'''
-	This function will drop coins. Here's some ideas for implementing it:
-		1.) use RPC functions to spawn coins (or a money bag) on the server and clients
-			The coin object has a multiplayer synchronizer as well as physics to drop to the ground
-			(this is probably easier)
-		2.) use RPC function to tell the server directly that you died, (like in the game handler script)
-			The server then spawns the coins and tells the clients to spawn them as well
-			(this is probably harder, but more secure [not that we need it])
-	'''
-	
-	pass
+	if coins % 2 != 0: coins = coins + 1
+	for i in range(coins / 2):
+		var inst = coin.instantiate()
+		inst.global_position = Vector2(position.x + 30, position.y + 30)
+		get_parent().add_sibling(inst)
+	coins = (coins / 2) - 1
+	update_coins_ui()
+

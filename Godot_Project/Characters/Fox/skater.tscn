@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://ct1rd6hykb6g"]
+[gd_scene load_steps=35 format=3 uid="uid://ct1rd6hykb6g"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_3yimp"]
-[ext_resource type="Texture2D" uid="uid://bdvl31g86bvqq" path="res://assets/characters/boy crouch/boy crouch 1.png" id="2_shd1m"]
-[ext_resource type="Texture2D" uid="uid://bfjgl6lghwur2" path="res://assets/characters/boy run/boy run animation.png" id="3_adxr2"]
+[ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_g8jyc"]
+[ext_resource type="Texture2D" uid="uid://b1net34lx8v1o" path="res://assets/characters/boy crouch/boy crouch 1.png" id="2_shd1m"]
+[ext_resource type="Texture2D" uid="uid://bb6odhblw52e3" path="res://assets/characters/boy run/boy run animation.png" id="3_adxr2"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="4_kmhd0"]
-[ext_resource type="Texture2D" uid="uid://bqam8vr1ngky7" path="res://assets/characters/boy jump/boy jump 2.png" id="5_ahjg7"]
+[ext_resource type="Texture2D" uid="uid://cq8au4wjgygp2" path="res://assets/characters/boy jump/boy jump 2.png" id="5_ahjg7"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_pcvcp"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_kf7rv"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_lbqib"]
@@ -490,6 +491,7 @@ slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_3yimp")
+coin = ExtResource("2_g8jyc")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1.8)

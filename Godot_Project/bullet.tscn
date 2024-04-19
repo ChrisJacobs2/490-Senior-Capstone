@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5n4p8l3esgew"]
 
 [ext_resource type="Script" path="res://Fire Bullets/scripts/Bullet.gd" id="1_2owoa"]
-[ext_resource type="Texture2D" uid="uid://clixi8sw7q2bw" path="res://Fire Bullets/assets/bullet.png" id="2_tmq2v"]
+[ext_resource type="Texture2D" uid="uid://bcwut8xlstbod" path="res://assets/weapons/lazar gun bullet/lazar1.png" id="2_c75gg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xp20w"]
 radius = 9.0
@@ -12,7 +12,9 @@ scale = Vector2(2, 2)
 script = ExtResource("1_2owoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tmq2v")
+position = Vector2(-1.115, 0.839999)
+scale = Vector2(0.032, 0.032125)
+texture = ExtResource("2_c75gg")
 
 [node name="hitbox" type="Area2D" parent="."]
 
