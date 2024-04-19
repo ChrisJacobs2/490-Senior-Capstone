@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0chp7ch7a1g7"]
+[gd_scene load_steps=21 format=3 uid="uid://b0chp7ch7a1g7"]
 
 [ext_resource type="Texture2D" uid="uid://oevlmiddfpt1" path="res://assets/craftpix-net-982312-free-simple-platformer-game-kit-pixel-art/5 GUI/Interface/Tileset.png" id="1_6y76u"]
 [ext_resource type="PackedScene" uid="uid://ckhs4mooqrj17" path="res://Maps/Arena_1/initial_spawn.tscn" id="1_gqech"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1rd6hykb6g" path="res://Characters/Fox/skater.tscn" id="7_vt527"]
 [ext_resource type="PackedScene" uid="uid://dyh46bxw4wg5u" path="res://Maps/Arena_1/vaults.tscn" id="10_8tpe2"]
 [ext_resource type="PackedScene" uid="uid://ds0cupsmoblhi" path="res://Maps/Arena_2/spring.tscn" id="12_xh0ce"]
+[ext_resource type="Texture2D" uid="uid://clecwdcv4c78n" path="res://assets/backgrounds/space_copy.png" id="13_8upjs"]
 [ext_resource type="AudioStream" uid="uid://c82ekqy65e3oh" path="res://music/trap4.mp3" id="13_hqbdt"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r11kh"]
@@ -961,3 +962,13 @@ skater_scene = ExtResource("7_vt527")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_hqbdt")
 autoplay = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(-0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(143.5, 468.5)
+scale = Vector2(2.58516, 3.25139)
+texture = ExtResource("13_8upjs")
