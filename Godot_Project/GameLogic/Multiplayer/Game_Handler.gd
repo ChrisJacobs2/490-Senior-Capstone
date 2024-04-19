@@ -8,7 +8,6 @@ signal timer_is_done()
 signal respawn_me()
 
 
-
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
 var client_coins = 0
@@ -20,6 +19,8 @@ var client_kills = 0
 var player_coins = {}
 # id: player wins dictionary
 var playerWins = {}
+
+var popup_scoreboard = preload("res://in_game_menus/scoreboard.tscn").instantiate()
 
 
 
@@ -44,7 +45,12 @@ func run_match():
 
 	# Start the timer in the current scene. Reminder to sync the timer to the clients
 	GameHandler.emit_signal("start_the_timer")
-
+	
+	#await get_tree().create_timer(16).timeout
+	# pause timer, display scoreboard popup
+	#$"Match Helper".set_paused(true)
+	#display_scoreboard()
+	
 	# Await the timer_finished signal emitted by the Match_Helper timer scene
 	await timer_is_done
 	print("Time is up. Round over.")
@@ -84,8 +90,8 @@ func decide_match_victor():
 	# print("host wins")
 	# var id = multiplayer.get_unique_id()	# the host id
 	# playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
-
-
+	
+	
 	# Check if we should call winner() or change map.
 	# Iterate over playerWins to see if someone has won.
 	for player in playerWins:
@@ -95,12 +101,38 @@ func decide_match_victor():
 	# if nobody has won yet,
 		# set everyone's coins to 0
 		# Change map
-	
-	
-	MS.change_scene("res://in_game_menus/scoreboard.tscn")
+		
+	display_scoreboard()
+	#MS.change_scene("res://in_game_menus/scoreboard.tscn")
 	#MS.change_scene("res://Maps/Arena_1/arena_1.tscn")
 	
 	pass
+	
+
+func display_scoreboard():
+	#get player coin info
+	var players = get_tree().get_nodes_in_group("player")
+	for player in players:
+		player_coins[player] = player.coins
+		print("this is sb")
+		print(player_coins[player])
+
+	#show scoreboard
+	#var popup_scoreboard = preload("res://in_game_menus/scoreboard.tscn").instantiate()
+	#popup_scoreboard.size = get_viewport().size
+	popup_scoreboard.position = get_viewport().get_visible_rect().position
+	#add_child(popup_scoreboard)
+	
+	#make canvas layer so scoreboard is in foreground
+	var sb_layer = CanvasLayer.new()
+	add_child(sb_layer)
+	sb_layer.add_child(popup_scoreboard)
+	#popup_scoreboard.show()
+	
+	sb_layer.show()
+	await get_tree().create_timer(4).timeout
+	sb_layer.hide()
+	#get_tree().paused = false
 
 func winner():
 	print("Someone Won!!!")

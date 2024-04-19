@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://df74ome2dbw1p"]
+[gd_scene load_steps=16 format=3 uid="uid://df74ome2dbw1p"]
 
 [ext_resource type="Script" path="res://menus/game_over_menu.gd" id="1_l4y8u"]
 [ext_resource type="Texture2D" uid="uid://bm25d78i8mcxw" path="res://assets/lilac.png" id="1_wytbi"]
 [ext_resource type="Texture2D" uid="uid://28baq4reyujs" path="res://assets/purpleclouds.png" id="2_ses4m"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="3_7uiid"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="5_d0dqq"]
+[ext_resource type="AudioStream" uid="uid://bbbpw0ss40g0" path="res://music/pop2.mp3" id="6_2qbg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erd"]
 bg_color = Color(1, 1, 1, 0.286275)
@@ -156,14 +157,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_38erd")
 
-[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_7uiid")
-theme_override_font_sizes/font_size = 40
-text = " Coins:"
-
 [node name="NameLabel" type="Label" parent="HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 8
@@ -227,6 +220,10 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_fonts/font = ExtResource("3_7uiid")
 theme_override_font_sizes/font_size = 75
 text = " WINNER "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2qbg5")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

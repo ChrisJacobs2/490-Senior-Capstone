@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://options_menu.gd" id="1_7kuam"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_hakw4"]
 [ext_resource type="PackedScene" uid="uid://bsvyjnlv2mq2w" path="res://settings_tab_container.tscn" id="4_vvyn1"]
-[ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="5_476v5"]
+[ext_resource type="AudioStream" uid="uid://dv8187y5on1qt" path="res://music/space2.mp3" id="5_bgo0c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ocnd"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
@@ -112,7 +112,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_476v5")
+stream = ExtResource("5_bgo0c")
 volume_db = -12.543
 autoplay = true
 bus = &"Music"

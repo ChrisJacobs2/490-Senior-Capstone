@@ -1,12 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://ch4mamn12r4h"]
+[gd_scene load_steps=26 format=3 uid="uid://ch4mamn12r4h"]
 
 [ext_resource type="Texture2D" uid="uid://x2jhhv33vk2x" path="res://assets/Tiles.png" id="1_6n802"]
-[ext_resource type="Texture2D" uid="uid://d0vw3f04513w" path="res://assets/maintileblock.png" id="4_afk5c"]
+[ext_resource type="Texture2D" uid="uid://2ujacvqatgb2" path="res://assets/maintileblock.png" id="4_afk5c"]
 [ext_resource type="Texture2D" uid="uid://c37wmesrbvnsy" path="res://Tiles/platform-200.png" id="4_at2ex"]
-[ext_resource type="Texture2D" uid="uid://b0dgbgjqvt8xd" path="res://assets/tileslighter.png" id="4_q145u"]
-[ext_resource type="Texture2D" uid="uid://3nxi3cgvr050" path="res://assets/tileswater.png" id="5_n1of4"]
+[ext_resource type="Texture2D" uid="uid://bws2ibfg0qarh" path="res://assets/tileslighter.png" id="4_q145u"]
+[ext_resource type="Texture2D" uid="uid://dajr17kierm1r" path="res://assets/tileswater.png" id="5_n1of4"]
 [ext_resource type="Texture2D" uid="uid://tyyfb2hu8kyi" path="res://Tiles/ramp2a.png" id="5_o6hhg"]
-[ext_resource type="Texture2D" uid="uid://cfrsxlpdtlmwa" path="res://assets/tilesbushes.png" id="6_5letv"]
+[ext_resource type="Texture2D" uid="uid://ct2ma30ahah4h" path="res://assets/tilesbushes.png" id="6_5letv"]
 [ext_resource type="PackedScene" uid="uid://dyh46bxw4wg5u" path="res://Maps/Arena_1/vaults.tscn" id="6_iuemt"]
 [ext_resource type="PackedScene" uid="uid://ckhs4mooqrj17" path="res://Maps/Arena_1/initial_spawn.tscn" id="7_dj36i"]
 [ext_resource type="PackedScene" uid="uid://816o5cjbv2lg" path="res://GameLogic/Weapon_Spawning/Weapon_Spawner.tscn" id="8_8nrt3"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bt33euwys4tvc" path="res://Characters/Fox/clown.tscn" id="10_bkks2"]
 [ext_resource type="PackedScene" uid="uid://dvv810lxsyeeq" path="res://Characters/Fox/penguin.tscn" id="14_jkgyo"]
 [ext_resource type="PackedScene" uid="uid://ct1rd6hykb6g" path="res://Characters/Fox/skater.tscn" id="15_ev8jo"]
+[ext_resource type="AudioStream" uid="uid://wckgl1l20loe" path="res://music/rock1.mp3" id="17_hpobx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_78lxc"]
 texture = ExtResource("1_6n802")
@@ -1874,3 +1875,7 @@ skater_scene = ExtResource("15_ev8jo")
 
 [node name="Match Helper" parent="." instance=ExtResource("10_2nyr0")]
 wait_time = 20.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_hpobx")
+autoplay = true
