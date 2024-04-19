@@ -19,6 +19,9 @@ func _ready():
 	warrior_girl_label = $WarriorGirl/WarriorGirlLabel
 	start_button = $StartButton
 	
+	# default case if nobody picks character
+	_on_clown_face_button_pressed()
+	
 	if not MS.is_server():
 		start_button.hide()
 
