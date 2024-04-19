@@ -164,18 +164,18 @@ func update_client_coins(coins):
 
 
 # rpc to display scoreboard
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "reliable")
 func show_scoreboard_to_all():
 	display_scoreboard()
 	
 	
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "reliable")
 func initialize_playerWins():
 	for player in MS.players:
 		playerWins[player] = 0
 		
 # rpc to send playerWins info to everyone
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "reliable")
 func playerWins_info():
 	#get playerWins info	
 	#for player in MS.players:
