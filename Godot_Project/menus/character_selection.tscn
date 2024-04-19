@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cfvwxq581c5rc" path="res://assets/characters/WarriorGirlIdle.png" id="6_8s3vw"]
 [ext_resource type="Texture2D" uid="uid://umdqlc3xk1t2" path="res://assets/characters/ClownFaceIdle.png" id="6_qe5iw"]
 [ext_resource type="Texture2D" uid="uid://x2jhhv33vk2x" path="res://assets/Tiles.png" id="8_5pfmw"]
-[ext_resource type="AudioStream" uid="uid://biogtbsnbdp84" path="res://assets/cutemusic.wav" id="9_vvtus"]
-[ext_resource type="Texture2D" uid="uid://hjr2dyqsmugn" path="res://assets/icons/checkmark.png" id="10_3fmf1"]
-[ext_resource type="Texture2D" uid="uid://kumjybekuxl6" path="res://assets/icons/x-mark.png" id="11_7tmsb"]
+[ext_resource type="AudioStream" uid="uid://bxcb7to5jd7b8" path="res://music/pop1.mp3" id="8_ijb7e"]
+[ext_resource type="Texture2D" uid="uid://b2uifn85vtvum" path="res://assets/icons/checkmark.png" id="10_3fmf1"]
+[ext_resource type="Texture2D" uid="uid://dg7ompjs1wa4o" path="res://assets/icons/x-mark.png" id="11_7tmsb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fysgp"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
@@ -1711,7 +1711,7 @@ theme_override_font_sizes/font_size = 45
 text = "Start"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_vvtus")
+stream = ExtResource("8_ijb7e")
 volume_db = -12.543
 autoplay = true
 bus = &"Music"
