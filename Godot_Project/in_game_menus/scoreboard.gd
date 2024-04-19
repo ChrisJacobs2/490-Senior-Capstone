@@ -32,7 +32,7 @@ func _ready():
 	set_coin_total()
 	set_character()
 	set_nickname()
-	#set_winner()
+	set_winner()
 	
 	#$AnimationPlayer.play("fade_in")
 	#fade in time + time showing scene
@@ -47,10 +47,11 @@ func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
 
 
-#hide initial panels
+#hide initial panels & winner labels
 func hide_panel_cards():
 	for i in range (0, 4):
 		panel_cards[i].hide()
+		win_labels[i].hide()
 
 
 #set panels = num of players
@@ -98,13 +99,15 @@ func set_nickname():
 		name_counter += 1
 	
 
-#get winner, make label that appears for winner
+#get winner, make label appear for winner
 func set_winner():
+	var winner = null
 	for i in MS.num_players:
-		if GameHandler.playerWins[i] > 0:
-			win_labels[i].show()
-			
-	var players = get_tree().get_nodes_in_group("player")
-	var max_coins = -1
-	var max_id = null
-
+		var players = get_tree().get_nodes_in_group("player")
+		var max_coins = -1
+		var max_id = null
+		for player in players:
+			if player.coins > max_coins:
+				max_coins = player.coins
+				winner = i
+		win_labels[i].show()

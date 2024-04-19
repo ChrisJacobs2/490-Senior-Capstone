@@ -198,7 +198,6 @@ theme_override_font_sizes/font_size = 40
 text = " Name:"
 
 [node name="WinLabel" type="Label" parent="HBoxContainer/PanelContainer"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.427451, 0.356863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -233,7 +232,6 @@ theme_override_font_sizes/font_size = 40
 text = " Name:"
 
 [node name="WinLabel" type="Label" parent="HBoxContainer/PanelContainer2"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.427451, 0.356863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -268,7 +266,6 @@ theme_override_font_sizes/font_size = 40
 text = " Name:"
 
 [node name="WinLabel" type="Label" parent="HBoxContainer/PanelContainer3"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.427451, 0.356863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -303,7 +300,6 @@ theme_override_font_sizes/font_size = 40
 text = " Name:"
 
 [node name="WinLabel" type="Label" parent="HBoxContainer/PanelContainer4"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.427451, 0.356863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
