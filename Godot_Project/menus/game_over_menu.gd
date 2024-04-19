@@ -15,8 +15,8 @@ var skater = preload("res://assets/characters/SkaterIdle.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MS.game_over = true
 	is_winner()
+	MS.game_over = true
 	pass 
 
 

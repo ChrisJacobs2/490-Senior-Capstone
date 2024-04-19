@@ -27,11 +27,7 @@ func _on_timeout():
 func start_timer():
 	# self.start(30)
 	self.start(wait_time)
-	#await get_tree().create_timer(11).timeout
-	# pause timer, display scoreboard popup
-	#get_tree().paused = true
-	#GameHandler.display_scoreboard()
-	#get_tree().paused = false
+
 
 # This is called by the Game_Handler script once the 3 seconds contdown is over
 func _on_start_timer():

@@ -34,6 +34,7 @@ func initialize():
 		for player in MS.players:
 			playerWins[player] = 0
 			player_coins[player] = 0
+		rpc("initialize_playerWins")
 		# Make sure to remove players who leave the game from playerWins and player_coins,
 		# using the player disconnetced signal.
 		multiplayer.peer_disconnected.connect(_on_player_disconnected)
@@ -45,7 +46,7 @@ func run_match():
 
 	# Start the timer in the current scene. Reminder to sync the timer to the clients
 	GameHandler.emit_signal("start_the_timer")
-	
+	#rpc("initialize_playerWins")
 	#await get_tree().create_timer(16).timeout
 	# pause timer, display scoreboard popup
 	#$"Match Helper".set_paused(true)
@@ -55,7 +56,7 @@ func run_match():
 	await timer_is_done
 	print("Time is up. Round over.")
 
-
+	
 	# Now the timer has finished, call decide_match_victor()
 	decide_match_victor()
 	
@@ -68,41 +69,42 @@ func run_match():
 func decide_match_victor():
 	# Find out who has the most coins
 		# First, get a list of every node in group 'player' and call it players
-	var players = get_tree().get_nodes_in_group("player")
+	#var players = get_tree().get_nodes_in_group("player")
 	
 		# Then, iterate over the player list, saving the player with the most coins
-	var max_coins = -1
-	var max_id = null
-	for player in players:
-		player_coins[player] = player.coins
-		if player.coins > max_coins:
-			max_coins = player.coins
-			max_id = player.name		# This is a stringname, not an int. Therefore, it must be converted.
+	#var max_coins = -1
+	#var max_id = null
+	#for player in players:
+		#player_coins[player] = player.coins
+		#if player.coins > max_coins:
+			#max_coins = player.coins
+			#max_id = player.name		# This is a stringname, not an int. Therefore, it must be converted.
 			
-		pass
-	max_id = int(str(max_id))
-	print("Host: The player wins dictionary: ", playerWins)
-	print("Host: The winning player id: ", max_id)
+		#pass
+	#max_id = int(str(max_id))
+	#print("Host: The player wins dictionary: ", playerWins)
+	#print("Host: The winning player id: ", max_id)
 	# update playerWins accordingly
-	playerWins[max_id] += 1
+	#playerWins[max_id] += 1
 
 	# For the demo, we just set the host to win
 	# print("host wins")
 	# var id = multiplayer.get_unique_id()	# the host id
 	# playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
 	
-	
+	rpc("playerWins_info")
 	# Check if we should call winner() or change map.
 	# Iterate over playerWins to see if someone has won.
-	for player in playerWins:
-		if playerWins[player] == 2:
-			winner()
-			return
+	
+	#for player in playerWins:
+		#if playerWins[player] == 2:
+			#winner()
+			#return
 	# if nobody has won yet,
 		# set everyone's coins to 0
 		# Change map
-		
-	display_scoreboard()
+	rpc("show_scoreboard_to_all")
+	#display_scoreboard()
 	#MS.change_scene("res://in_game_menus/scoreboard.tscn")
 	#MS.change_scene("res://Maps/Arena_1/arena_1.tscn")
 	
@@ -132,9 +134,12 @@ func display_scoreboard():
 	sb_layer.show()
 	await get_tree().create_timer(4).timeout
 	sb_layer.hide()
-	#get_tree().paused = false
+	
 
 func winner():
+	#send info to everyone
+	#rpc("playerWins_info")
+	
 	print("Someone Won!!!")
 	MS.game_over = true
 	# Change everyone to the winner/gameover screen.
@@ -157,6 +162,44 @@ func update_client_coins(coins):
 
 # The RPC functions below are probably going to get deleted and replaced with other RPC functions.
 
+
+# rpc to display scoreboard
+@rpc("any_peer", "call_local")
+func show_scoreboard_to_all():
+	display_scoreboard()
+	
+	
+@rpc("any_peer", "call_local")
+func initialize_playerWins():
+	for player in MS.players:
+		playerWins[player] = 0
+		
+# rpc to send playerWins info to everyone
+@rpc("any_peer", "call_local")
+func playerWins_info():
+	#get playerWins info	
+	#for player in MS.players:
+		#playerWins[player] = 0
+	var players = get_tree().get_nodes_in_group("player")
+
+	var max_coins = -1
+	var max_id = null
+	for player in players:
+		player_coins[player] = player.coins
+		if player.coins > max_coins:
+			max_coins = player.coins
+			max_id = player.name
+	max_id = int(str(max_id))
+	print(max_id)
+	print(playerWins)
+	playerWins[max_id] += 1
+	
+	for player in playerWins:
+		if playerWins[player] == 2:
+			winner()
+			return
+
+
 # Only the server gets to call this. Causes someone to call
 # the update_coins RPC function.
 @rpc("authority", "call_remote", "reliable")
@@ -177,6 +220,7 @@ func update_coins(coins):
 	var id = get_tree().get_rpc_sender_id()
 	# Update the value of player_coins with key id
 	player_coins[id] = coins
+
 	pass
 
 
