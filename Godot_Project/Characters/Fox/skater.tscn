@@ -626,7 +626,7 @@ zoom = Vector2(0.5, 0.5)
 replication_config = SubResource("SceneReplicationConfig_fh0fq")
 
 [node name="Inventory" parent="." instance=ExtResource("10_j7sdp")]
-position = Vector2(-23, 38.5)
+position = Vector2(-3.5, 24.25)
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]

@@ -79,9 +79,6 @@ func _physics_process(_delta):
 	
 	var x_direction = Input.get_axis("move_left", "move_right")
 	
-	if Input.is_action_just_pressed("damage"):
-		damage()
-	
 	if Input.is_action_pressed("move_left") && !Input.is_action_pressed("move_right") && !Input.is_action_pressed("crouch"):
 		$StateChart.send_event("move_left_right")
 		velocity.x  = speed * x_direction
@@ -223,6 +220,7 @@ func respawn():
 	pass
 
 func drop_coins():
+	if coins == 0: return
 	if coins % 2 != 0: coins = coins + 1
 	for i in range(coins / 2):
 		var inst = coin.instantiate()
