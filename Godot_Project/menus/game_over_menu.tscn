@@ -156,14 +156,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_38erd")
 
-[node name="CoinLabel" type="Label" parent="HBoxContainer/PanelContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_7uiid")
-theme_override_font_sizes/font_size = 40
-text = " Coins:"
-
 [node name="NameLabel" type="Label" parent="HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 8
