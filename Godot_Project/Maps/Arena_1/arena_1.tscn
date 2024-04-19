@@ -1904,7 +1904,6 @@ penguin_scene = ExtResource("14_jkgyo")
 skater_scene = ExtResource("15_ev8jo")
 
 [node name="Match Helper" parent="." instance=ExtResource("10_2nyr0")]
-wait_time = 20.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_hpobx")
