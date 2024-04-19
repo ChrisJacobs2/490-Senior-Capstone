@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvv810lxsyeeq"]
+[gd_scene load_steps=36 format=3 uid="uid://dvv810lxsyeeq"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_y8qya"]
-[ext_resource type="Texture2D" uid="uid://drmrx81vjkrej" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
-[ext_resource type="Texture2D" uid="uid://c2k21pd6vmi1g" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
+[ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
+[ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_v6c8g"]
+[ext_resource type="Texture2D" uid="uid://bxl7u535ho65v" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="4_ldytp"]
-[ext_resource type="Texture2D" uid="uid://bod2ixejh8g51" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
+[ext_resource type="Texture2D" uid="uid://dw5qxx0ex3vk0" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_8d6pw"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_u6wd0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7vaho"]
@@ -133,11 +134,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtxx"]
-size = Vector2(42, 47)
+size = Vector2(28.3333, 42.3333)
 
 [sub_resource type="Animation" id="Animation_temde"]
 resource_name = "Crouch"
-length = 0.200002
+length = 0.0500018
 loop_mode = 1
 step = 0.0166667
 tracks/0/type = "value"
@@ -159,10 +160,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -171,10 +172,10 @@ tracks/2/path = NodePath("../CollisionBox:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx")]
+"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -183,10 +184,10 @@ tracks/3/path = NodePath("../CollisionBox:shape:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(42, 47)]
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(36.3333, 34.6667), Vector2(36.3333, 34.6667)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -195,10 +196,10 @@ tracks/4/path = NodePath("../CollisionBox:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-1, 10.5)]
+"values": [Vector2(-1.16667, 16.6667), Vector2(-1.16667, 16.6667)]
 }
 
 [sub_resource type="Animation" id="Animation_dwhqf"]
@@ -237,10 +238,10 @@ tracks/2/path = NodePath("../CollisionBox:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400001, 0.500001, 0.600001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
+"values": [SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx"), SubResource("RectangleShape2D_7vtxx")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -249,10 +250,10 @@ tracks/3/path = NodePath("../CollisionBox:shape:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51), Vector2(49, 51)]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400001, 0.500001, 0.600001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667), Vector2(40.3333, 42.6667)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -261,10 +262,10 @@ tracks/4/path = NodePath("../CollisionBox:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.300001, 0.400001, 0.500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5), Vector2(-6.5, 8.5)]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400001, 0.500001, 0.600001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-3.16667, 12), Vector2(-3.16667, 12), Vector2(-3.16667, 12), Vector2(-3.16667, 12), Vector2(-3.16667, 12), Vector2(-3.16667, 12), Vector2(-3.16667, 12)]
 }
 
 [sub_resource type="Animation" id="Animation_tcskj"]
@@ -291,10 +292,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.15, 0.266667, 0.4, 0.466667, 0.533333, 0.666667, 0.766667, 0.866667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -317,8 +318,8 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.0500001),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(39, 51), Vector2(39, 51)]
+"update": 1,
+"values": [Vector2(28.3333, 42.3333), Vector2(28.3333, 42.3333)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -329,8 +330,8 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.0500001),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-2.5, 8.5), Vector2(-2.5, 8.5)]
+"update": 1,
+"values": [Vector2(-3.16667, 10.5), Vector2(-3.16667, 10.5)]
 }
 
 [sub_resource type="Animation" id="Animation_xg14a"]
@@ -382,7 +383,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(57, 51), Vector2(47, 51)]
 }
 tracks/4/type = "value"
@@ -394,7 +395,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(1.5, 8.5), Vector2(0.5, 8.5)]
 }
 
@@ -445,8 +446,8 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(42, 47)]
+"update": 1,
+"values": [Vector2(28.3333, 42.3333)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -457,8 +458,8 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 10.5)]
+"update": 1,
+"values": [Vector2(-3.16667, 10.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1n0"]
@@ -498,6 +499,7 @@ slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_y8qya")
+coin = ExtResource("2_v6c8g")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2.5)
@@ -512,7 +514,7 @@ libraries = {
 }
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 10.5)
+position = Vector2(-3.16667, 10.5)
 shape = SubResource("RectangleShape2D_7vtxx")
 
 [node name="Raycasts" type="Node2D" parent="."]

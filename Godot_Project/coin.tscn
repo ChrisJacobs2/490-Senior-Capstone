@@ -1,20 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtfkherr551ht"]
+[gd_scene load_steps=7 format=3 uid="uid://dtfkherr551ht"]
 
 [ext_resource type="Script" path="res://coin.gd" id="1_cl0gt"]
+[ext_resource type="Script" path="res://coinbounce.gd" id="1_uyrll"]
 [ext_resource type="Texture2D" uid="uid://dmqi6ia7cgmke" path="res://assets/coins/coins_copy.png" id="1_wtlpj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h3i32"]
-radius = 76.4199
+[sub_resource type="CircleShape2D" id="CircleShape2D_3lbg6"]
+radius = 400.0
 
-[node name="coin" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gt1n4"]
+radius = 5000.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3i32"]
+radius = 4000.0
+
+[node name="coin" type="RigidBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_uyrll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_3lbg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_wtlpj")
+
+[node name="collectHitbox" type="Area2D" parent="."]
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_cl0gt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wtlpj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectHitbox"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_gt1n4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(5, 5)
+[node name="bounceHitbox" type="Area2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounceHitbox"]
+scale = Vector2(0.1, 0.1)
 shape = SubResource("CircleShape2D_h3i32")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="collectHitbox" to="collectHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="bounceHitbox" to="." method="_on_bounce_hitbox_body_entered"]
