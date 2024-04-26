@@ -5,9 +5,9 @@ extends Control
 func _ready():
 	$AnimationPlayer.play("fade_in")
 	#fade in time + time showing scene
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(7).timeout
 	$AnimationPlayer.play("fade_out")
 	#fade out time
 	await get_tree().create_timer(3).timeout
-	#change this to level filepath
-	get_tree().change_scene_to_file("res://levels_intros/start_level_5.tscn")
+	#go to arena2
+	MS.change_scene("res://Maps/Arena_2/Arena_2.tscn")

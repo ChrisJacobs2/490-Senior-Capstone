@@ -1,8 +1,6 @@
 extends Control
 
 
-#add winner label
-
 @onready var coin_labels = [$HBoxContainer/PanelContainer/CoinLabel, $HBoxContainer/PanelContainer2/CoinLabel,
 							$HBoxContainer/PanelContainer3/CoinLabel, $HBoxContainer/PanelContainer4/CoinLabel]
 @onready var sprite_panels = [$HBoxContainer/PanelContainer/Sprite2D, $HBoxContainer/PanelContainer2/Sprite2D,
@@ -27,6 +25,7 @@ var skater = preload("res://assets/characters/SkaterIdle.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("in scoreboard")
 	hide_panel_cards()
 	set_panel_cards()
 	set_coin_total()
@@ -40,9 +39,14 @@ func _ready():
 	#$AnimationPlayer.play("fade_out")
 	#fade out time
 	#await get_tree().create_timer(3).timeout
-	MS.change_scene("res://levels_intros/start_level_2.tscn")
+	#go to next round
+	#for player in GameHandler.playerWins:
+		#if GameHandler.playerWins[player] == 2:
+			#MS.change_scene("res://menus/game_over_menu.tscn")
+	#MS.change_scene("res://levels_intros/start_level_" + str(MS.round_counter) + ".tscn")
+	#MS.change_scene("res://levels_intros/start_level_2.tscn")
 
-
+	
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
 
