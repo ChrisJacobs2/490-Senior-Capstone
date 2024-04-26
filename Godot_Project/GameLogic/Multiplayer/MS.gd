@@ -16,6 +16,7 @@ var peer
 var in_lobby = false	# This is set to true when the lobby scene is loaded, and false when MS.change_scene is called
 var game_over = false	# Set to true when GameHandler.winner() is called
 
+var round_counter = 1
 
 # This is the compression type used for the connection.
 # Both clients and the server must use the same compression type.
