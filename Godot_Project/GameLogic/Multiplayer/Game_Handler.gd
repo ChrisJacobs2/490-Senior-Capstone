@@ -7,6 +7,8 @@ signal timer_is_done()
 # Sent by character, received by Player Manager node (in arena).
 signal respawn_me()
 
+#boolean which becomes true when a player wins the game (2 rounds)
+var someone_won = false
 
 # Client side variable to store an int representing how many coins the player has.
 # This will be eventually sent to the server, who will determine the victor.
@@ -20,9 +22,6 @@ var player_coins = {}
 # id: player wins dictionary
 var playerWins = {}
 
-#var popup_scoreboard = preload("res://in_game_menus/scoreboard.tscn").instantiate()
-#var round_counter = 1
-
 
 # Only called once per game. Called when the host starts the game from the character
 # selection menu.
@@ -35,6 +34,7 @@ func initialize():
 			playerWins[player] = 0
 			player_coins[player] = 0
 		rpc("initialize_playerWins")
+
 		# Make sure to remove players who leave the game from playerWins and player_coins,
 		# using the player disconnetced signal.
 		multiplayer.peer_disconnected.connect(_on_player_disconnected)
@@ -85,20 +85,27 @@ func decide_match_victor():
 	# print("host wins")
 	# var id = multiplayer.get_unique_id()	# the host id
 	# playerWins[id] += 1	# If this function runs in singleplayer and it will cause a crash because the players list is empty.
+	
+	#increase number of rounds completed
 	MS.round_counter += 1
 
+	#rpc so each player gets the updated playerWins dictionary
 	rpc("playerWins_info")
-	rpc("show_scoreboard_to_all")
-	rpc("check_winner")
-	#check if someone won
-	#for player in playerWins:
-		#if playerWins[player] == 2:
-			#MS.change_scene("res://menus/game_over_menu.tscn")
-			#winner()
-			
-		
-	#MS.change_scene("res://levels_intros/start_level_" + str(MS.round_counter) + ".tscn")
 	
+	#rpc to display scoreboard for all players
+	rpc("show_scoreboard_to_all")
+	
+	#check if someone won
+	for player in playerWins:
+		if playerWins[player] == 2:
+			someone_won = true
+			winner()
+			break
+		
+	#if nobody won, go to next round	
+	if someone_won == false:
+		MS.change_scene("res://levels_intros/start_level_" + str(MS.round_counter) + ".tscn")		
+
 	
 	pass
 	
@@ -106,15 +113,11 @@ func decide_match_victor():
 func display_scoreboard():
 	#get player coin info
 	var players = get_tree().get_nodes_in_group("player")
-	#print(players)
 	for player in players:
 		player_coins[player] = player.coins
-		print("this is sb")
-		print(player_coins[player])
 
 	#show scoreboard
 	var popup_scoreboard = preload("res://in_game_menus/scoreboard.tscn").instantiate()
-
 	popup_scoreboard.position = get_viewport().get_visible_rect().position
 	
 	#make canvas layer so scoreboard is in foreground
@@ -122,6 +125,7 @@ func display_scoreboard():
 	add_child(sb_layer)
 	sb_layer.add_child(popup_scoreboard)
 	
+	#show scoreboard
 	sb_layer.show()
 	await get_tree().create_timer(6).timeout
 	sb_layer.hide()
@@ -133,7 +137,7 @@ func winner():
 	# Change everyone to the winner/gameover screen.
 	MS.change_scene("res://menus/game_over_menu.tscn")
 	# Stop hosting. This should disconnect everyone.
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(7).timeout
 	MS.leave_game()
 	pass
 
@@ -152,19 +156,9 @@ func update_client_coins(coins):
 @rpc("any_peer", "call_local", "reliable")
 func show_scoreboard_to_all():
 	display_scoreboard()
-	
-@rpc("any_peer", "call_local", "reliable")
-func check_winner():
-	#check if someone won
-	for player in playerWins:
-		if playerWins[player] == 2:
-			winner()
-			MS.change_scene("res://menus/game_over_menu.tscn")
-			break
 
-	MS.change_scene("res://levels_intros/start_level_" + str(MS.round_counter) + ".tscn")
 	
-	
+# rpc to initialize playerwins for every player
 @rpc("any_peer", "call_local", "reliable")
 func initialize_playerWins():
 	for player in MS.players:
@@ -176,18 +170,16 @@ func initialize_playerWins():
 func playerWins_info():
 	#get playerWins info	
 	var players = get_tree().get_nodes_in_group("player")
-	print(players)
 
 	var max_coins = -1
 	var max_id = null
+	#find which player won the round
 	for player in players:
 		player_coins[player] = player.coins
 		if player.coins > max_coins:
 			max_coins = player.coins
 			max_id = player.name
 	max_id = int(str(max_id))
-	print(max_id)
-	print(playerWins)
 	playerWins[max_id] += 1
 	
 
