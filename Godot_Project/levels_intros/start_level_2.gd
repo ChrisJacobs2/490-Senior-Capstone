@@ -9,5 +9,6 @@ func _ready():
 	$AnimationPlayer.play("fade_out")
 	#fade out time
 	await get_tree().create_timer(3).timeout
-	#change this to level filepath
+	
+	#go to arena 2
 	MS.change_scene("res://Maps/Arena_2/Arena_2.tscn")

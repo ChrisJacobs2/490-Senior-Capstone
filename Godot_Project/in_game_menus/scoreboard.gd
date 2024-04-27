@@ -33,19 +33,8 @@ func _ready():
 	set_nickname()
 	set_winner()
 	
-	#$AnimationPlayer.play("fade_in")
-	#fade in time + time showing scene
 	await get_tree().create_timer(4).timeout
-	#$AnimationPlayer.play("fade_out")
-	#fade out time
-	#await get_tree().create_timer(3).timeout
-	#go to next round
-	#for player in GameHandler.playerWins:
-		#if GameHandler.playerWins[player] == 2:
-			#MS.change_scene("res://menus/game_over_menu.tscn")
-	#MS.change_scene("res://levels_intros/start_level_" + str(MS.round_counter) + ".tscn")
-	#MS.change_scene("res://levels_intros/start_level_2.tscn")
-
+	
 	
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://menus/lobby_menu.tscn")
@@ -58,7 +47,7 @@ func hide_panel_cards():
 		win_labels[i].hide()
 
 
-#set panels = num of players
+#set panels equal to the num of players
 func set_panel_cards():
 	var panel_counter = 0
 	for i in MS.players:
@@ -69,18 +58,16 @@ func set_panel_cards():
 #get total coins for each player
 func set_coin_total():
 	#loop thru each player to get their total coins for round
-	print("entered coin fn")
 	var coin_panels = 0
 	var players = get_tree().get_nodes_in_group("player")
 
+	#display num of coins for each player
 	for player in players:
-		print("reached loop")
-
 		coin_labels[coin_panels].text = " Coins: " + str(player.coins)
 		coin_panels+=1
 
 
-#get sprite each player is using
+#get & show sprite each player is using
 func set_character():
 	var sprite_counter = 0
 	for i in MS.players.keys():
@@ -96,6 +83,7 @@ func set_character():
 		sprite_counter +=1
 	
 	
+#display name of each player
 func set_nickname():
 	var name_counter = 0
 	for i in MS.players.keys():
@@ -105,13 +93,19 @@ func set_nickname():
 
 #get winner, make label appear for winner
 func set_winner():
-	var winner = null
-	for i in MS.num_players:
-		var players = get_tree().get_nodes_in_group("player")
-		var max_coins = -1
-		var max_id = null
-		for player in players:
-			if player.coins > max_coins:
-				max_coins = player.coins
-				winner = i
-		win_labels[i].show()
+	var players = get_tree().get_nodes_in_group("player")
+	var max_coins = -1
+	var player_counter = -1
+	var winning_player_counter = -1
+	
+	#find which player has the most coins, record their position in the array
+	for player in players:
+		player_counter += 1
+		if player.coins > max_coins:
+			max_coins = player.coins
+			winning_player_counter = player_counter
+			
+	#display winner label for winning player
+	win_labels[winning_player_counter].show()
+	
+	
