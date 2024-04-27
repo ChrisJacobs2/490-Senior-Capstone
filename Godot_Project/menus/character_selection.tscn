@@ -1,8 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dned7wsbfe8ah"]
+[gd_scene load_steps=29 format=3 uid="uid://dned7wsbfe8ah"]
 
-[ext_resource type="Texture2D" uid="uid://d07hf4chwbbn7" path="res://assets/clouds.png" id="1_swg1x"]
 [ext_resource type="Script" path="res://menus/character_selection.gd" id="1_u6xa7"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_adsmw"]
+[ext_resource type="Texture2D" uid="uid://k2ectc4v6b7a" path="res://assets/halfsky.png" id="2_meabi"]
+[ext_resource type="Texture2D" uid="uid://bvn2eff7t0on5" path="res://assets/mountainsblue.png" id="3_2k5ey"]
+[ext_resource type="Texture2D" uid="uid://cy504kd0rs6oh" path="res://assets/mountainsbrown.png" id="3_b7tcy"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="5_bl48c"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="5_o1k7q"]
 [ext_resource type="Texture2D" uid="uid://cfvwxq581c5rc" path="res://assets/characters/WarriorGirlIdle.png" id="6_8s3vw"]
@@ -50,18 +52,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_fysgp")
 Button/styles/normal = SubResource("StyleBoxFlat_wmfx2")
 Button/styles/pressed = SubResource("StyleBoxFlat_tev7f")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqb54"]
-size = Vector2(93, 246)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja1ic"]
-size = Vector2(88, 179.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_01ny8"]
-size = Vector2(87, 249.125)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf40y"]
-size = Vector2(96, 165)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuc4f"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
 border_width_bottom = 8
@@ -99,6 +89,8 @@ expand_margin_bottom = 4.0
 Button/styles/hover = SubResource("StyleBoxFlat_iuc4f")
 Button/styles/normal = SubResource("StyleBoxFlat_b0png")
 Button/styles/pressed = SubResource("StyleBoxFlat_uum2s")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6k8s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcyqb"]
 texture = ExtResource("8_5pfmw")
@@ -1519,199 +1511,86 @@ texture = ExtResource("8_5pfmw")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_gcyqb")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6k8s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ornks"]
+bg_color = Color(1, 1, 1, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih77c"]
+bg_color = Color(1, 1, 1, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bi5b"]
+bg_color = Color(1, 1, 1, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj5ex"]
+bg_color = Color(1, 1, 1, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="character_selection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_u6xa7")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_meabi")
+expand_mode = 1
+
+[node name="mntsblue" type="TextureRect" parent="Background/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_swg1x")
-expand_mode = 1
+texture = ExtResource("3_2k5ey")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -128
-
-[node name="Label" type="Label" parent="."]
+[node name="mountains" type="TextureRect" parent="Background/TextureRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 169.0
-offset_top = 40.0
-offset_right = 967.0
-offset_bottom = 120.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.980392, 0.980392, 0.980392, 1)
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 100
-text = "SELECT YOUR CHARACTER"
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 981.5
-offset_top = 4.0
-offset_right = 1149.5
-offset_bottom = 61.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_wlbxv")
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 36
-text = " Leave Game "
-
-[node name="ClownFace" type="RigidBody2D" parent="."]
-
-[node name="ClownFaceButton" type="TextureButton" parent="ClownFace"]
-offset_left = 436.0
-offset_top = 221.0
-offset_right = 510.0
-offset_bottom = 469.0
-mouse_default_cursor_shape = 2
-
-[node name="ClownFaceLabel" type="Label" parent="ClownFace"]
-visible = false
-offset_left = 387.0
-offset_top = 180.0
-offset_right = 567.0
-offset_bottom = 212.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 40
-text = " Clown Face "
-
-[node name="ClownFace" type="Sprite2D" parent="ClownFace"]
-position = Vector2(489, 345)
-scale = Vector2(0.14102, 0.154304)
-texture = ExtResource("6_qe5iw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClownFace"]
-position = Vector2(476.5, 338)
-shape = SubResource("RectangleShape2D_rqb54")
-
-[node name="SkaterBoy" type="RigidBody2D" parent="."]
-
-[node name="SkaterBoyButton" type="TextureButton" parent="SkaterBoy"]
-offset_left = 677.0
-offset_top = 278.0
-offset_right = 766.0
-offset_bottom = 456.0
-mouse_default_cursor_shape = 2
-
-[node name="SkaterBoyLabel" type="Label" parent="SkaterBoy"]
-visible = false
-offset_left = 631.0
-offset_top = 230.0
-offset_right = 811.0
-offset_bottom = 262.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 40
-text = " Skater Boy "
-
-[node name="SkaterBoy" type="Sprite2D" parent="SkaterBoy"]
-position = Vector2(729, 360)
-scale = Vector2(0.142841, 0.139522)
-texture = ExtResource("5_o1k7q")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SkaterBoy"]
-position = Vector2(718, 367.375)
-shape = SubResource("RectangleShape2D_ja1ic")
-
-[node name="WarriorGirl" type="RigidBody2D" parent="."]
-
-[node name="WarriorGirlButton" type="TextureButton" parent="WarriorGirl"]
-offset_left = 893.0
-offset_top = 200.0
-offset_right = 968.0
-offset_bottom = 449.0
-mouse_default_cursor_shape = 2
-
-[node name="WarriorGirlLabel" type="Label" parent="WarriorGirl"]
-visible = false
-offset_left = 839.0
-offset_top = 154.0
-offset_right = 1049.0
-offset_bottom = 186.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 40
-text = " Warrior Girl "
-
-[node name="WarriorGirl" type="Sprite2D" parent="WarriorGirl"]
-position = Vector2(927, 324)
-scale = Vector2(0.230251, 0.221716)
-texture = ExtResource("6_8s3vw")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="WarriorGirl"]
-position = Vector2(932.5, 327.563)
-shape = SubResource("RectangleShape2D_01ny8")
-
-[node name="PenguinKing" type="RigidBody2D" parent="."]
-
-[node name="PenguinKingButton" type="TextureButton" parent="PenguinKing"]
-offset_left = 164.0
-offset_top = 315.0
-offset_right = 267.0
-offset_bottom = 455.0
-mouse_default_cursor_shape = 2
-
-[node name="PenguinKingLabel" type="Label" parent="PenguinKing"]
-visible = false
-offset_left = 117.0
-offset_top = 257.0
-offset_right = 327.0
-offset_bottom = 289.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 40
-text = " Penguin King "
-
-[node name="PenguinKing" type="Sprite2D" parent="PenguinKing"]
-position = Vector2(223, 375)
-scale = Vector2(0.156317, 0.148439)
-texture = ExtResource("5_bl48c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PenguinKing"]
-position = Vector2(216, 384.5)
-shape = SubResource("RectangleShape2D_tf40y")
-
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 965.0
-offset_top = 586.0
-offset_right = 1139.0
-offset_bottom = 635.0
 grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_rdy1x")
-theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 45
-text = "Start"
+grow_vertical = 2
+texture = ExtResource("3_b7tcy")
+expand_mode = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ijb7e")
@@ -1719,36 +1598,224 @@ volume_db = -12.543
 autoplay = true
 bus = &"Music"
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_qaeg2")
-format = 2
-layer_0/name = "Ground"
-layer_0/tile_data = PackedInt32Array(2097157, 0, 1, 2097158, 65536, 1, 2097159, 131072, 1, 2097160, 196608, 1, 2097161, 65536, 1, 2097162, 131072, 1, 2097163, 196608, 1, 2097164, 65536, 1, 2097165, 131072, 1, 2097166, 196608, 1, 2097167, 65536, 1, 2097168, 131072, 1, 2097169, 196608, 1, 2097170, 65536, 1, 2097171, 131072, 1, 2097172, 196608, 1, 2097173, 65536, 1, 2097174, 131072, 1, 2097175, 196608, 1, 2097176, 65536, 1, 2097177, 131072, 1, 2097178, 196608, 1, 2097179, 65536, 1, 2097180, 131072, 1, 2097181, 196608, 1, 2097182, 65536, 1, 2097183, 131072, 1, 2097184, 196608, 1, 2097185, 65536, 1, 2097186, 131072, 1, 2097187, 196608, 1, 2097188, 65536, 1, 2097189, 65536, 1, 2097190, 131072, 1, 2097191, 196608, 1, 2097192, 65536, 1, 2097193, 131072, 1, 2097194, 196608, 1, 2097195, 131072, 1, 2097196, 196608, 1, 2097197, 65536, 1, 2097198, 131072, 1, 2097199, 196608, 1, 2097200, 65536, 1, 2097201, 131072, 1, 2097202, 196608, 1, 2097203, 65536, 1, 2097204, 131072, 1, 2097205, 196608, 1, 2097206, 65536, 1, 2097207, 131072, 1, 2097208, 196608, 1, 2097209, 65536, 1, 2097210, 131072, 1, 2097211, 196608, 1, 2097212, 65536, 1, 2097213, 131072, 1, 2097214, 65536, 1, 2097216, 196608, 1, 2097217, 131072, 1, 2097218, 196608, 1, 2097215, 131072, 1, 2031621, 0, 0, 2031622, 65536, 0, 2031623, 131072, 0, 2031624, 196608, 0, 2031625, 65536, 0, 2031626, 131072, 0, 2031627, 196608, 0, 2031628, 65536, 0, 2031629, 131072, 0, 2031630, 65536, 0, 2031631, 131072, 0, 2031632, 196608, 0, 2031633, 65536, 0, 2031634, 131072, 0, 2031635, 196608, 0, 2031636, 65536, 0, 2031637, 131072, 0, 2031638, 65536, 0, 2031639, 131072, 0, 2031640, 196608, 0, 2031641, 65536, 0, 2031642, 131072, 0, 2031643, 65536, 0, 2031644, 131072, 0, 2031645, 65536, 0, 2031646, 131072, 0, 2031647, 65536, 0, 2031648, 131072, 0, 2031649, 65536, 0, 2031650, 131072, 0, 2031651, 196608, 0, 2031652, 65536, 0, 2031653, 65536, 0, 2031654, 131072, 0, 2031655, 65536, 0, 2031656, 131072, 0, 2031657, 65536, 0, 2031658, 131072, 0, 2031659, 196608, 0, 2031660, 65536, 0, 2031661, 131072, 0, 2031662, 196608, 0, 2031663, 65536, 0, 2031664, 131072, 0, 2031665, 196608, 0, 2031666, 65536, 0, 2031667, 131072, 0, 2031668, 196608, 0, 2031669, 65536, 0, 2031670, 131072, 0, 2031671, 65536, 0, 2031672, 131072, 0, 2031673, 196608, 0, 2031674, 65536, 0, 2031675, 131072, 0, 2031676, 65536, 0, 2031677, 131072, 0, 2031678, 65536, 0, 2031679, 65536, 0, 2031680, 131072, 0, 2031681, 196608, 0, 2031682, 262144, 0, 2162693, 0, 4, 2162694, 65536, 2, 2162695, 65536, 2, 2228231, 65536, 3, 2162696, 131072, 2, 2228232, 131072, 3, 2293768, 131072, 4, 2162697, 196608, 2, 2228233, 196608, 3, 2293769, 196608, 4, 2162698, 131072, 2, 2228234, 131072, 3, 2293770, 131072, 4, 2162699, 196608, 2, 2228235, 196608, 3, 2293771, 196608, 4, 2162700, 65536, 2, 2228236, 65536, 3, 2293772, 65536, 4, 2162701, 131072, 2, 2228237, 131072, 3, 2293773, 131072, 4, 2162702, 196608, 2, 2228238, 196608, 3, 2293774, 196608, 4, 2162703, 65536, 2, 2228239, 65536, 3, 2293775, 65536, 4, 2162704, 131072, 2, 2228240, 131072, 3, 2293776, 131072, 4, 2162705, 65536, 2, 2228241, 65536, 3, 2293777, 65536, 4, 2162706, 131072, 2, 2228242, 131072, 3, 2293778, 131072, 4, 2162707, 65536, 2, 2228243, 65536, 3, 2293779, 65536, 4, 2162708, 131072, 2, 2228244, 131072, 3, 2293780, 131072, 4, 2162709, 196608, 2, 2228245, 196608, 3, 2293781, 196608, 4, 2162710, 65536, 2, 2228246, 65536, 3, 2293782, 65536, 4, 2162711, 131072, 2, 2228247, 131072, 3, 2293783, 131072, 4, 2162712, 196608, 2, 2228248, 196608, 3, 2293784, 196608, 4, 2162713, 65536, 2, 2228249, 65536, 3, 2293785, 65536, 4, 2162714, 131072, 2, 2228250, 131072, 3, 2293786, 131072, 4, 2162715, 196608, 2, 2228251, 196608, 3, 2293787, 196608, 4, 2162716, 65536, 2, 2228252, 65536, 3, 2293788, 65536, 4, 2162717, 131072, 2, 2228253, 131072, 3, 2293789, 131072, 4, 2162718, 196608, 2, 2228254, 196608, 3, 2293790, 196608, 4, 2162719, 65536, 2, 2228255, 65536, 3, 2293791, 65536, 4, 2162720, 131072, 2, 2228256, 131072, 3, 2293792, 131072, 4, 2162721, 196608, 2, 2228257, 196608, 3, 2293793, 196608, 4, 2162722, 65536, 2, 2228258, 65536, 3, 2293794, 65536, 4, 2162723, 131072, 2, 2228259, 131072, 3, 2293795, 131072, 4, 2162724, 196608, 2, 2228260, 196608, 3, 2293796, 196608, 4, 2162725, 65536, 2, 2228261, 65536, 3, 2293797, 65536, 4, 2162726, 131072, 2, 2228262, 131072, 3, 2293798, 131072, 4, 2162727, 65536, 2, 2228263, 65536, 3, 2293799, 65536, 4, 2162728, 131072, 2, 2228264, 131072, 3, 2293800, 131072, 4, 2162729, 196608, 2, 2228265, 196608, 3, 2293801, 196608, 4, 2162730, 65536, 2, 2228266, 65536, 3, 2293802, 65536, 4, 2162731, 131072, 2, 2228267, 131072, 3, 2293803, 131072, 4, 2162732, 196608, 2, 2228268, 196608, 3, 2293804, 196608, 4, 2162733, 65536, 2, 2228269, 65536, 3, 2293805, 65536, 4, 2162734, 131072, 2, 2228270, 131072, 3, 2293806, 131072, 4, 2162735, 196608, 2, 2228271, 196608, 3, 2293807, 196608, 4, 2162736, 65536, 2, 2228272, 65536, 3, 2293808, 65536, 4, 2162737, 131072, 2, 2228273, 131072, 3, 2293809, 131072, 4, 2162738, 196608, 2, 2228274, 196608, 3, 2293810, 196608, 4, 2162739, 65536, 2, 2228275, 65536, 3, 2293811, 65536, 4, 2162740, 131072, 2, 2228276, 131072, 3, 2293812, 131072, 4, 2162741, 196608, 2, 2228277, 196608, 3, 2293813, 196608, 4, 2162742, 65536, 2, 2228278, 65536, 3, 2293814, 65536, 4, 2162743, 131072, 2, 2228279, 131072, 3, 2293815, 131072, 4, 2162744, 196608, 2, 2228280, 196608, 3, 2293816, 196608, 4, 2162745, 65536, 2, 2228281, 65536, 3, 2293817, 65536, 4, 2162746, 131072, 2, 2228282, 131072, 3, 2293818, 131072, 4, 2162747, 196608, 2, 2228283, 196608, 3, 2293819, 196608, 4, 2162748, 65536, 2, 2228284, 65536, 3, 2293820, 65536, 4, 2162749, 131072, 2, 2228285, 131072, 3, 2293821, 131072, 4, 2162750, 196608, 2, 2228286, 196608, 3, 2293822, 196608, 4, 2162751, 65536, 2, 2228287, 65536, 3, 2293823, 65536, 4, 2162752, 65536, 2, 2228288, 65536, 3, 2293824, 262144, 4, 2162753, 131072, 2, 2228289, 262144, 4, 2162754, 262144, 4, 2228230, 0, 4, 2293767, 0, 4)
+[node name="Foreground" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 133.0
-offset_right = 641.0
-offset_bottom = 173.0
+[node name="Label" type="Label" parent="Foreground"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -399.0
+offset_top = 53.0
+offset_right = 399.0
+offset_bottom = 133.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.980392, 0.980392, 0.980392, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 100
+text = "SELECT YOUR CHARACTER"
+
+[node name="BackButton" type="Button" parent="Foreground"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_top = 9.0
+offset_right = -16.0
+offset_bottom = 58.0
+grow_horizontal = 0
+theme = SubResource("Theme_wlbxv")
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 36
+text = " Leave "
+
+[node name="StartButton" type="Button" parent="Foreground"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -55.0
+offset_right = -7.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_rdy1x")
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 45
+text = "Start"
+
+[node name="ColorRect" type="ColorRect" parent="Foreground"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -177.0
+offset_right = 61.5
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
-[node name="Ready Status" type="CheckBox" parent="ColorRect"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -9.0
-offset_right = 117.0
-offset_bottom = 49.0
+[node name="Ready Status" type="CheckBox" parent="Foreground/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -20.0
+offset_right = 58.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_adsmw")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 35
 theme_override_icons/checked = ExtResource("10_3fmf1")
 theme_override_icons/unchecked = ExtResource("11_7tmsb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_r6k8s")
 text = "Ready?"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="ClownFace/ClownFaceButton" to="." method="_on_clown_face_button_pressed"]
-[connection signal="pressed" from="SkaterBoy/SkaterBoyButton" to="." method="_on_skater_boy_button_pressed"]
-[connection signal="pressed" from="WarriorGirl/WarriorGirlButton" to="." method="_on_warrior_girl_button_pressed"]
-[connection signal="pressed" from="PenguinKing/PenguinKingButton" to="." method="_on_penguin_king_button_pressed"]
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[node name="tiles" type="TextureRect" parent="Foreground"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -574.0
+offset_top = 21.0
+offset_right = -534.0
+offset_bottom = 61.0
+grow_horizontal = 2
+
+[node name="TileMap" type="TileMap" parent="Foreground/tiles"]
+visible = false
+tile_set = SubResource("TileSet_qaeg2")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(2097157, 0, 1, 2097158, 65536, 1, 2097159, 131072, 1, 2097160, 196608, 1, 2097161, 65536, 1, 2097162, 131072, 1, 2097163, 196608, 1, 2097164, 65536, 1, 2097165, 131072, 1, 2097166, 196608, 1, 2097167, 65536, 1, 2097168, 131072, 1, 2097169, 196608, 1, 2097170, 65536, 1, 2097171, 131072, 1, 2097172, 196608, 1, 2097173, 65536, 1, 2097174, 131072, 1, 2097175, 196608, 1, 2097176, 65536, 1, 2097177, 131072, 1, 2097178, 196608, 1, 2097179, 65536, 1, 2097180, 131072, 1, 2097181, 196608, 1, 2097182, 65536, 1, 2097183, 131072, 1, 2097184, 196608, 1, 2097185, 65536, 1, 2097186, 131072, 1, 2097187, 196608, 1, 2097188, 65536, 1, 2097189, 65536, 1, 2097190, 131072, 1, 2097191, 196608, 1, 2097192, 65536, 1, 2097193, 131072, 1, 2097194, 196608, 1, 2097195, 131072, 1, 2097196, 196608, 1, 2097197, 65536, 1, 2097198, 131072, 1, 2097199, 196608, 1, 2097200, 65536, 1, 2097201, 131072, 1, 2097202, 196608, 1, 2097203, 65536, 1, 2097204, 131072, 1, 2097205, 196608, 1, 2097206, 65536, 1, 2097207, 131072, 1, 2097208, 196608, 1, 2097209, 65536, 1, 2097210, 131072, 1, 2097211, 196608, 1, 2097212, 65536, 1, 2097213, 131072, 1, 2097214, 65536, 1, 2097216, 196608, 1, 2097217, 131072, 1, 2097218, 196608, 1, 2097215, 131072, 1, 2031621, 0, 0, 2031622, 65536, 0, 2031623, 131072, 0, 2031624, 196608, 0, 2031625, 65536, 0, 2031626, 131072, 0, 2031627, 196608, 0, 2031628, 65536, 0, 2031629, 131072, 0, 2031630, 65536, 0, 2031631, 131072, 0, 2031632, 196608, 0, 2031633, 65536, 0, 2031634, 131072, 0, 2031635, 196608, 0, 2031636, 65536, 0, 2031637, 131072, 0, 2031638, 65536, 0, 2031639, 131072, 0, 2031640, 196608, 0, 2031641, 65536, 0, 2031642, 131072, 0, 2031643, 65536, 0, 2031644, 131072, 0, 2031645, 65536, 0, 2031646, 131072, 0, 2031647, 65536, 0, 2031648, 131072, 0, 2031649, 65536, 0, 2031650, 131072, 0, 2031651, 196608, 0, 2031652, 65536, 0, 2031653, 65536, 0, 2031654, 131072, 0, 2031655, 65536, 0, 2031656, 131072, 0, 2031657, 65536, 0, 2031658, 131072, 0, 2031659, 196608, 0, 2031660, 65536, 0, 2031661, 131072, 0, 2031662, 196608, 0, 2031663, 65536, 0, 2031664, 131072, 0, 2031665, 196608, 0, 2031666, 65536, 0, 2031667, 131072, 0, 2031668, 196608, 0, 2031669, 65536, 0, 2031670, 131072, 0, 2031671, 65536, 0, 2031672, 131072, 0, 2031673, 196608, 0, 2031674, 65536, 0, 2031675, 131072, 0, 2031676, 65536, 0, 2031677, 131072, 0, 2031678, 65536, 0, 2031679, 65536, 0, 2031680, 131072, 0, 2031681, 196608, 0, 2031682, 262144, 0, 2162693, 0, 4, 2162694, 65536, 2, 2162695, 65536, 2, 2228231, 65536, 3, 2162696, 131072, 2, 2228232, 131072, 3, 2293768, 131072, 4, 2162697, 196608, 2, 2228233, 196608, 3, 2293769, 196608, 4, 2162698, 131072, 2, 2228234, 131072, 3, 2293770, 131072, 4, 2162699, 196608, 2, 2228235, 196608, 3, 2293771, 196608, 4, 2162700, 65536, 2, 2228236, 65536, 3, 2293772, 65536, 4, 2162701, 131072, 2, 2228237, 131072, 3, 2293773, 131072, 4, 2162702, 196608, 2, 2228238, 196608, 3, 2293774, 196608, 4, 2162703, 65536, 2, 2228239, 65536, 3, 2293775, 65536, 4, 2162704, 131072, 2, 2228240, 131072, 3, 2293776, 131072, 4, 2162705, 65536, 2, 2228241, 65536, 3, 2293777, 65536, 4, 2162706, 131072, 2, 2228242, 131072, 3, 2293778, 131072, 4, 2162707, 65536, 2, 2228243, 65536, 3, 2293779, 65536, 4, 2162708, 131072, 2, 2228244, 131072, 3, 2293780, 131072, 4, 2162709, 196608, 2, 2228245, 196608, 3, 2293781, 196608, 4, 2162710, 65536, 2, 2228246, 65536, 3, 2293782, 65536, 4, 2162711, 131072, 2, 2228247, 131072, 3, 2293783, 131072, 4, 2162712, 196608, 2, 2228248, 196608, 3, 2293784, 196608, 4, 2162713, 65536, 2, 2228249, 65536, 3, 2293785, 65536, 4, 2162714, 131072, 2, 2228250, 131072, 3, 2293786, 131072, 4, 2162715, 196608, 2, 2228251, 196608, 3, 2293787, 196608, 4, 2162716, 65536, 2, 2228252, 65536, 3, 2293788, 65536, 4, 2162717, 131072, 2, 2228253, 131072, 3, 2293789, 131072, 4, 2162718, 196608, 2, 2228254, 196608, 3, 2293790, 196608, 4, 2162719, 65536, 2, 2228255, 65536, 3, 2293791, 65536, 4, 2162720, 131072, 2, 2228256, 131072, 3, 2293792, 131072, 4, 2162721, 196608, 2, 2228257, 196608, 3, 2293793, 196608, 4, 2162722, 65536, 2, 2228258, 65536, 3, 2293794, 65536, 4, 2162723, 131072, 2, 2228259, 131072, 3, 2293795, 131072, 4, 2162724, 196608, 2, 2228260, 196608, 3, 2293796, 196608, 4, 2162725, 65536, 2, 2228261, 65536, 3, 2293797, 65536, 4, 2162726, 131072, 2, 2228262, 131072, 3, 2293798, 131072, 4, 2162727, 65536, 2, 2228263, 65536, 3, 2293799, 65536, 4, 2162728, 131072, 2, 2228264, 131072, 3, 2293800, 131072, 4, 2162729, 196608, 2, 2228265, 196608, 3, 2293801, 196608, 4, 2162730, 65536, 2, 2228266, 65536, 3, 2293802, 65536, 4, 2162731, 131072, 2, 2228267, 131072, 3, 2293803, 131072, 4, 2162732, 196608, 2, 2228268, 196608, 3, 2293804, 196608, 4, 2162733, 65536, 2, 2228269, 65536, 3, 2293805, 65536, 4, 2162734, 131072, 2, 2228270, 131072, 3, 2293806, 131072, 4, 2162735, 196608, 2, 2228271, 196608, 3, 2293807, 196608, 4, 2162736, 65536, 2, 2228272, 65536, 3, 2293808, 65536, 4, 2162737, 131072, 2, 2228273, 131072, 3, 2293809, 131072, 4, 2162738, 196608, 2, 2228274, 196608, 3, 2293810, 196608, 4, 2162739, 65536, 2, 2228275, 65536, 3, 2293811, 65536, 4, 2162740, 131072, 2, 2228276, 131072, 3, 2293812, 131072, 4, 2162741, 196608, 2, 2228277, 196608, 3, 2293813, 196608, 4, 2162742, 65536, 2, 2228278, 65536, 3, 2293814, 65536, 4, 2162743, 131072, 2, 2228279, 131072, 3, 2293815, 131072, 4, 2162744, 196608, 2, 2228280, 196608, 3, 2293816, 196608, 4, 2162745, 65536, 2, 2228281, 65536, 3, 2293817, 65536, 4, 2162746, 131072, 2, 2228282, 131072, 3, 2293818, 131072, 4, 2162747, 196608, 2, 2228283, 196608, 3, 2293819, 196608, 4, 2162748, 65536, 2, 2228284, 65536, 3, 2293820, 65536, 4, 2162749, 131072, 2, 2228285, 131072, 3, 2293821, 131072, 4, 2162750, 196608, 2, 2228286, 196608, 3, 2293822, 196608, 4, 2162751, 65536, 2, 2228287, 65536, 3, 2293823, 65536, 4, 2162752, 65536, 2, 2228288, 65536, 3, 2293824, 262144, 4, 2162753, 131072, 2, 2228289, 262144, 4, 2162754, 262144, 4, 2228230, 0, 4, 2293767, 0, 4)
+
+[node name="panels" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="panels"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.5
+offset_top = -86.5
+offset_right = 451.5
+offset_bottom = 216.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="penguinpanel" type="PanelContainer" parent="panels/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ornks")
+
+[node name="PenguinKingButton" type="TextureButton" parent="panels/HBoxContainer/penguinpanel"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="PenguinKingLabel" type="Label" parent="panels/HBoxContainer/penguinpanel"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 40
+text = " Penguin King "
+horizontal_alignment = 1
+
+[node name="PenguinKing2" type="Sprite2D" parent="panels/HBoxContainer/penguinpanel"]
+position = Vector2(121, 186)
+scale = Vector2(0.13, 0.122)
+texture = ExtResource("5_bl48c")
+
+[node name="clownpanel" type="PanelContainer" parent="panels/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ih77c")
+
+[node name="ClownFaceButton" type="TextureButton" parent="panels/HBoxContainer/clownpanel"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="ClownFaceLabel" type="Label" parent="panels/HBoxContainer/clownpanel"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 40
+text = " Clown Face "
+horizontal_alignment = 1
+
+[node name="ClownFace2" type="Sprite2D" parent="panels/HBoxContainer/clownpanel"]
+position = Vector2(127, 166)
+scale = Vector2(0.13, 0.142)
+texture = ExtResource("6_qe5iw")
+
+[node name="skaterpanel" type="PanelContainer" parent="panels/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bi5b")
+
+[node name="SkaterBoyButton" type="TextureButton" parent="panels/HBoxContainer/skaterpanel"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="SkaterBoyLabel" type="Label" parent="panels/HBoxContainer/skaterpanel"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 40
+text = " Skater Boy "
+horizontal_alignment = 1
+
+[node name="SkaterBoy2" type="Sprite2D" parent="panels/HBoxContainer/skaterpanel"]
+position = Vector2(124, 181)
+scale = Vector2(0.13, 0.127)
+texture = ExtResource("5_o1k7q")
+
+[node name="warriorpanel" type="PanelContainer" parent="panels/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oj5ex")
+
+[node name="WarriorGirlButton" type="TextureButton" parent="panels/HBoxContainer/warriorpanel"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="WarriorGirlLabel" type="Label" parent="panels/HBoxContainer/warriorpanel"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("2_adsmw")
+theme_override_font_sizes/font_size = 40
+text = " Warrior Girl "
+horizontal_alignment = 1
+
+[node name="WarriorGirl2" type="Sprite2D" parent="panels/HBoxContainer/warriorpanel"]
+position = Vector2(105, 167)
+scale = Vector2(0.21, 0.203)
+texture = ExtResource("6_8s3vw")
+
+[connection signal="pressed" from="Foreground/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Foreground/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="panels/HBoxContainer/penguinpanel/PenguinKingButton" to="." method="_on_penguin_king_button_pressed"]
+[connection signal="pressed" from="panels/HBoxContainer/clownpanel/ClownFaceButton" to="." method="_on_clown_face_button_pressed"]
+[connection signal="pressed" from="panels/HBoxContainer/skaterpanel/SkaterBoyButton" to="." method="_on_skater_boy_button_pressed"]
+[connection signal="pressed" from="panels/HBoxContainer/warriorpanel/WarriorGirlButton" to="." method="_on_warrior_girl_button_pressed"]

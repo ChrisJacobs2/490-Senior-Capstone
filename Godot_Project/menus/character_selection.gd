@@ -11,13 +11,14 @@ enum Character { PENGUIN, CLOWN, SKATER, WARRIOR }
 var current_character = Character.CLOWN
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	penguin_king_label = $PenguinKing/PenguinKingLabel
-	clown_face_label = $ClownFace/ClownFaceLabel
-	skater_boy_label = $SkaterBoy/SkaterBoyLabel
-	warrior_girl_label = $WarriorGirl/WarriorGirlLabel
-	start_button = $StartButton
+	penguin_king_label = $panels/HBoxContainer/penguinpanel/PenguinKingLabel
+	clown_face_label = $panels/HBoxContainer/clownpanel/ClownFaceLabel
+	skater_boy_label = $panels/HBoxContainer/skaterpanel/SkaterBoyLabel
+	warrior_girl_label = $panels/HBoxContainer/warriorpanel/WarriorGirlLabel
+	start_button = $Foreground/StartButton
 	
 	# default case if nobody picks character
 	_on_clown_face_button_pressed()
@@ -32,7 +33,7 @@ func _on_back_button_pressed():
 
 
 func _on_penguin_king_button_pressed():
-	#Global.character = "PenguinKing"	
+	#character = "PenguinKing"	
 	resetLabel()
 	current_character = Character.PENGUIN
 	penguin_king_label.visible = true
@@ -40,7 +41,7 @@ func _on_penguin_king_button_pressed():
 
 
 func _on_clown_face_button_pressed():
-	#Global.character = "ClownFace"
+	#character = "ClownFace"
 	resetLabel()
 	current_character = Character.CLOWN
 	clown_face_label.visible = true
@@ -48,14 +49,14 @@ func _on_clown_face_button_pressed():
 	
 	
 func _on_skater_boy_button_pressed():
-	#Global.character = "SkaterBoy"
+	#character = "SkaterBoy"
 	resetLabel()
 	current_character = Character.SKATER
 	skater_boy_label.visible = true
 	broadcast_character()
 	
 func _on_warrior_girl_button_pressed():
-	#Global.character = "WarriorGirl"
+	#character = "WarriorGirl"
 	resetLabel()
 	current_character = Character.WARRIOR
 	warrior_girl_label.visible = true
@@ -64,9 +65,7 @@ func _on_warrior_girl_button_pressed():
 	# This button is labled Force Start. Only the host should be able to push this.
 	# I plan on adding more ways for the game to start, such as 4 people being ready.
 func _on_start_button_pressed():
-	#if Global.character == null:
-		#pass
-	#else:
+
 	if MS.is_server():
 		GameHandler.initialize()
 		startGame.rpc()
