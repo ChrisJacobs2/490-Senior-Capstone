@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3lgm4y7dyhin"]
+[gd_scene load_steps=15 format=3 uid="uid://d3lgm4y7dyhin"]
 
 [ext_resource type="Texture2D" uid="uid://cqbpxk8osaewp" path="res://assets/night.png" id="1_qnhsw"]
 [ext_resource type="Script" path="res://in_game_menus/scoreboard.gd" id="1_rnnhr"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_3msma"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="3_b2y01"]
+[ext_resource type="AudioStream" uid="uid://bp5j78xntjeak" path="res://soundfx/coin.mp3" id="5_0or1g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ynsv"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
@@ -340,5 +341,9 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_3msma")
 theme_override_font_sizes/font_size = 40
 text = " Loading... "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0or1g")
+autoplay = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
