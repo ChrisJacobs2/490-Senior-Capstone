@@ -113,7 +113,6 @@ size_flags_vertical = 3
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_bgo0c")
-volume_db = -12.543
 autoplay = true
 bus = &"Music"
 

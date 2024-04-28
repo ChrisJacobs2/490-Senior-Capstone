@@ -190,7 +190,6 @@ text = "THE HEIST"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_gdnqb")
-volume_db = -12.543
 autoplay = true
 bus = &"Music"
 

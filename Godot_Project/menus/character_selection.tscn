@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" path="res://menus/character_selection.gd" id="1_u6xa7"]
 [ext_resource type="FontFile" uid="uid://bfkw7o0lknp62" path="res://monogram.ttf" id="2_adsmw"]
-[ext_resource type="Texture2D" uid="uid://k2ectc4v6b7a" path="res://assets/halfsky.png" id="2_meabi"]
-[ext_resource type="Texture2D" uid="uid://bvn2eff7t0on5" path="res://assets/mountainsblue.png" id="3_2k5ey"]
-[ext_resource type="Texture2D" uid="uid://cy504kd0rs6oh" path="res://assets/mountainsbrown.png" id="3_b7tcy"]
+[ext_resource type="Texture2D" uid="uid://1ria8wpxcxq2" path="res://assets/halfsky.png" id="2_meabi"]
+[ext_resource type="Texture2D" uid="uid://cueqqohppy6aa" path="res://assets/mountainsblue.png" id="3_2k5ey"]
+[ext_resource type="Texture2D" uid="uid://et42anok6fvl" path="res://assets/mountainsbrown.png" id="3_b7tcy"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="5_bl48c"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="5_o1k7q"]
 [ext_resource type="Texture2D" uid="uid://cfvwxq581c5rc" path="res://assets/characters/WarriorGirlIdle.png" id="6_8s3vw"]
 [ext_resource type="Texture2D" uid="uid://umdqlc3xk1t2" path="res://assets/characters/ClownFaceIdle.png" id="6_qe5iw"]
 [ext_resource type="Texture2D" uid="uid://x2jhhv33vk2x" path="res://assets/Tiles.png" id="8_5pfmw"]
-[ext_resource type="AudioStream" uid="uid://byxxshgf1mcdp" path="res://music/pop1.mp3" id="8_ijb7e"]
-[ext_resource type="Texture2D" uid="uid://hjr2dyqsmugn" path="res://assets/icons/checkmark.png" id="10_3fmf1"]
-[ext_resource type="Texture2D" uid="uid://kumjybekuxl6" path="res://assets/icons/x-mark.png" id="11_7tmsb"]
+[ext_resource type="AudioStream" uid="uid://bxcb7to5jd7b8" path="res://music/pop1.mp3" id="8_ijb7e"]
+[ext_resource type="Texture2D" uid="uid://b2uifn85vtvum" path="res://assets/icons/checkmark.png" id="10_3fmf1"]
+[ext_resource type="Texture2D" uid="uid://dg7ompjs1wa4o" path="res://assets/icons/x-mark.png" id="11_7tmsb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fysgp"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.929412)
@@ -1594,7 +1594,6 @@ expand_mode = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ijb7e")
-volume_db = -12.543
 autoplay = true
 bus = &"Music"
 
