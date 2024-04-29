@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://sjhnxxb2hq33"]
+[gd_scene load_steps=40 format=3 uid="uid://sjhnxxb2hq33"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_u2ldu"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_3wg1h"]
 [ext_resource type="Texture2D" uid="uid://c2pck7tnwqntm" path="res://assets/characters/wg_crouch/wg_crouch_2.png" id="2_6lbve"]
 [ext_resource type="Texture2D" uid="uid://cfvwxq581c5rc" path="res://assets/characters/WarriorGirlIdle.png" id="2_008n0"]
 [ext_resource type="Texture2D" uid="uid://y0ig3xysiuli" path="res://assets/characters/wg_run/wgrun_merged.png" id="3_0jfhv"]
+[ext_resource type="PackedScene" uid="uid://dr5h0uydi8qb3" path="res://Clock/clock.tscn" id="3_ujgou"]
 [ext_resource type="Texture2D" uid="uid://dsiiuvb3e024r" path="res://assets/characters/wg_jump/wg_jump_8_merged.png" id="5_tjc5i"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_ooj2i"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_6oss5"]
@@ -542,6 +543,9 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
+font_color = Color(0, 1, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_axvwh"]
 properties/0/path = NodePath(".:position")
@@ -570,6 +574,10 @@ platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_u2ldu")
 coin = ExtResource("2_3wg1h")
+
+[node name="Clock" parent="." instance=ExtResource("3_ujgou")]
+offset_top = -224.333
+offset_bottom = -224.333
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.051)

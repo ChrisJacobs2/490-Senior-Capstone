@@ -465,6 +465,9 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_tujgy"]
+font_color = Color(0, 1, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fh0fq"]
 properties/0/path = NodePath(".:position")
