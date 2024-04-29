@@ -1,6 +1,6 @@
 extends Node
 
-# Deprecated. TODO: the plyer_scene var
+
 @export var player_scene: PackedScene
 
 @export var clown_scene: PackedScene
