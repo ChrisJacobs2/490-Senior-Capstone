@@ -1,11 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://ct1rd6hykb6g"]
+[gd_scene load_steps=36 format=3 uid="uid://ct1rd6hykb6g"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_3yimp"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_g8jyc"]
-[ext_resource type="Texture2D" uid="uid://b1net34lx8v1o" path="res://assets/characters/boy crouch/boy crouch 1.png" id="2_shd1m"]
-[ext_resource type="Texture2D" uid="uid://bb6odhblw52e3" path="res://assets/characters/boy run/boy run animation.png" id="3_adxr2"]
+[ext_resource type="Texture2D" uid="uid://f55c1di73vs" path="res://assets/characters/boy crouch/boy crouch 1.png" id="2_shd1m"]
+[ext_resource type="Texture2D" uid="uid://cs02la5elq6be" path="res://assets/characters/boy run/boy run animation.png" id="3_adxr2"]
+[ext_resource type="PackedScene" uid="uid://dr5h0uydi8qb3" path="res://Clock/clock.tscn" id="3_xsexd"]
 [ext_resource type="Texture2D" uid="uid://dqf5lf78b38el" path="res://assets/characters/SkaterIdle.png" id="4_kmhd0"]
-[ext_resource type="Texture2D" uid="uid://cq8au4wjgygp2" path="res://assets/characters/boy jump/boy jump 2.png" id="5_ahjg7"]
+[ext_resource type="Texture2D" uid="uid://dpg036sif2jkh" path="res://assets/characters/boy jump/boy jump 2.png" id="5_ahjg7"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_pcvcp"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_kf7rv"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_lbqib"]
@@ -493,6 +494,10 @@ platform_floor_layers = 4294967046
 script = ExtResource("1_3yimp")
 coin = ExtResource("2_g8jyc")
 
+[node name="Control" parent="." instance=ExtResource("3_xsexd")]
+offset_top = -170.75
+offset_bottom = -170.75
+
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1.8)
 scale = Vector2(0.04, 0.041875)
@@ -504,6 +509,15 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_nc1n0")
 }
+
+[node name="clock" parent="Animations" instance=ExtResource("3_xsexd")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = -220.333
+offset_bottom = -220.333
+grow_vertical = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 3.5)

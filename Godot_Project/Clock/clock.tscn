@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr5h0uydi8qb3"]
+
+[ext_resource type="Script" path="res://Clock/clock.gd" id="1_86c86"]
+[ext_resource type="FontFile" uid="uid://c82aprxvc8c0n" path="res://DIGITALDREAMFAT.ttf" id="2_7ooed"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_86c86")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.9999
+offset_top = 28.0
+offset_right = 46.0001
+offset_bottom = 51.0
+grow_horizontal = 2
+scale = Vector2(0.997734, 1)
+theme_override_colors/font_color = Color(0.772549, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_7ooed")
+theme_override_font_sizes/font_size = 35
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

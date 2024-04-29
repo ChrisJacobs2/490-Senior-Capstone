@@ -1,11 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://bt33euwys4tvc"]
+[gd_scene load_steps=33 format=3 uid="uid://bt33euwys4tvc"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_pfjyr"]
-[ext_resource type="Texture2D" uid="uid://co7j4mvfuob5u" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
+[ext_resource type="Texture2D" uid="uid://c4v81sahfs5uv" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_w0uhe"]
-[ext_resource type="Texture2D" uid="uid://b64ms22f4bcrw" path="res://assets/characters/clown run/clown run animation.png" id="3_j4m01"]
+[ext_resource type="PackedScene" uid="uid://dr5h0uydi8qb3" path="res://Clock/clock.tscn" id="3_ay88g"]
+[ext_resource type="Texture2D" uid="uid://cru53pf312ry2" path="res://assets/characters/clown run/clown run animation.png" id="3_j4m01"]
 [ext_resource type="Texture2D" uid="uid://umdqlc3xk1t2" path="res://assets/characters/ClownFaceIdle.png" id="4_svp3j"]
-[ext_resource type="Texture2D" uid="uid://datgqcff21ort" path="res://assets/characters/clown jump/clown jump animation.png" id="5_wnq5q"]
+[ext_resource type="Texture2D" uid="uid://c8oyn3nb4snkq" path="res://assets/characters/clown jump/clown jump animation.png" id="5_wnq5q"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_bputc"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_k2fi0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_18qpx"]
@@ -472,6 +473,10 @@ platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_pfjyr")
 coin = ExtResource("2_w0uhe")
+
+[node name="Clock" parent="." instance=ExtResource("3_ay88g")]
+offset_top = -221.667
+offset_bottom = -221.667
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2.5)

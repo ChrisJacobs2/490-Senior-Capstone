@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvv810lxsyeeq"]
+[gd_scene load_steps=37 format=3 uid="uid://dvv810lxsyeeq"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_y8qya"]
-[ext_resource type="Texture2D" uid="uid://tgty3e710fe8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
+[ext_resource type="Texture2D" uid="uid://dkgonxhp0i5m8" path="res://assets/characters/peng crouch/peng crouch 1.png" id="2_d75qa"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_v6c8g"]
-[ext_resource type="Texture2D" uid="uid://bxl7u535ho65v" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
+[ext_resource type="Texture2D" uid="uid://dqkc47kb77sbx" path="res://assets/characters/peng run/peng run animation.png" id="3_4hvck"]
+[ext_resource type="PackedScene" uid="uid://dr5h0uydi8qb3" path="res://Clock/clock.tscn" id="3_mtr61"]
 [ext_resource type="Texture2D" uid="uid://dtyg20gg2behw" path="res://assets/characters/PenguinIdle.png" id="4_ldytp"]
-[ext_resource type="Texture2D" uid="uid://dw5qxx0ex3vk0" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
+[ext_resource type="Texture2D" uid="uid://ct6kpcs16g5o" path="res://assets/characters/peng jump/peng jump animation.png" id="5_85q6e"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_8d6pw"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_u6wd0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7vaho"]
@@ -500,6 +501,10 @@ platform_on_leave = 2
 platform_floor_layers = 4294967046
 script = ExtResource("1_y8qya")
 coin = ExtResource("2_v6c8g")
+
+[node name="clock" parent="." instance=ExtResource("3_mtr61")]
+offset_top = -226.667
+offset_bottom = -226.667
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2.5)

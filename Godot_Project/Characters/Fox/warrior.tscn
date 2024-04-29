@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_u2ldu"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_3wg1h"]
-[ext_resource type="Texture2D" uid="uid://d00hdhqegf0pc" path="res://assets/characters/wg_crouch/wg_crouch_2.png" id="2_6lbve"]
+[ext_resource type="Texture2D" uid="uid://c2pck7tnwqntm" path="res://assets/characters/wg_crouch/wg_crouch_2.png" id="2_6lbve"]
 [ext_resource type="Texture2D" uid="uid://cfvwxq581c5rc" path="res://assets/characters/WarriorGirlIdle.png" id="2_008n0"]
-[ext_resource type="Texture2D" uid="uid://bvlcl4g4y6ck2" path="res://assets/characters/wg_run/wgrun_merged.png" id="3_0jfhv"]
-[ext_resource type="Texture2D" uid="uid://c53gmph7uwhrc" path="res://assets/characters/wg_jump/wg_jump_8_merged.png" id="5_tjc5i"]
+[ext_resource type="Texture2D" uid="uid://y0ig3xysiuli" path="res://assets/characters/wg_run/wgrun_merged.png" id="3_0jfhv"]
+[ext_resource type="Texture2D" uid="uid://dsiiuvb3e024r" path="res://assets/characters/wg_jump/wg_jump_8_merged.png" id="5_tjc5i"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_ooj2i"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_6oss5"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_be3pl"]
