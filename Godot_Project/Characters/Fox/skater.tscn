@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ct1rd6hykb6g"]
+[gd_scene load_steps=38 format=3 uid="uid://ct1rd6hykb6g"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_3yimp"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_g8jyc"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_lbqib"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_20n2q"]
 [ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Character_Actions/inventory.tscn" id="10_j7sdp"]
+[ext_resource type="AudioStream" uid="uid://civtxlgqmr0ch" path="res://soundfx/jumpclown2.mp3" id="13_5k6al"]
+[ext_resource type="AudioStream" uid="uid://c7j04p115b7i8" path="res://soundfx/penguin hurt.mp3" id="14_n5edw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yh7pk"]
 atlas = ExtResource("2_shd1m")
@@ -638,6 +640,13 @@ replication_config = SubResource("SceneReplicationConfig_fh0fq")
 
 [node name="Inventory" parent="." instance=ExtResource("10_j7sdp")]
 position = Vector2(-3.5, 24.25)
+
+[node name="run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_5k6al")
+volume_db = -24.48
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_n5edw")
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]

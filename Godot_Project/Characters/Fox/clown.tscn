@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bt33euwys4tvc"]
+[gd_scene load_steps=34 format=3 uid="uid://bt33euwys4tvc"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_pfjyr"]
 [ext_resource type="Texture2D" uid="uid://c4v81sahfs5uv" path="res://assets/characters/clown crouch/clown crouch 1.png" id="2_8xde3"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_18qpx"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_2rv6x"]
 [ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Character_Actions/inventory.tscn" id="10_o3dib"]
+[ext_resource type="AudioStream" uid="uid://civtxlgqmr0ch" path="res://soundfx/jumpclown2.mp3" id="13_u4w61"]
+[ext_resource type="AudioStream" uid="uid://de0jterer233p" path="res://soundfx/gun.mp3" id="14_mh641"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xth2f"]
 atlas = ExtResource("2_8xde3")
@@ -620,6 +622,17 @@ position = Vector2(-3.66667, 31.3333)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_axvwh")
+
+[node name="run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_u4w61")
+volume_db = -24.48
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_u4w61")
+volume_db = -14.886
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_mh641")
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]

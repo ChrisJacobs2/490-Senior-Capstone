@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://sjhnxxb2hq33"]
+[gd_scene load_steps=41 format=3 uid="uid://sjhnxxb2hq33"]
 
 [ext_resource type="Script" path="res://Characters/Fox/TestChar.gd" id="1_u2ldu"]
 [ext_resource type="PackedScene" uid="uid://dtfkherr551ht" path="res://coin.tscn" id="2_3wg1h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_be3pl"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_y4o4k"]
 [ext_resource type="PackedScene" uid="uid://bd0qsna4wbiq" path="res://GameLogic/Character_Actions/inventory.tscn" id="10_iohmg"]
+[ext_resource type="AudioStream" uid="uid://htr7v00pni4b" path="res://soundfx/wg jump.mp3" id="13_0ojff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpqmo"]
 atlas = ExtResource("2_6lbve")
@@ -715,6 +716,10 @@ position = Vector2(0, 27)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_axvwh")
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_0ojff")
+autoplay = true
 
 [connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dash" to="." method="_on_dash_state_entered"]

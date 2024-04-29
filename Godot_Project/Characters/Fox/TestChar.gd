@@ -137,7 +137,9 @@ func _on_dash_state_entered():
 
 func _on_jumping_state_entered():
 	animations.play("Jump")
+	$jump.play()
 	$StateChart.send_event("jumped")
+	
 	
 func _on_air_state_entered():
 	pass
