@@ -9,9 +9,11 @@ func _ready():
 	if MS.is_server():
 		# Connect to the start_the_timer signal
 		GameHandler.connect("start_the_timer", _on_start_timer)
+		
+		GameHandler.run_match() # hotfix A. starts the game immediately.
 	else:
 		# Make an RPC call to the host to let them know we are ready
-		player_is_ready.rpc_id(1)
+		#player_is_ready.rpc_id(1)	# hotfix A
 		pass
 	
 
