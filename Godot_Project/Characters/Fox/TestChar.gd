@@ -26,6 +26,9 @@ func _ready():
 	# Everyone else gets it disabled.
 	cam.enabled = is_multiplayer_authority()
 	animations.play("Idle")
+	if (!(is_multiplayer_authority())):
+		$Clock.hide()
+	
 	
 func _enter_tree():
 	# This node is created with a name (the player's id) when it gets created.

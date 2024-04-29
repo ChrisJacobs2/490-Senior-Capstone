@@ -502,7 +502,7 @@ platform_floor_layers = 4294967046
 script = ExtResource("1_y8qya")
 coin = ExtResource("2_v6c8g")
 
-[node name="clock" parent="." instance=ExtResource("3_mtr61")]
+[node name="Clock" parent="." instance=ExtResource("3_mtr61")]
 offset_top = -226.667
 offset_bottom = -226.667
 
@@ -622,6 +622,9 @@ offset_left = -20.0
 offset_top = -80.0
 offset_right = 20.0
 offset_bottom = -57.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0

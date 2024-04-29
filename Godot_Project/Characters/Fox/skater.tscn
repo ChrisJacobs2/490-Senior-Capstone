@@ -494,7 +494,7 @@ platform_floor_layers = 4294967046
 script = ExtResource("1_3yimp")
 coin = ExtResource("2_g8jyc")
 
-[node name="Control" parent="." instance=ExtResource("3_xsexd")]
+[node name="Clock" parent="." instance=ExtResource("3_xsexd")]
 offset_top = -170.75
 offset_bottom = -170.75
 
@@ -509,15 +509,6 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_nc1n0")
 }
-
-[node name="clock" parent="Animations" instance=ExtResource("3_xsexd")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_top = -220.333
-offset_bottom = -220.333
-grow_vertical = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 3.5)
@@ -623,6 +614,9 @@ offset_left = -20.0
 offset_top = -80.0
 offset_right = 20.0
 offset_bottom = -57.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
