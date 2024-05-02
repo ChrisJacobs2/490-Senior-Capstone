@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr5h0uydi8qb3"]
 
 [ext_resource type="Script" path="res://Clock/clock.gd" id="1_86c86"]
-[ext_resource type="FontFile" uid="uid://c82aprxvc8c0n" path="res://DIGITALDREAMFAT.ttf" id="2_7ooed"]
+[ext_resource type="FontFile" uid="uid://d0koyi3vp6bmh" path="res://DIGITALDREAMFAT.ttf" id="2_7ooed"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -34,7 +34,7 @@ text = "Placeholder"
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.5
+wait_time = 45.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
